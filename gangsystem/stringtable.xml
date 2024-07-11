@@ -1,0 +1,513 @@
+<Package name="gang_aapps">
+	<Key ID="STR_aapps_gang_temp">
+		<Original>Temporary Gang</Original>
+		<German>Temporäre Gang</German>
+	</Key>
+	<Key ID="STR_aapps_gang_perm">
+		<Original>Permanent Gang</Original>
+		<German>Permanente Gang</German>
+	</Key>
+	<Key ID="STR_aapps_gang_rent">
+		<Original>RENT GANG</Original>
+		<German>GANG MIETEN</German>
+	</Key>
+	<Key ID="STR_aapps_gang_buy">
+		<Original>BUY GANG</Original>
+		<German>GANG KAUFEN</German>
+	</Key>
+	<Key ID="STR_aapps_gang_abort">
+		<Original>CANCEL</Original>
+		<German>ABBRUCH</German>
+	</Key>
+	<Key ID="STR_aapps_gang_search">
+		<Original>Search...</Original>
+		<German>Suche...</German>
+	</Key>
+	<Key ID="STR_aapps_gang_hq_upgrades">
+		<Original>Upgrades:</Original>
+		<German>Erweiterungen:</German>
+	</Key>
+	<Key ID="STR_aapps_gang_price">
+		<Original>Price:</Original>
+		<German>Preis:</German>
+	</Key>
+	<Key ID="STR_aapps_gang_temp_desc">
+		<Original>+ 6 available Slots\n+ Group Marker\n+ Reset on Server-Restart</Original>
+		<German>+ 6 verfügbare Slots\n+ Gruppenmarker\n+ Reset beim Server-Restart</German>
+	</Key>
+	<Key ID="STR_aapps_gang_perm_desc">
+		<Original>+ Up to 42 available Slots\n+ Custom Membergroups (Permissions-System)\n+ Custom Gang-Tax\n+ Database-Synced</Original>
+		<German>+ Bis zu 42 verfügbare Slots\n+ Eigene Ränge (Rechte-Verwaltung)\n+ Gang-HQ\n+ Gangsteuer\n+ Datenbank-Speicherung</German>
+	</Key>
+	<Key ID="STR_aapps_gang_desc">
+		<Original>Description</Original>
+		<German>Beschreibung</German>
+	</Key>
+	<Key ID="STR_aapps_gang_overview">
+		<Original>Overview</Original>
+		<German>Übersicht</German>
+	</Key>
+	<Key ID="STR_aapps_gang_actions">
+		<Original>Actions</Original>
+		<German>Optionen</German>
+	</Key>
+	<Key ID="STR_aapps_gang_leave">
+		<Original>LEAVE GANG</Original>
+		<German>GANG VERLASSEN</German>
+	</Key>
+	<Key ID="STR_aapps_gang_close">
+		<Original>CLOSE</Original>
+		<German>SCHLIESSEN</German>
+	</Key>
+	<Key ID="STR_aapps_gang_grp_selection">
+		<Original>Group selection:</Original>
+		<German>Gruppenauswahl:</German>
+	</Key>
+	<Key ID="STR_aapps_gang_member">
+		<Original>Members:</Original>
+		<German>Mitglieder:</German>
+	</Key>
+	<Key ID="STR_aapps_gang_allplayers">
+		<Original>All players:</Original>
+		<German>Alle Spieler:</German>
+	</Key>
+	<Key ID="STR_aapps_gang_saveclose">
+		<Original>SAVE AND CLOSE</Original>
+		<German>SPEICHERN UND SCHLIESSEN</German>
+	</Key>
+	<Key ID="STR_aapps_gang_membersof">
+		<Original>Members of %1:</Original>
+		<German>Mitglieder von %1:</German>
+	</Key>
+	<Key ID="STR_aapps_gang_livepreview">
+		<Original>Live preview</Original>
+		<German>Echtzeit Vorschau</German>
+	</Key>
+	<Key ID="STR_aapps_gang_editdesc">
+		<Original>Change description</Original>
+		<German>Beschreibung ändern</German>
+	</Key>
+	<Key ID="STR_aapps_gang_activate_lp">
+		<Original>ACTIVATE LIVE PREVIEW</Original>
+		<German>ECHTZEIT VORSCHAU AKTIVIEREN</German>
+	</Key>
+	<Key ID="STR_aapps_gang_balance">
+		<Original>Gang:</Original>
+	</Key>
+	<Key ID="STR_aapps_gang_own_balance">
+		<Original>Balance:</Original>
+		<German>Guthaben:</German>
+	</Key>
+	<Key ID="STR_aapps_gang_deposit">
+		<Original>DEPOSIT</Original>
+		<German>EINZAHLEN</German>
+	</Key>
+	<Key ID="STR_aapps_gang_withdraw">
+		<Original>WITHDRAW</Original>
+		<German>AUSZAHLEN</German>
+	</Key>
+	<Key ID="STR_aapps_gang_atm_tooltip">
+		<Original>Add tax money to gang bank</Original>
+		<German>Steuergeld zum Gangkonto hinzufügen</German>
+	</Key>
+	<Key ID="STR_aapps_gang_ranks">
+		<Original>Ranks</Original>
+		<German>Ränge</German>
+	</Key>
+	<Key ID="STR_aapps_gang_permission">
+		<Original>Permissions</Original>
+		<German>Rechte</German>
+	</Key>
+	<Key ID="STR_aapps_gang_permi_invite">
+		<Original>Invite</Original>
+		<German>Einladen</German>
+	</Key>
+	<Key ID="STR_aapps_gang_permi_kick">
+		<Original>Kick</Original>
+		<German>Kicken</German>
+	</Key>
+	<Key ID="STR_aapps_gang_permi_disband">
+		<Original>Disband</Original>
+		<German>Auflösen</German>
+	</Key>
+	<Key ID="STR_aapps_gang_permi_hqchange">
+		<Original>Change HQ</Original>
+		<German>HQ ändern</German>
+	</Key>
+	<Key ID="STR_aapps_gang_permi_deposit">
+		<Original>Bank deposit</Original>
+		<German>Geld einzahlen</German>
+	</Key>
+	<Key ID="STR_aapps_gang_permi_withdraw">
+		<Original>Bank withdraw</Original>
+		<German>Geld auszahlen</German>
+	</Key>
+	<Key ID="STR_aapps_gang_permi_tax">
+		<Original>Change tax</Original>
+		<German>Steuer ändern</German>
+	</Key>
+	<Key ID="STR_aapps_gang_permi_paystax">
+		<Original>Pays taxes</Original>
+		<German>Zahlt Steuern</German>
+	</Key>
+	<Key ID="STR_aapps_gang_permi_upgrade">
+		<Original>Upgrade</Original>
+	</Key>
+	<Key ID="STR_aapps_gang_permi_ranks">
+		<Original>Change ranks</Original>
+		<German>Ränge ändern</German>
+	</Key>
+	<Key ID="STR_aapps_gang_permi_perm">
+		<Original>Change permissions</Original>
+		<German>Rechte ändern</German>
+	</Key>
+	<Key ID="STR_aapps_gang_permi_tag">
+		<Original>Change tag</Original>
+		<German>Tag ändern</German>
+	</Key>
+	<Key ID="STR_aapps_gang_permi_hqspawn">
+		<Original>HQ - Spawn</Original>
+	</Key>
+	<Key ID="STR_aapps_gang_deleterank">
+		<Original>DELETE RANK</Original>
+		<German>RANG LÖSCHEN</German>
+	</Key>
+	<Key ID="STR_aapps_gang_savechanges">
+		<Original>SAVE CHANGES</Original>
+		<German>ÄNDERUNGEN SPEICHERN</German>
+	</Key>
+	<Key ID="STR_aapps_gang_selecthq">
+		<Original>Select a new HQ:</Original>
+		<German>Wähle ein neues HQ:</German>
+	</Key>
+	<Key ID="STR_aapps_gang_confirmsel">
+		<Original>CONFIRM SELECTION</Original>
+		<German>AUSWAHL BESTÄTIGEN</German>
+	</Key>
+	<Key ID="STR_aapps_gang_owner">
+		<Original>Owner:</Original>
+		<German>Inhaber:</German>
+	</Key>
+	<Key ID="STR_aapps_gang_tax">
+		<Original>Tax:</Original>
+		<German>Steuer:</German>
+	</Key>
+	<Key ID="STR_aapps_gang_noname">
+		<Original>You didn't enter a name!</Original>
+		<German>Du hast keinen Namen eingegeben!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_name4chars">
+		<Original>Your gangname needs to be at least 4 chars long.</Original>
+		<German>Dein Gangname muss mindestens vier Zeichen lang sein.</German>
+	</Key>
+	<Key ID="STR_aapps_gang_wait">
+		<Original>Please wait a few seconds</Original>
+		<German>Bitte warte einige Sekunden</German>
+	</Key>
+	<Key ID="STR_aapps_gang_rent_question">
+		<Original>Do you really want to rent a gang for %1€?</Original>
+		<German>Willst du wirklich eine Gang für %1€ mieten?</German>
+	</Key>
+	<Key ID="STR_aapps_gang_buy_question">
+		<Original>Do you really want to buy a gang for %1€?</Original>
+		<German>Willst du wirklich eine Gang für %1€ kaufen?</German>
+	</Key>
+	<Key ID="STR_aapps_gang_dialog_inuse">
+		<Original>Somebody already uses this dialog</Original>
+		<German>Jemand benutzt diesen Dialog bereits</German>
+	</Key>
+	<Key ID="STR_aapps_gang_edityourself">
+		<Original>You can't edit yourself</Original>
+		<German>Du kannst dich nicht selbst bearbeiten</German>
+	</Key>
+	<Key ID="STR_aapps_gang_nosense">
+		<Original>That doesn't make any sense.</Original>
+		<German>Das macht keinen Sinn.</German>
+	</Key>
+	<Key ID="STR_aapps_gang_nousers">
+		<Original>No users found...</Original>
+		<German>Keine Nutzer gefunden...</German>
+	</Key>
+	<Key ID="STR_aapps_gang_selentry">
+		<Original>Please select an entry!</Original>
+		<German>Bitte wähle einen Eintrag!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_rowbreaks">
+		<Original>Line breaks can be visualised with [SHIFT] + [ENTER] and made by "&lt;br/&gt;"!</Original>
+		<German>Zeilenumbrüche können mit [SHIFT] + [ENTER] visualisiert und mit "&lt;br/>&gt;" erstellt werden!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_change_saved">
+		<Original>Changes saved!</Original>
+		<German>Änderungen gespeichert!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_nohouses">
+		<Original>You haven't got any houses</Original>
+		<German>Du hast keine Häuser!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_remhq">
+		<Original>Remove HQ</Original>
+		<German>HQ entfernen</German>
+	</Key>
+	<Key ID="STR_aapps_gang_current_Hq">
+		<Original>Current: %1</Original>
+		<German>Derzeit: %1</German>
+	</Key>
+	<Key ID="STR_aapps_gang_different_gn">
+		<Original>Your gangname isn't available - please choose a different one!</Original>
+		<German>Dein Gangname ist nicht verfügbar - bitte nutze einen Anderen!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_created">
+		<Original>You've successfully created your gang %1.</Original>
+		<German>Du hast erfolgreich deine Gang %1 gegründet.</German>
+	</Key>
+	<Key ID="STR_aapps_gang_isperm">
+		<Original>Your gang is already permanent.</Original>
+		<German>Deine Gang ist bereits permanent.</German>
+	</Key>
+	<Key ID="STR_aapps_gang_toperm">
+		<Original>Do you really want to upgrade your gang to a permanent one for %1€?</Original>
+		<German>Willst du deine Gang wirklich für %1€ auf permanent erhöhen?</German>
+	</Key>
+	<Key ID="STR_aapps_gang_reassign">
+		<Original>You successfully reassigned your owner rank!</Original>
+		<German>Du hast dir erfolgreich deinen Owner Rang gegeben!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_novalue">
+		<Original>You have to enter a value!</Original>
+		<German>Du hast keine Zahl eingegeben!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_toohigh">
+		<Original>Your number is to high. Please use a number between 0 and 999.999.</Original>
+		<German>Deine Zahl ist zu hoch. Bitte gib eine Zahl zwischen 0 und 999.999 ein.</German>
+	</Key>
+	<Key ID="STR_aapps_gang_banklimit">
+		<Original>This would exceed the total balance of %1€.</Original>
+		<German>Du kannst dein Limit nicht umgehen. Du kannst nur maximal %1€ auf deinem Gangkonto haben.</German>
+	</Key>
+	<Key ID="STR_aapps_gang_deposited">
+		<Original>You've successfully deposited %1€.</Original>
+		<German>Du hast erfolgreich %1€ eingezahlt.</German>
+	</Key>
+	<Key ID="STR_aapps_gang_withdrawed">
+		<Original>You successfully withdrawed %1€.</Original>
+		<German>Du hast erfolgreich %1€ abgehoben.</German>
+	</Key>
+	<Key ID="STR_aapps_gang_maxlevel">
+		<Original>Maxlevel reached.</Original>
+		<German>Du hast bereits das maximale Gang Level erreicht.</German>
+	</Key>
+	<Key ID="STR_aapps_gang_upgradelvl">
+		<Original>Do you really want to upgrade your gang to level %1 for %2€?</Original>
+		<German>Willst du wirklich deine Gang auf Level %1 für %2€ erhöhen?</German>
+	</Key>
+	<Key ID="STR_aapps_gang_changehq">
+		<Original>Do you really want to change your HQ? Your HQ Upgrades will be lost!</Original>
+		<German>Willst du wirklich dein HQ ändern? Deine HQ Upgrades werden nicht übertragen!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_validowner">
+		<Original>Please provide a valid owner!</Original>
+		<German>Bitte verwende einen gültigen Inhaber!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_validtag">
+		<Original>Please provide a valid tag (Example: [XYZ])!</Original>
+		<German>Bitte verwende einen gültigen Tag (Beispiel: [XYZ])!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_validtax">
+		<Original>You tax can't be higher than %1%2!</Original>
+		<German>Deine Steuer darf nur 0 bis maximal %1%2 betragen!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_hqupgrade_notf">
+		<Original>Do you really want to add the HQ upgrade "%1" for %2€? (The amount will be taken from your gang bank account)</Original>
+		<German>Willst du wirklich das HQ Upgrade "%1" für %2€ einbauen? (Der Betrag wird von deinem Gangkonto abgezogen)</German>
+	</Key>
+	<Key ID="STR_aapps_gang_hqupgrade_done">
+		<Original>You successfully bought the HQ upgrade ""%1"" for %2€.</Original>
+		<German>Du hast erfolgreich das HQ Uprade "%1" für %2€ gekauft.</German>
+	</Key>
+	<Key ID="STR_aapps_gang_kickowner">
+		<Original>You can't kick the owner!</Original>
+		<German>Du kannst nicht den Inhaber rauswerfen!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_kickedoff">
+		<Original>%1 kicked you out of gang %2!</Original>
+		<German>%1 hat dich aus der Gang %2 rausgeworfen!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_invited">
+		<Original>%1 invited you to the gang %2. Do you want to accept this invite?</Original>
+		<German>%1 hat dich in die Gang %2 eingeladen. Willst du diese Einladung annehmen?</German>
+	</Key>
+	<Key ID="STR_aapps_gang_joined">
+		<Original>You successfully joined group %1.</Original>
+		<German>Du bist erfolgreich der Gang %1 beigetreten.</German>
+	</Key>
+	<Key ID="STR_aapps_gang_notax">
+		<Original>There is not tax money to add.</Original>
+		<German>Es gibt keine Steuergelder, welche man jetzt hinzufügen kann.</German>
+	</Key>
+	<Key ID="STR_aapps_gang_taxadd">
+		<Original>Added %1€.</Original>
+		<German>%1€ hinzugefügt.</German>
+	</Key>
+	<Key ID="STR_aapps_gang_garage_setup">
+		<Original>Do you really want to exit this menu?</Original>
+		<German>Willst du dieses Menü wirklich verlassen?</German>
+	</Key>
+	<Key ID="STR_aapps_gang_garage_setup_notf">
+		<Original>Do you really want to use this position? Your desicion will be permanent!</Original>
+		<German>Willst du diese Position wirklich speichern? Deine Entscheidung ist permanent!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_disband">
+		<Original>Do you really want to disband the gang?</Original>
+		<German>Willst du die Gang wirklich auflösen?</German>
+	</Key>
+	<Key ID="STR_aapps_gang_leave_question">
+		<Original>Do you really want to leave your gang?</Original>
+		<German>Willst du die Gang wirklich verlassen?</German>
+	</Key>
+	<Key ID="STR_aapps_gang_disband_owner">
+		<Original>Do you really want to leave your gang? You are the owner - leaving will disband the gang!</Original>
+		<German>Willst du die Gang wirklich verlassen? Du bist der Inhaber - damit wird die Gang aufgelöst!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_left">
+		<Original>You left the gang %1!</Original>
+		<German>Du hast die Gang %1 verlassen!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_stats">
+		<Original>Name: &lt;t align='right'&gt;%1 %2&lt;/t&gt;&lt;br/&gt;Bank: &lt;t align='right'&gt;%3€&lt;/t&gt;&lt;br/&gt;Members: &lt;t align='right'&gt;%4/%5&lt;/t&gt;&lt;br/&gt;Ganglevel: &lt;t align='right'&gt;%6&lt;/t&gt;&lt;br/&gt;Tax rate: &lt;t align='right'&gt;%7%8&lt;/t&gt;&lt;br/&gt;Current Tax Sum: &lt;t align='right'&gt;%9€</Original>
+		<German>Name: &lt;t align='right'&gt;%1 %2&lt;/t&gt;&lt;br/&gt;Bank: &lt;t align='right'&gt;%3€&lt;/t&gt;&lt;br/&gt;Mitglieder: &lt;t align='right'&gt;%4/%5&lt;/t&gt;&lt;br/&gt;Ganglevel: &lt;t align='right'&gt;%6&lt;/t&gt;&lt;br/&gt;Steuersatz: &lt;t align='right'&gt;%7%8&lt;/t&gt;&lt;br/&gt;Derzeitige Steuersumme: &lt;t align='right'&gt;%9€</German>
+	</Key>
+	<Key ID="STR_aapps_gang_action_reassign">
+		<Original>Reassign rank</Original>
+		<German>Rang zurückholen</German>
+	</Key>
+	<Key ID="STR_aapps_gang_action_settings">
+		<Original>Settings</Original>
+		<German>Einstellungen</German>
+	</Key>
+	<Key ID="STR_aapps_gang_action_invite">
+		<Original>Invite players</Original>
+		<German>Spieler einladen</German>
+	</Key>
+	<Key ID="STR_aapps_gang_action_kick">
+		<Original>Kick member</Original>
+		<German>Mitglied kicken</German>
+	</Key>
+	<Key ID="STR_aapps_gang_action_hqchange">
+		<Original>Change HQ</Original>
+		<German>HQ ändern</German>
+	</Key>
+	<Key ID="STR_aapps_gang_action_gangbalance">
+		<Original>Gang balance</Original>
+		<German>Gangkonto</German>
+	</Key>
+	<Key ID="STR_aapps_gang_action_desc">
+		<Original>Gang description</Original>
+		<German>Gangbeschreibung</German>
+	</Key>
+	<Key ID="STR_aapps_gang_action_tax">
+		<Original>Change tax</Original>
+		<German>Steuer ändern</German>
+	</Key>
+	<Key ID="STR_aapps_gang_action_disband">
+		<Original>Disband gang</Original>
+		<German>Gang auflösen</German>
+	</Key>
+	<Key ID="STR_aapps_gang_action_paystax">
+		<Original>Pays tax</Original>
+		<German>Zahlt Steuern</German>
+	</Key>
+	<Key ID="STR_aapps_gang_action_upgrade">
+		<Original>Upgrade gang</Original>
+		<German>Gang upgraden</German>
+	</Key>
+	<Key ID="STR_aapps_gang_action_changeranks">
+		<Original>Change ranks</Original>
+		<German>Ränge ändern</German>
+	</Key>
+	<Key ID="STR_aapps_gang_action_changeperm">
+		<Original>Change permissions</Original>
+		<German>Berechtigung ändern</German>
+	</Key>
+	<Key ID="STR_aapps_gang_action_changetag">
+		<Original>Change tag</Original>
+		<German>Tag ändern</German>
+	</Key>
+	<Key ID="STR_aapps_gang_action_toperm">
+		<Original>Upgrade to permanent group</Original>
+		<German>Gruppe zu Permanenter upgraden</German>
+	</Key>
+	<Key ID="STR_aapps_gang_action_hqspawn">
+		<Original>HQ - Spawn</Original>
+	</Key>
+	<Key ID="STR_aapps_gang_action_nopermission">
+		<Original>No permission</Original>
+		<German>Keine Rechte</German>
+	</Key>
+	<Key ID="STR_aapps_gang_rankname">
+		<Original>The name has to be at least three chars long.</Original>
+		<German>Der Name muss mindestens drei Zeichen lang sein.</German>
+	</Key>
+	<Key ID="STR_aapps_gang_rankexist">
+		<Original>There's already a rank with that name!</Original>
+		<German>Es existiert bereits ein Rang mit diesem Namen!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_deleterank_msg">
+		<Original>You cannot delete this rank!</Original>
+		<German>Du kannst diesen Rang nicht löschen!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_unsavedchanges">
+		<Original>There are unsaved changes. Would you like to save them?</Original>
+		<German>Es gibt ungespeicherte Änderungen. Willst du diese speichern?</German>
+	</Key>
+	<Key ID="STR_aapps_gang_remperm">
+		<Original>You can't remove this permission!</Original>
+		<German>Du kannst diese Berechtigung nicht entfernen!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_neededowner">
+		<Original>You need Owner permissions to change that.</Original>
+		<German>Du benötigst Inhaberberechtigungen, um den das zu ändern.</German>
+	</Key>
+	<Key ID="STR_aapps_gang_neededtag">
+		<Original>You need the "TAG" permission to change that.</Original>
+		<German>Du brauchst die "TAG" Berechtigung, um das zu ändern.</German>
+	</Key>
+	<Key ID="STR_aapps_gang_neededtax">
+		<Original>You need the "TAX" permission to change that.</Original>
+		<German>Du brauchst die "TAX" Berechtigung, um das zu ändern.</German>
+	</Key>
+	<Key ID="STR_aapps_gang_name_isavailable">
+		<Original>Your gangname is available.</Original>
+		<German>Dein Gangname ist verfügbar.</German>
+	</Key>
+	<Key ID="STR_aapps_gang_disbanded">
+		<Original>Your gang %1 has been disbanded!</Original>
+		<German>Deine Gang %1 wurde aufgelöst!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_inhouse">
+		<Original>You are in a house!</Original>
+		<German>Du bist in einem Haus!</German>
+	</Key>
+	<Key ID="STR_aapps_gang_garage_done">
+		<Original>Done &lt;t align='right' color='#f4cb00'&gt;[ENTER]</Original>
+		<German>Fertig &lt;t align='right' color='#f4cb00'&gt;[ENTER]</German>
+	</Key>
+	<Key ID="STR_aapps_gang_garage_cancel">
+		<Original>Cancel &lt;t align='right' color='#f4cb00'&gt;[ESC]</Original>
+		<German>Abbruch &lt;t align='right' color='#f4cb00'&gt;[ESC]</German>
+	</Key>
+	<Key ID="STR_aapps_gang_hqu_atm">
+		<Original>ATM</Original>
+	</Key>
+	<Key ID="STR_aapps_gang_hqu_market">
+		<Original>MARKET</Original>
+		<German>MARKT</German>
+	</Key>
+	<Key ID="STR_aapps_gang_hqu_heal">
+		<Original>HEAL</Original>
+		<German>HEILEN</German>
+	</Key>
+	<Key ID="STR_aapps_gang_changed_rank">
+		<Original>%1 changed your rank to %2!</Original>
+		<German>%1 hat deinen Rang zu %2 geändert!</German>
+	</Key>
+</Package>

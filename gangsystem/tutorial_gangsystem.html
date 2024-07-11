@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Gangsystem Tutorial (Deutsch)</title>
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+		<!-- Custom styles for this template -->
+		<link href="https://getbootstrap.com/docs/4.0/examples/grid/grid.css" rel="stylesheet">
+		
+		<!-- JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<p style="display: inline; position: absolute; right: 5px; top: 5px;">Stand: 22.06.2018</p>
+
+		<div class="container">
+				<table style="width:100%">
+					<tr>
+						<th><h1>Tutorial: Gangsystem</h1></th>
+						<th><a href="https://www.allianceapps.de"><img src="https://allianceapps.de/images/linksoben.png" height="75" align="right"></a></th>
+					</tr>
+				</table>
+			<h3>Hinweis</h3>
+			<p>In diesem Tutorial verändert ihr Dateien in eurer Mission sowie in eurem @life_server - das Wichtigste sind also Backups! Ernsthaft, macht Backups von allen Daten bevor es hier weitergeht. AllianceApps ist nicht verantwortlich für eventuell verlorene Daten o. ä.</p>		
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss in der <b>Mission</b> erfolgen (.Altis, .Tanoa, .Malden usw.):<br>
+			</div>
+			
+			<h3>Schritt 1</h3>
+			<p>So, jetzt geht es los. Backups gemacht? Wirklich? Ernsthaft, macht Backups eurer <b>Mission</b>, dem <b>@life_server</b> und der <b>Datenbank</b>. BACKUPS!</p>
+			
+			<h3>Schritt 2</h3>
+			<p>Lösche den Ordner <code>/core/gangs/</code> und füge den beigelegten Ordner <code>gangs</code> dort ein.</p>
+			
+			<h3>Schritt 3</h3>
+			<p>Öffne die Datei <code>/Functions.hpp</code> und lösche die Klasse <code>Gangs</code> (<a href="https://cdn.allianceapps.io/img/gangsystem/tutorial/V8j4txf.png">Bild</a>). Füge nun an dieser Stelle folgende Klasse ein: 
+			<pre class="prettyprint">  class AApps_gangs {
+        file = "core\gangs";
+        class gang_openDialog {};
+        class gang_initFunctions {};
+        class gang_leave {};
+        class gang_buyrent {};
+        class gang_desc {};
+        class gang_changegroup {};
+        class gang_permission {};
+        class gang_findGang {};
+        class gang_settings {};
+        class gang_kickinvite {};
+        class gang_hqlist {};
+        class gang_hqupgrades {};
+    };</pre></p>
+			
+			<h3>Schritt 4</h3>
+			<p>Öffne die Datei <code>/dialog/gang.hpp</code> und ersetze den gesammten Inhalt mit folgendem:</p>
+			<pre class="prettyprint">#include "..\core\gangs\aapps_gang.hpp" //gangsystem</pre>
+			
+			<h3>Schritt 5</h3>
+			<p>Öffne die Datei <code>/CfgRemoteExec.hpp</code>. Falls in dieser Datei noch keine <b>Änderungen</b> vorgenommen wurden, könnt ihr sie mit der beigelegten <code>/include/CfgRemoteExec.hpp</code> ersetzen und diesen Schritt überspringen.
+			<br><br>Lösche folgende Zeilen (falls die Zeilennummer nicht stimmt, bitte danach suchen (STRG+F)):</p>
+			<pre class="prettyprint">Zeile 29:  F(life_fnc_gangCreated,CLIENT)
+Zeile 30:  F(life_fnc_gangDisbanded,CLIENT)
+Zeile 31:  F(life_fnc_gangInvite,CLIENT)
+Zeile 69:  F(TON_fnc_clientGangKick,CLIENT)
+Zeile 70:  F(TON_fnc_clientGangLeader,CLIENT)
+Zeile 71:  F(TON_fnc_clientGangLeft,CLIENT)
+Zeile 98:  F(TON_fnc_insertGang,SERVER)
+Zeile 102: F(TON_fnc_removeGang,SERVER)
+Zeile 108: F(TON_fnc_updateGang,SERVER)
+Zeile 125: F(HC_fnc_insertGang,HC)
+Zeile 131: F(HC_fnc_removeGang,HC)
+Zeile 136: F(HC_fnc_updateGang,HC)</pre>
+			Füge nun unter <code>/* Functions for everyone */</code> folgendes ein:<pre class="prettyprint">F(life_fnc_gang_remmoney,CLIENT)
+F(TON_fnc_gang_buy,SERVER)
+F(ton_fnc_gang_checkname,SERVER)
+F(ton_fnc_gang_disband,SERVER)
+F(life_fnc_gang_readdmoney,CLIENT)
+F(ton_fnc_gang_update,SERVER)
+F(ton_fnc_gang_load,SERVER)
+F(life_fnc_gang_checkdialog,CLIENT)
+F(life_fnc_gang_joinGang,CLIENT)
+F(life_fnc_gang_kicked,CLIENT)
+F(life_fnc_gang_tag,CLIENT)
+F(ton_fnc_gang_hq_recursive,SERVER)
+F(hc_fnc_gang_buy,HC)
+F(hc_fnc_gang_checkname,HC)
+F(hc_fnc_gang_disband,HC)
+F(hc_fnc_gang_hq_recursive,HC)
+F(hc_fnc_gang_update,HC)
+F(hc_fnc_gang_load,HC)</pre>
+			<h3>Schritt 6</h3>
+			<p>Öffne die Datei <code>/description.ext</code> und füge folgendes in die Klasse <code>RscTitles</code> ein:</p>
+			<pre class="prettyprint">#include "core\gangs\aapps_gang_title.hpp" //gangsystem</pre>
+
+			<h3>Schritt 7</h3>
+			<p>Öffne die Datei <code>/core/configuration.sqf</code> und füge folgendes am Ende ein:</p>
+			<pre class="prettyprint">//gangsystem
+life_gangname_check = false;
+life_gangname_available = false;
+life_gang_atm = false;</pre>
+			<h3>Schritt 8</h3>
+			<p>Öffne die Datei <code>/dialog/player_inv.hpp</code> und ersetze <pre class="prettyprint">if (isNil ""life_action_gangInUse"") then {if (isNil {(group player) getVariable ""gang_owner""}) then {createDialog ""Life_Create_Gang_Diag"";} else {[] spawn life_fnc_gangMenu;};};</pre> mit folgendem:</p>
+			<pre class="prettyprint">0 call life_fnc_gang_openDialog</pre>
+			<h3>Schritt 9</h3>
+			<p>Öffne die Datei <code>/core/init.sqf</code> und füge folgendes am Ende ein:</p>
+			<pre class="prettyprint">0 call life_fnc_gang_initFunctions; //gangsystem</pre>
+			
+			<h3>Schritt 10</h3>
+			<p>Öffne die Datei <code>/core/shops/fn_atmMenu.sqf</code> und suche nach folgendem (befindet sich relativ am <b>Ende</b>):
+			<pre class="prettyprint">if (isNil {(group player getVariable "gang_bank")}) then {
+    (CONTROL(2700,2705)) ctrlEnable false;
+    (CONTROL(2700,2706)) ctrlEnable false;
+};</pre>
+Ersetze das nun mit folgendem:
+<pre class="prettyprint">(CONTROL(2700,2705)) ctrlEnable false;
+(CONTROL(2700,2706)) ctrlEnable false;
+</pre></p>
+
+			<h3>Schritt 11</h3>
+			<p>Falls du die Altis Life Version 5.0 hast, ersetze die Datei <code>/core/actions/fn_captureHideout.sqf</code> mit der beigelegten <code>/include/fn_captureHideout_5.sqf</code> (bitte auf den Dateinamen achten).<br>
+			Ersetze ansonsten die Datei <code>/core/actions/fn_captureHideout.sqf</code> mit der beigelegten <code>/include/fn_captureHideout_4.sqf</code> (bitte auf den Dateinamen achten).</p>
+			<h3>Schritt 12</h3>
+			<p>Öffne deine <code>/core/session/fn_requestreceived.sqf</code>.</p>
+
+			<p>
+				<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#sessionreceived5" aria-expanded="false" aria-controls="sessionreceived5">Version 5.0</button>
+			</p>
+			<div class="collapse" id="sessionreceived5">
+				<div class="card">
+					<div class="card-body">
+						Falls in dieser Datei noch keine <b>Änderungen</b> vorgenommen wurden, könnt ihr sie mit der beigelegten <code>/include/fn_requestreceived_5.sqf</code> ersetzen (bitte auf den Dateinamen achten) und diesen Schritt überspringen.<br>
+						<br>
+						Du findest nun folgenden Schnippsel: <pre class="prettyprint">life_gangData = _this select (_count - 2);
+if !(count life_gangData isEqualTo 0) then {
+	[] spawn life_fnc_initGang;
+};</pre>
+Ersetze den gefundenen Teil mit folgendem: <pre class="prettyprint">life_gangData = [_this select (_count - 4),_this select (_count - 3)];
+if(!(life_gangData isEqualTo [-1,-1])) then {
+	[(life_gangData select 0)] spawn life_fnc_gang_findGang;
+} else {
+	[player] join grpNull;
+	player setVariable ["gang_init_done",true,true];
+};</pre>
+Suche nun nach <code>life_houses = _this select (_count - 3);</code> und ersetze es mit <pre class="prettyprint">life_houses = _this select (_count - 2);</pre>
+
+					</div>
+				</div>
+			</div>
+			<p>
+				<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#sessionreceived4" aria-expanded="false" aria-controls="sessionreceived4">Version < 5.0</button>
+			</p>
+			<div class="collapse" id="sessionreceived4">
+				<div class="card">
+					<div class="card-body">
+						Falls in dieser Datei noch keine <b>Änderungen</b> vorgenommen wurden, könnt ihr sie mit der beigelegten <code>/include/fn_requestreceived_4.sqf</code> ersetzen (bitte auf den Dateinamen achten) und diesen Schritt überspringen.<br>
+						<br>
+						Du findest nun folgenden Schnippsel: <pre class="prettyprint">life_gangData = _this select 14;
+if (!(count life_gangData isEqualTo 0)) then {
+	[] spawn life_fnc_initGang;
+};</pre>
+Ersetze den gefundenen Teil mit folgendem: <pre class="prettyprint">life_gangData = [_this select 12,_this select 13];
+if(!(life_gangData isEqualTo [-1,-1])) then {
+	[(life_gangData select 0)] spawn life_fnc_gang_findGang;
+} else {
+	[player] join grpNull;
+	player setVariable ["gang_init_done",true,true];
+};</pre>
+Suche nun nach <code>life_houses = _this select 13;</code> und ersetze es mit <pre class="prettyprint">life_houses = _this select 14;</pre>
+				
+					</div>
+				</div>
+			</div>
+			<h3>Schritt 13</h3>
+			<p>Öffne die Datei <code>/dialog/function/fn_spawnpointcfg.sqf</code> und füge folgendes über <code>if (count life_houses > 0) then {</code> ein:</p>
+			<pre class="prettyprint">_grp = group player;
+_hq = _grp getVariable ["gang_hq",objNull];
+if(!(isNull _hq)) then {
+	_permission = life_gangdata select 1;
+	_playerpermission = [];
+	_permissions = _grp getVariable ["gang_permissions",[]];
+	{
+		if((_x select 0) isEqualTo _permission) exitWith {
+			_playerpermission = _x;
+		};
+	} forEach _permissions;
+	_playerpermission = _playerpermission select 2;
+	if("HQSPAWN" in _playerpermission) then {
+		_atlpos = getposAtl _hq;
+		_badtonicpos = [str _atlpos];
+		if(!(_badtonicpos in life_houses)) then {
+			if((markerColor "gang_hq") isEqualTo "") then {
+				createMarkerLocal ["gang_hq", _atlpos];
+				"gang_hq" setMarkerColorLocal "ColorBlue";
+				"gang_hq" setMarkerTypeLocal "mil_flag";
+				"gang_hq" setMarkerTextLocal " Gang HQ";
+				life_vehicles pushBackUnique _hq;
+			};
+			_return pushBack ["gang_hq","Gang HQ","\a3\ui_f\data\map\MapControl\lighthouse_ca.paa"];
+		};
+	};
+};</pre>
+		<h3>Schritt 14</h3>
+			<p>Öffne die Datei <code>/core/housing/fn_houseMenu.sqf</code> und füge folgendes am Ende ein:</p>
+			<pre class="prettyprint">_var = _curTarget getVariable ["house_id",-1];
+if(!(_var isEqualTo -1) && {playerSide isEqualTo CIVILIAN} && {_var isEqualTo ((group player) getVariable ["gang_hq_id",-1])}) then {
+	_btn7 ctrlSetText "Gang HQ";
+	_btn7 buttonSetAction "0 call life_fnc_gang_hqupgrades";
+	_btn7 ctrlShow true;
+};</pre>
+
+
+			<h3>Schritt 15</h3>
+			<p>Öffne die Datei <code>/stringtable.xml</code> und gehe an das Ende der Datei. Füge nun vor dem letzten <code>&lt;/Project&gt;</code> - Tag den Inhalt der beigelegten <code>Stringtable.xml</code> ein.</P>
+			
+			<h3>Schritt 16 (<a href="https://cdn.allianceapps.io/img/gangsystem/tutorial/8nYjuAV.gif">Suchen und ersetzen mit Notepad++ (STRG + F)</a>)</h3>
+			<p>Öffne die Datei <code>/mission.sqm</code> und suche nach <pre class="prettyprint">life_inv_cocaineUnprocessed > 0 && !life_is_processing && !life_action_inUse && !isNil {_b getVariable ""gangOwner""} && {(_b getVariable ""gangOwner"") == (group player)} && playerSide isEqualTo civilian</pre> und ersetze diesen Codeschnipsel mit <pre class="prettyprint">_id = _b getVariable ""gangOwner""; !(_id isEqualTo -1) && {_id isEqualTo ((group player) getVariable [""gang_id"",-1])} && life_inv_cocaineUnprocessed > 0 && !life_is_processing && !life_action_inUse && playerSide isEqualTo civilian</pre>
+			Suche nach <pre class="prettyprint">life_inv_heroinUnprocessed > 0 && !life_is_processing && !life_action_inUse && !isNil {_b getVariable ""gangOwner""} && {(_b getVariable ""gangOwner"") == (group player)} && playerSide isEqualTo civilian</pre> und ersetze diesen Codeschnipsel mit <pre class="prettyprint">_id = _b getVariable ""gangOwner""; !(_id isEqualTo -1) && {_id isEqualTo ((group player) getVariable [""gang_id"",-1])} && life_inv_heroinUnprocessed > 0 && !life_is_processing && !life_action_inUse && playerSide isEqualTo civilian</pre>
+			Suche nach <pre class="prettyprint">life_inv_cannabis > 0 && !life_is_processing && !life_action_inUse && !isNil {_b getVariable ""gangOwner""} && {(_b getVariable ""gangOwner"") == (group player)} && playerSide isEqualTo civilian</pre> und ersetze diesen Codeschnipsel mit <pre class="prettyprint">_id = _b getVariable ""gangOwner""; !(_id isEqualTo -1) && {_id isEqualTo ((group player) getVariable [""gang_id"",-1])} && life_inv_cannabis > 0 && !life_is_processing && !life_action_inUse && playerSide isEqualTo civilian</pre>
+			Suche nach <pre class="prettyprint">!isNil {_b getVariable ""gangOwner""} && {(_b getVariable ""gangOwner"") == (group player)}</pre> und ersetze diesen Codeschnipsel mit <pre class="prettyprint">_id = _b getVariable ""gangOwner""; !(_id isEqualTo -1) && {_id isEqualTo ((group player) getVariable [""gang_id"",-1])}</pre></P>
+			
+			
+			<h3>Schritt 17</h3>
+			<p>Öffne deine <code>core/medical/fn_onPlayerRespawn.sqf</code> und suche nach <code>_unit setVariable ["realname",profileName,true];</code>. Ersetze diesen Code mit folgendem: <pre class="prettyprint">_tag = (group _unit) getVariable ["gang_tag",""];
+if(getNumber(missionConfigFile >> "gang_config" >> "show_defined_gangtags") isEqualTo 1) then {
+	if(!(_tag isEqualTo "")) then {
+		_unit setVariable ["realname", format["[%1] %2",_tag,profileName],true];
+	} else {
+		_unit setVariable ["realname", profilename, true];
+	};
+} else {
+	_unit setVariable ["realname", profilename, true];
+};</pre></p>
+			<h3>Schritt 18</h3>
+			<p>Falls du die Altis Life Version 5.0 hast, ersetze die Datei <code>/core/housing/fn_sellHouse.sqf</code> mit der beigelegten <code>/include/fn_sellHouse_5.sqf</code> (bitte auf den Dateinamen achten).<br>
+			Ersetze ansonsten die Datei <code>/core/housing/fn_sellHouse.sqf</code> mit der beigelegten <code>/include/fn_sellHouse_4.sqf</code> (bitte auf den Dateinamen achten).</p>
+			<h3>Schritt 19</h3>
+			<p>Öffne deine <code>core/shops/fn_virt_sell.sqf</code> und suche nach <code>CASH = CASH + _price;</code>. Füge darüber folgende Zeilen ein: <pre class="prettyprint">_grp = group player;
+	if(!((_grp getVariable ["gang_id",-1]) isEqualTo -1)) then {
+		_permissions = _grp getVariable ["gang_permissions",[]];
+		_playerpermission = [];
+		{
+			if((_x select 0) isEqualTo (life_gangData select 1)) exitWith {
+				_playerpermission = _x;
+			};
+		} forEach _permissions;
+		_playerpermission = _playerpermission select 2;
+		
+		_tax = _grp getVariable ["gang_tax",0];
+		if(!(_tax isEquaLTo 0) && {"PAYTAX" in _playerpermission}) then {
+			_taxsum = _grp getVariable ["gang_tax_sum",0];
+			_val = _price * (_tax/100);
+			_grp setVariable ["gang_tax_sum",_taxsum + _val,true];
+			if(life_hc_isActive) then {
+				[15, _grp] remoteExecCall ["hc_fnc_gang_update",HC_life];
+			} else {
+				[15, _grp] remoteExecCall ["ton_fnc_gang_update",2];
+			};
+			_price = _price - _val;
+		};
+	};</pre>
+		Falls du eine <code>fn_virt_sellAll.sqf</code> hast, <b>musst</b> du diesen Schritt dort wiederholen.</p>
+			
+			<h3>Schritt 20</h3>
+			<p>
+				Öffne die Datei <code>/core/fn_initciv.sqf</code> und suche nach <code>[] call life_fnc_spawnMenu;</code>. Füge nun darüber folgendes ein:
+				<pre class="prettyprint">waitUntil {player getVariable ["gang_init_done", false]};</pre>
+			</p>
+			
+			<br>
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss im <b>@life_server</b> erfolgen:<br>
+			</div>
+			<h3>Schritt 21</h3>
+			<p>Lösche den Ordner <code>/life_server/functions/gangs/</code> und füge den beigelegten Ordner <code>gangs_server</code> dort ein.
+			<br>
+			<br>
+			
+			Öffne die Datei <code>/config.cpp</code> und lösche die Klasse <code>Gangs</code> (<a href="https://cdn.allianceapps.io/img/gangsystem/tutorial/InybZ8r.png">Bild</a>). Füge nun an dieser Stelle folgende Klasse ein: 
+				<pre class="prettyprint">class AApps_gangs {
+	file = "\life_server\Functions\gangs_server";
+	class gang_buy {};
+	class gang_checkname {};
+	class gang_disband {};
+	class gang_update {};
+	class gang_loadGH {};
+	class gang_load {};
+	class gang_hq_recursive {};
+};</pre></p>
+				
+			<h3>Schritt 22</h3>
+			<p>Öffne die Datei <code>/init.sqf</code> und füge folgendes am Ende ein:</p>
+			<pre class="prettyprint">0 call ton_fnc_gang_loadGH;
+["CALL deactivateTempGangs",1] call DB_fnc_asyncCall;</pre>
+			
+			<h3>Hinweis</h3>
+			<p>Falls ihr unser <b>Lotteriesystem</b> benutzt, bitte <code>0 call ton_fnc_aapps_lottery_fetchWinners;</code> mit folgendem ersetzen: <pre class="prettyprint">0 spawn ton_fnc_aapps_lottery_fetchWinners;</pre> Das wurde leider von uns nicht ordentlich bedacht.</p>
+
+			<h3>Schritt 23</h3>
+			<p>Öffne die Datei <code>/Functions/MySQL/fn_queryRequest.sqf</code>. Falls die Datei noch der von <b>Altis Life 5.0</b> entspricht und <b>nicht</b> verändert wurde, kannst du folgendes 
+<pre class="prettyprint">_query = switch (_side) do {
+	// West - 11 entries returned
+	case west: {format ["SELECT pid, name, cash, bankacc, adminlevel, donorlevel, cop_licenses, coplevel, cop_gear, blacklist, cop_stats, playtime FROM players WHERE pid='%1'",_uid];};
+	// Civilian - 12 entries returned
+	case civilian: {format ["SELECT pid, name, cash, bankacc, adminlevel, donorlevel, civ_licenses, arrested, civ_gear, civ_stats, civ_alive, civ_position, playtime FROM players WHERE pid='%1'",_uid];};
+	// Independent - 10 entries returned
+	case independent: {format ["SELECT pid, name, cash, bankacc, adminlevel, donorlevel, med_licenses, mediclevel, med_gear, med_stats, playtime FROM players WHERE pid='%1'",_uid];};
+};</pre>
+Einfach mit diesem Codeschnipsel ersetzen: 
+<pre class="prettyprint">_query = switch (_side) do {
+	// West - 11 entries returned
+	case west: {format ["SELECT pid, name, cash, bankacc, adminlevel, donorlevel, cop_licenses, coplevel, cop_gear, blacklist, cop_stats, playtime FROM players WHERE pid='%1'",_uid];};
+	// Civilian - 14 entries returned
+	case civilian: {format ["SELECT pid, name, cash, bankacc, adminlevel, donorlevel, civ_licenses, arrested, civ_gear, civ_stats, civ_alive, civ_position, playtime, gang_id, gang_perm_id FROM players WHERE pid='%1'",_uid];};
+	// Independent - 10 entries returned
+	case independent: {format ["SELECT pid, name, cash, bankacc, adminlevel, donorlevel, med_licenses, mediclevel, med_gear, med_stats, playtime FROM players WHERE pid='%1'",_uid];};
+};</pre>
+			<b>Zusatzschritt falls man eine ältere Altis Life Version hat:</b><br>
+			<br>
+			<p>
+				<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#querycollapse" aria-expanded="false" aria-controls="querycollapse">Zusatzschritt</button>
+			</p>
+			<div class="collapse" id="querycollapse">
+				<div class="card">
+					<div class="card-body">
+						<ul>
+							<li>Wenn die Spalte in deiner players-Tabelle <b>playerid</b> statt <b>pid</b> heißt, musst du in diesem Codeschnipsel natürlich auch das <code>SELECT pid</code> durch <code>SELECT playerid</code> ersetzen.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<br>
+			Falls deine Datei <b>nicht</b> der Orginalen entspricht, gehe wie folgt vor:<br>
+			<ul>
+				<li>Nimm folgende Zeile <code>// Civilian - XY entries returned</code> und <b>ersetzte</b> XY mit der Zahl, die an dieser Stelle steht, allerdings +1. Sprich wenn da 13 steht, steht anschließend 14.</li>
+				<li>Nun musst du die <b>cases</b> bearbeiten: </li>
+				<li>Füge in der SQL Abfrage für <code>case civilian</code> vor <code>FROM players</code> folgendes ein: <code>, gang_id, gang_perm_id</code>.</li>
+			</ul></p>
+				
+			<h3>Schritt 24</h3>
+			<p>
+				Suche nun in dieser Datei (<code>fn_queryRequest.sqf</code>) manuell nach folgendem Code und <b>entferne</b> diesen: <pre class="prettyprint">_gangData = _uid spawn TON_fnc_queryPlayerGang;
+waitUntil{scriptDone _gangData};
+_queryResult pushBack (missionNamespace getVariable[format["gang_%1",_uid],[]]);</pre>
+			</p>
+			<h3>Schritt 25</h3>
+			<p>
+				Kopiere die Datei <code>aapps_gang.pbo</code> nach <code>@life_server/addons/</code>.
+			</p>
+			
+			<h3>Hinweis</h3>
+			<p>Falls du nicht die Altis Life Version 5.0 nutzt, musst du noch folgende Schritte erledigen</p>
+			<p>
+				<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#pidhint" aria-expanded="false" aria-controls="pidhint">Zusatzschritt</button>
+			</p>
+			<div class="collapse" id="pidhint">
+				<div class="card">
+					<div class="card-body">
+						<ul>
+							<li>Öffne die Datei <code>/Functions/gangs_server/fn_gang_load.sqf</code> und suche mit einem Editor deiner Wahl nach <code>pid</code>. Ersetze diese nText <b>überall</b> in dieser Datei mit <code>playerid</code>.</li>
+							<li>Öffne die Datei <code>/Functions/gangs_server/fn_gang_update.sqf</code> und suche mit einem Editor deiner Wahl nach <code>pid</code>. Ersetze diese nText <b>überall</b> in dieser Datei mit <code>playerid</code>.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<br>
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss in der <b>Datenbank</b> erfolgen:<br>
+			</div>
+		
+			<h3>Schritt 26</h3>
+			<p>	
+				Führe die folgende Abfrage in deiner <b>Spieldatenbank</b> aus: 
+				<p>
+					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#sqlcode5" aria-expanded="false" aria-controls="sqlcode5">Version 5.0</button>
+				</p>
+				<div class="collapse" id="sqlcode5">
+					<pre class="prettyprint">ALTER TABLE players ADD gang_id int(11) NOT NULL DEFAULT '-1';
+ALTER TABLE players ADD gang_perm_id int(11) NOT NULL DEFAULT '-1';
+
+ALTER TABLE gangs ADD level int(2) NOT NULL DEFAULT '1';
+ALTER TABLE gangs ADD tag varchar(50) NOT NULL DEFAULT '';
+ALTER TABLE gangs ADD description text NOT NULL;
+ALTER TABLE gangs ADD hq int(11) NOT NULL DEFAULT '-1';
+ALTER TABLE gangs ADD hq_upgrades text NOT NULL;
+ALTER TABLE gangs ADD permission text NOT NULL;
+ALTER TABLE gangs ADD tax int(100) NOT NULL DEFAULT '0';
+ALTER TABLE gangs ADD `type` tinyint(1) NOT NULL DEFAULT '0';
+ALTER TABLE gangs ADD perm_int int(11) NOT NULL DEFAULT '1';
+ALTER TABLE gangs ADD tax_sum int(11) NOT NULL DEFAULT '0';
+ALTER TABLE gangs ADD hq_garage varchar(100) NOT NULL DEFAULT '[]';
+
+UPDATE gangs SET `type`= 1;
+UPDATE gangs SET `description`='""';
+UPDATE gangs SET `hq_upgrades`='"[]"';
+UPDATE gangs SET `permission`='"[[0,`Owner`,[`INVITE`,`KICK`,`HQ`,`DEPOSIT`,`PAYTAX`,`HQSPAWN`,`RANKS`,`WITHDRAW`,`DESCRIPTION`,`TAX`,`DISBAND`,`UPGRADE`,`CHANGEPERMISSION`,`TAG`]],[1,`Member`,[`HQSPAWN`,`PAYTAX`,`DEPOSIT`]]]"';
+UPDATE players P, gangs G SET P.gang_id=G.id, P.gang_perm_id=0 WHERE P.pid = G.owner;
+
+ALTER TABLE gangs DROP COLUMN members;
+ALTER TABLE gangs DROP COLUMN maxmembers;
+ALTER TABLE gangs DROP INDEX name_UNIQUE;
+
+
+CREATE TABLE IF NOT EXISTS `gang_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `value` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+
+INSERT INTO `gang_info` (`id`, `name`, `value`) VALUES
+	(1, 'hideout1', -1),
+	(2, 'hideout2', -1),
+	(3, 'hideout3', -1);
+
+DELIMITER //
+CREATE DEFINER=CURRENT_USER PROCEDURE `deactivateTempGangs`()
+BEGIN
+	UPDATE `gangs` SET `active`= 0 WHERE `type`='0';
+END//
+DELIMITER ;
+
+					</pre>
+					
+				</div>
+				<p>
+					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#sqlcode4" aria-expanded="false" aria-controls="sqlcode4">Version < 5.0</button>
+				</p>
+				<div class="collapse" id="sqlcode4">
+					<pre class="prettyprint">ALTER TABLE players ADD gang_id int(11) NOT NULL DEFAULT '-1';
+ALTER TABLE players ADD gang_perm_id int(11) NOT NULL DEFAULT '-1';
+
+ALTER TABLE gangs ADD level int(2) NOT NULL DEFAULT '1';
+ALTER TABLE gangs ADD tag varchar(50) NOT NULL DEFAULT '';
+ALTER TABLE gangs ADD description text NOT NULL;
+ALTER TABLE gangs ADD hq int(11) NOT NULL DEFAULT '-1';
+ALTER TABLE gangs ADD hq_upgrades text NOT NULL;
+ALTER TABLE gangs ADD permission text NOT NULL;
+ALTER TABLE gangs ADD tax int(100) NOT NULL DEFAULT '0';
+ALTER TABLE gangs ADD `type` tinyint(1) NOT NULL DEFAULT '0';
+ALTER TABLE gangs ADD perm_int int(11) NOT NULL DEFAULT '1';
+ALTER TABLE gangs ADD tax_sum int(11) NOT NULL DEFAULT '0';
+ALTER TABLE gangs ADD hq_garage varchar(100) NOT NULL DEFAULT '[]';
+
+UPDATE gangs SET `type`= 1;
+UPDATE gangs SET `description`='""';
+UPDATE gangs SET `hq_upgrades`='"[]"';
+UPDATE gangs SET `permission`='"[[0,`Owner`,[`INVITE`,`KICK`,`HQ`,`DEPOSIT`,`PAYTAX`,`HQSPAWN`,`RANKS`,`WITHDRAW`,`DESCRIPTION`,`TAX`,`DISBAND`,`UPGRADE`,`CHANGEPERMISSION`,`TAG`]],[1,`Member`,[`HQSPAWN`,`PAYTAX`,`DEPOSIT`]]]"';
+UPDATE players P, gangs G SET P.gang_id=G.id, P.gang_perm_id=0 WHERE P.playerid = G.owner;
+
+ALTER TABLE gangs DROP COLUMN members;
+ALTER TABLE gangs DROP COLUMN maxmembers;
+ALTER TABLE gangs DROP INDEX name_UNIQUE;
+
+
+CREATE TABLE IF NOT EXISTS `gang_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `value` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+
+INSERT INTO `gang_info` (`id`, `name`, `value`) VALUES
+	(1, 'hideout1', -1),
+	(2, 'hideout2', -1),
+	(3, 'hideout3', -1);
+
+DELIMITER //
+CREATE DEFINER=CURRENT_USER PROCEDURE `deactivateTempGangs`()
+BEGIN
+	UPDATE `gangs` SET `active`= 0 WHERE `type`='0';
+END//
+DELIMITER ;</pre>
+					
+				</div>
+			</p>
+		<h3 align='center'><div class="alert alert-success" role="alert">Gratulation. Du hast nun das Gangsystem erfolgreich installiert.</div></h3>
+		<hr>
+			<h3>Hinweis zu den Einstellungen</h3>
+			<p>
+				In der Datei <code>&#60;missionfile&#62;/core/gangs/aapps_gang.hpp</code> befindet sich die Konfiguration der Preise, Größen usw.<br><br>
+				Das speichern der Ganghideouts funktioniert standartmäßig nur mit den Karten Altis und Tanoa. Sollte man dies erweitern wollten, kann man das einfach in dieser Config machen: <pre class="prettyprint">class hideouts {
+	possible_hideout_classes[] = {"Land_u_Barracks_V2_F","Land_i_Barracks_V2_F","Land_School_01_F","Land_Warehouse_03_F","Land_House_Small_02_F"};
+	loadfromDBafterRESTART = true;
+	class altis {
+		gang_hideout1_pos[] = {11690.7,15916};
+		gang_hideout2_pos[] = {4888.7,14417.9};
+		gang_hideout3_pos[] = {18386.7,15247.4};
+	};
+	class NEUER_KARTENNAME_NAME { //zufinden mit Befehl "worldname"
+		gang_hideout1_pos[] = {position1 ohne Höhe}; //getpos cursorobject //aber ohne dritte Position
+		gang_hideout2_pos[] = {position2 ohne Höhe};
+		gang_hideout3_pos[] = {position3 ohne Höhe};
+	};
+};</pre>
+			</p>
+		</div> <!-- /container -->
+
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst"></script>
+	</body>
+</html>

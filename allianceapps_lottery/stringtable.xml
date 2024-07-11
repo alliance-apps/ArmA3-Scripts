@@ -1,0 +1,90 @@
+<Package name="lottery_aapps">
+	<Key ID="STR_lottery_not_enough">
+		<Orginal>You don't have %1€!</Orginal>
+		<German>Du hast keine %1€ dabei!</German>
+	</Key>
+	<Key ID="STR_lottery_action_receive">
+		<Original>Query profit</Original>
+		<German>Gewinn abfragen</German>
+	</Key>
+	<Key ID="STR_lottery_gui_title">
+		<Original>Lottery</Original>
+		<German>Lotterie</German>
+	</Key>
+	<Key ID="STR_lottery_gui_line1">
+		<Original>From rags to riches. With just a job, that's</Original>
+		<German>Vom Tellerwäscher zum Millionär. Jobtechnisch</German>
+	</Key>
+	<Key ID="STR_lottery_gui_line2">
+		<Original>hardly possible. But you can play the lottery</Original>
+		<German>ist das sicherlich nicht möglich. Aber man kann</German>
+	</Key>
+	<Key ID="STR_lottery_gui_line3">
+		<Original>and bet on your luck! That's easy...</Original>
+		<German>doch Zahlen erraten. Nichts leichter als das.</German>
+	</Key>
+	<Key ID="STR_lottery_gui_line4">
+		<Original>Every ticket you buy will increase the</Original>
+		<German>Umso mehr Leute mindestens ein Ticket kaufen,</German>
+	</Key>
+	<Key ID="STR_lottery_gui_line5">
+		<Original>jackpot, so every ticket counts.</Original>
+		<German>umso höher wird der Jackpot. Deshalb,</German>
+	</Key>
+	<Key ID="STR_lottery_gui_line6">
+		<Original>Good luck!</Original>
+		<German>Toi Toi Toi !</German>
+	</Key>
+	<Key ID="STR_lottery_gui_enter">
+		<Original>Please enter your numbers:</Original>
+		<German>Bitte geben Sie eine Glückszahlen ein:</German>
+	</Key>
+	<Key ID="STR_lottery_gui_buy">
+		<Original>Buy</Original>
+		<German>Kaufen</German>
+	</Key>
+	<Key ID="STR_lottery_gui_helpme">
+		<Original>ToC (Help)</Original>
+		<German>Bedingungen (Hilfe)</German>
+	</Key>
+	<Key ID="STR_lottery_helpme_text">
+		<Original>&lt;t size='2' color='#E67E22'&gt;Terms and Conditions&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;Choose your %1 lucky numbers and write them down in the following format:&lt;br/&gt;%2&lt;br/&gt;&lt;br/&gt;. Numbers between %3 and %4 are allowed. Numbers smaller 10 need to start with a 0. You can buy as many tickets as you like, which can increase your chance of winning. &lt;br/&gt;&lt;br/&gt;&lt;t color='#E67E22'&gt;AllianceApps Lottery&lt;/t&gt;</Original>
+		<German>&lt;t size='2' color='#E67E22'&gt;Bedingungen&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;Wähle insgesammt %1 Glückszahlen, und schreibe diese getrennt durch Bindestriche in das Eingabefeld. Das ist ein Beispiel für einen Code:&lt;br/&gt;%2&lt;br/&gt;&lt;br/&gt;Wähle jeweils eine Glückszahl zwischen %3 und %4.&lt;br/&gt;&lt;br/&gt;Schreibe vor Zahlen, welche kleiner als 10 sind, eine Null, damit anstatt "1" folgendes steht: "01"&lt;br/&gt;&lt;br/&gt;Du kannst natürlich mehrere Lose kaufen.&lt;br/&gt;&lt;br/&gt;Mit freundlichen Grüßen&lt;br/&gt;&lt;t color='#E67E22'&gt;AllianceApps Lotterie&lt;/t&gt;</German>
+	</Key>
+	<Key ID="STR_lottery_wrong_format">
+		<Original>You did not choose %1 numbers or your formatting is wrong.</Original>
+		<German>Deine Wahl besteht nicht aus %1 Zahlen bzw. ist nicht richtig mit Bindestrichen formatiert.</German>
+	</Key>
+	<Key ID="STR_lottery_not_valid">
+		<Original>Your %1. number is not valid as it is not between %2 and %3.</Original>
+		<German>Deine %1. Glückszahl ist nicht im Bereich von %2 bis %3!</German>
+	</Key>
+	<Key ID="STR_lottery_bought">
+		<Original>You have successfully purchased your ticket.</Original>
+		<German>Du hast erfolgreich ein Ticket gekauft, und dich damit für die Ziehung qualifiziert.</German>
+	</Key>
+	<Key ID="STR_lottery_antispam">
+		<Original>OK stop, you did buy enough. Dafuq is wrong with ya?</Original>
+		<German>Du warst doch gerade schon da, oder? Nochmal zähle ich die Scheine nicht!</German>
+	</Key>
+	<Key ID="STR_lottery_check_win">
+		<Original>Checking possible winnings...</Original>
+		<German>Überprüfe Gewinn...</German>
+	</Key>
+	<Key ID="STR_lottery_no_win">
+		<Original>What a pity, you didn't win any thing. Maybe next time...</Original>
+		<German>Leider hast du Nichts gewonnen. Eventuell klappts beim nächsten Mal!</German>
+	</Key>
+	<Key ID="STR_lottery_win_found">
+		<Original>Congratulations, you won something. Wait a second, I will count the money...</Original>
+		<German>Glückwunsch, du hast etwas gewonnen. Ich zähle schonmal die Scheine...</German>
+	</Key>
+	<Key ID="STR_lottery_done">
+		<Original>You did receive your winnings: $%1</Original>
+		<German>Du hast einen Gewinn von %1€ erhalten!</German>
+	</Key>
+	<Key ID="STR_lottery_win_msg">
+		<Original>&lt;t size='2' color='#E67E22'&gt;Lottery&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;The numbers of the lottery have been drawn. %1 tickets did win. The jackbot is currently at %2€. &lt;br/&gt;The code is:&lt;br/&gt;%3</Original>
+		<German>&lt;t size='2' color='#E67E22'&gt;Lotterie&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;Die Lottoziehung hat stattgefunden. Es haben %1 Tickets gewonnen. Der Jackpot liegt derzeit bei %2€.&lt;br/&gt;Der Code lautet:&lt;br/&gt;%3</German>
+	</Key>
+</Package>

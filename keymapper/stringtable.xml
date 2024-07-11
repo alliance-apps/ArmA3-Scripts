@@ -1,0 +1,74 @@
+<Package name="keymapper_aapps">
+	<Key ID="STR_aapps_key_notdefined">
+		<Original>Not defined</Original>
+		<German>Nicht definiert</German>
+	</Key>
+	<Key ID="STR_aapps_key_no_entry">
+		<Original>Nothing here...</Original>
+		<German>Es wurde kein Eintrag gefunden</German>
+	</Key>
+	<Key ID="STR_aapps_key_unsaved_text">
+		<Original>You've got unsaved keybindings. Do you want to save them?</Original>
+		<German>Du hast ungespeicherte Tastenänderungen. Willst du sie speichern?</German>
+	</Key>
+	<Key ID="STR_aapps_keys">
+		<Original>Keys</Original>
+		<German>Tasten</German>
+	</Key>
+	<Key ID="STR_aapps_key_actionname">
+		<Original>Actionname:</Original>
+		<German>Aktionsname:</German>
+	</Key>
+	<Key ID="STR_aapps_key_reset_text">
+		<Original>To you really want to reset your keybindings?</Original>
+		<German>Willst du wirklich deine Tastenbelegungen zurücksetzen?</German>
+	</Key>
+	<Key ID="STR_aapps_key_reset_success">
+		<Original>You successfully reseted your keybindings!</Original>
+		<German>Du hast deine Tastenbelegungen erfolgreich zurückgesetzt!</German>
+	</Key>
+	<Key ID="STR_aapps_key_action">
+		<Original>Action</Original>
+		<German>Aktion</German>
+	</Key>
+	<Key ID="STR_aapps_key_search">
+		<Original>Search...</Original>
+		<German>Suchen...</German>
+	</Key>
+	<Key ID="STR_aapps_key_reset">
+		<Original>Reset</Original>
+		<German>Zurücksetzen</German>
+	</Key>
+	<Key ID="STR_aapps_key_savecode">
+		<Original>Save code</Original>
+		<German>Code speichern</German>
+	</Key>
+	<Key ID="STR_aapps_key_saved">
+		<Original>You successfully saved your keybindings!</Original>
+		<German>Du hast deine Tastenbelegungen erfolgreich gespeichert!</German>
+	</Key>
+	<Key ID="STR_aapps_key_changing">
+		<Original>Changing Key...</Original>
+		<German>Ändere Taste...</German>
+	</Key>
+	<Key ID="STR_aapps_key_change">
+		<Original>&lt;t align='center'&gt;Press that key, which you want to bind to this action. &lt;br /&gt;&lt;br /&gt;&lt;br /&gt;Press [ESC] to reset the key.</Original>
+		<German>&lt;t align='center'&gt;Drücke eine Taste, welche du tätigen willst, um die Aktion auszuführen. &lt;br /&gt;&lt;br /&gt;&lt;br /&gt;Drücke [ESC] um die Taste zu löschen.</German>
+	</Key>
+	<Key ID="STR_aapps_key_inuse">
+		<Original>This key combination is already in use.</Original>
+		<German>Diese Tastenkombination wird bereits verwendet.</German>
+	</Key>
+	<Key ID="STR_aapps_key_ctrl">
+		<Original>Ctrl + </Original>
+		<German>Strg + </German>
+	</Key>
+	<Key ID="STR_aapps_key_hook">
+		<Original>[AApps-DebugMode] No config file found - we just hooked key [K] for you!\nGo and press it!</Original>
+		<German>[AApps-DebugModus] Keine Tastenconfig gefunden - wir haben die Taste [K] verbunden. Drück sie!</German>
+	</Key>
+	<Key ID="STR_aapps_key_export">
+		<Original>[AApps-DebugMode] Press [EXPORT] again to refresh the editbox.</Original>
+		<German>[AApps-DebugModus] Drücke nochmal [EXPORT], um den Inhalt zu aktualisieren.</German>
+	</Key>
+</Package>

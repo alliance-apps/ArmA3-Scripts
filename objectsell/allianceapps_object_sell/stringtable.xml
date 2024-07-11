@@ -1,0 +1,94 @@
+<Package name="trade_aapps">
+	<Key ID="STR_trade_gui_title">
+		<Original>Trading</Original>
+		<German>Handel</German>
+	</Key>
+	<Key ID="STR_trade_gui_cancel">
+		<Original>Cancel</Original>
+		<German>Abbruch</German>
+	</Key>
+	<Key ID="STR_trade_gui_players">
+		<Original>Player:</Original>
+		<German>Spieler:</German>
+	</Key>
+	<Key ID="STR_trade_gui_price">
+		<Original>Price:</Original>
+		<German>Preis:</German>
+	</Key>
+	<Key ID="STR_trade_gui_request">
+		<Original>Create offer</Original>
+		<German>Angebot erstellen</German>
+	</Key>
+	<Key ID="STR_trade_only_civ">
+		<Original>Only civilians can do that!</Original>
+		<German>Das kannst du nur als Zivilist!</German>
+	</Key>
+	<Key ID="STR_trade_not_working">
+		<Original>Houston, we have a problem!</Original>
+		<German>Das kannst du momentan nicht!</German>
+	</Key>
+	<Key ID="STR_trade_wrong_object">
+		<Original>This object may not be sold.</Original>
+		<German>Dieses Objekt kann nicht verkauft werden!</German>
+	</Key>
+	<Key ID="STR_trade_not_yours">
+		<Original>That's not your vehicle.</Original>
+		<German>Das ist nicht dein Fahrzeug!</German>
+	</Key>
+	<Key ID="STR_trade_no_players">
+		<Original>There are no other players near you.</Original>
+		<German>Es sind keine Zivilisten in deiner Nähe!</German>
+	</Key>
+	<Key ID="STR_trade_no_data">
+		<Original>No data available</Original>
+		<German>Es sind keine Daten verfügbar!</German>
+	</Key>
+	<Key ID="STR_trade_too_low">
+		<Original>The price you entered is too low.</Original>
+		<German>Der eingegebene Preis ist zu niedrig!</German>
+	</Key>
+	<Key ID="STR_trade_not_selected">
+		<Original>You have to select a player.</Original>
+		<German>Du hast keinen Spieler ausgewählt!</German>
+	</Key>
+	<Key ID="STR_trade_question_1">
+		<Original>Please confirm your sale of %1 to %2 for $%3</Original>
+		<German>Willst du wirklich deinen %1 an %2 für %3€ verkaufen?</German>
+	</Key>
+	<Key ID="STR_trade_question_1_title">
+		<Original>Confirm trade</Original>
+		<German>Handel - Bestätigung</German>
+	</Key>
+	<Key ID="STR_trade_request">
+		<Original>Trade requested</Original>
+		<German>Anfrage erstellt!</German>
+	</Key>
+	<Key ID="STR_trade_question_2">
+		<Original>%1 offers you his %2 for %3. You do want to accept this trade?</Original>
+		<German>%1 will dir seinen %2 für %3 verkaufen. Willst du dies annehmen?</German>
+	</Key>
+	<Key ID="STR_trade_question_2_cancel">
+		<Original>You cancelled the trade.</Original>
+		<German>Du hast den Handel abgebrochen!</German>
+	</Key>
+	<Key ID="STR_trade_house_keys_received">
+		<Original>%1 gave you the keys for your new %2</Original>
+		<German>Du hast von %1 die Schlüssel für dein %2 erhalten!</German>
+	</Key>
+	<Key ID="STR_trade_vehicle_keys_received">
+		<Original>%1 gave you the keys for your used %2</Original>
+		<German>Du hast von %1 die Schlüssel für deinen gebrauchten %2 erhalten!</German>
+	</Key>
+	<Key ID="STR_trade_accepted">
+		<Original>The trade with %1 was accepted. You received $%2.</Original>
+		<German>Der Handel mit %1 wurde angenommen. Du hast nun %2€ von ihm erhalten!</German>
+	</Key>
+	<Key ID="STR_trade_ano">
+		<Original>Anonymous</Original>
+		<German>Anonym</German>
+	</Key>
+	<Key ID="STR_trade_sell_object">
+		<Original>Resell</Original>
+		<German>Weiterverkaufen</German>
+	</Key>
+</Package>

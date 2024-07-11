@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Reward Tutorial (Deutsch)</title>
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+		<!-- Custom styles for this template -->
+		<link href="https://getbootstrap.com/docs/4.0/examples/grid/grid.css" rel="stylesheet">
+		
+		<!-- JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<p style="display: inline; position: absolute; right: 5px; top: 5px;">Stand: 03.08.2019</p>
+
+		<div class="container">
+				<table style="width:100%">
+					<tr>
+						<th><h1>Tutorial: Reward</h1></th>
+						<th><a href="https://www.allianceapps.io"><img src="https://cdn.allianceapps.io/img/aa_logo.png" height="75" align="right"></a></th>
+					</tr>
+				</table>
+			<h3>Hinweis</h3>
+			<p>In diesem Tutorial verändert ihr Dateien in eurer Mission sowie in eurem @life_server - das Wichtigste sind also Backups! Ernsthaft, macht Backups von allen Daten bevor es hier weitergeht. AllianceApps ist nicht verantwortlich für eventuell verlorene Daten o. ä.</p>		
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss in der <b>Mission</b> erfolgen (.Altis, .Tanoa, .Malden usw.):<br>
+			</div>
+			<h3>Schritt 1</h3>
+			<p>So, jetzt geht es los. Backups gemacht? Wirklich? Ernsthaft, macht Backups eurer <b>Mission</b>, dem <b>@life_server</b> und der <b>Datenbank</b>. BACKUPS!</p>
+			
+			
+			<h3>Schritt 2</h3>
+			<p>Kopiere den Ordner <code>rewards</code> in den Ordner <code>/core/</code>.</p>
+			<p>
+			Öffne <code>/Functions.hpp</code> bzw. <code>/Functions.h</code> und füge dort vor der letzten geschweiften Klammer <code>}</code> (nach <code>class Vehicle {</code>) folgendes ein:<br>
+			<pre class="prettyprint">class rewards {
+	file = "core\rewards";
+	class addReward {};
+	class animtext {};
+	class getRewards {};
+};</pre></p>
+			<h3>Schritt 3</h3>
+			<p>Öffne die Datei <code>/CfgRemoteExec.hpp</code> und füge folgendes unter <code>/* Functions for everyone */</code> ein:</p>
+			<pre class="prettyprint">F(TON_fnc_RewardVehicleCreate,SERVER) //rewards</pre>
+			
+			<h3>Schritt 4</h3>
+			<p>Öffne die Datei <code>/core/configuration.sqf</code> und füge folgendes am Ende der Datei ein:</p>
+			<pre class="prettyprint">life_rewarddays = -1;</pre>
+			
+			<h3>Schritt 5</h3>
+			<p>Öffne die Datei <code>/config/Config_Master.hpp</code> und füge folgendes am Ende der Datei ein:</p>
+			<pre class="prettyprint">#include "..\core\rewards\Config_Rewards.hpp"</pre>
+			<br>
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss im <b>@life_server</b> erfolgen:<br>
+			</div>
+			<h3>Schritt 6</h3>
+			<p>Öffne die Datei <code>/Config.cpp</code> und suche nach <code>class keyManagement {};</code> und füge darunter folgendes ein:<br>
+				<pre class="prettyprint">class rewardVehicleCreate {}; //rewards</pre><br>
+				Füge nun die Datei <code>fn_rewardVehicleCreate.sqf</code> aus dem <b>Downloadordner</b> in folgenden Ordner ein: <code>/Functions/Systems</code>.<br>
+			</p>
+			<h3>Schritt 7</h3>
+			<p>Öffne die Datei <code>/Functions/MySQL/fn_queryRequest.sqf</code> und füge folgendes am Ende der Datei ein:</p> 
+<pre class="prettyprint">_query = format["SELECT DATEDIFF(current_timestamp(), reward_stamp) as reward_diff, reward_days FROM players WHERE pid='%1'",_uid];
+_queryResult = [_query,2] call DB_fnc_asyncCall;
+_queryResult pushBack false;
+call {
+    if(_queryResult isEqualTo [0,0]) exitWith { //first-time connected
+        [format["UPDATE players SET reward_days=1 WHERE pid='%1'",_uid],1] call DB_fnc_asyncCall;
+        _queryResult set[2, true];
+    };
+    _reward_diff = _queryResult select 0;
+    if(_reward_diff isEqualTo 0) exitWith {};
+    if(_reward_diff isEqualto 1) exitWith {
+        //reward
+        [format["UPDATE players SET reward_stamp=current_timestamp(), reward_days=reward_days+1 WHERE pid='%1'",_uid],1] call DB_fnc_asyncCall;
+        _queryResult set[1, (_queryResult select 1)+1];
+        _queryResult set[2, true];
+    };
+    if(_reward_diff > 1) exitWith {
+        [format["UPDATE players SET reward_stamp=current_timestamp(), reward_days=1 WHERE pid='%1'",_uid],1] call DB_fnc_asyncCall;
+        _queryResult set[1, 1];
+    };
+    //time changed?
+};
+_queryResult remoteExec ["life_fnc_getRewards",_ownerID];
+</pre>
+			<b>Zusatzschritt falls man eine ältere Altis Life Version hat:</b><br>
+			<br>
+			<p>
+				<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#querycollapse" aria-expanded="false" aria-controls="querycollapse">Zusatzschritt</button>
+			</p>
+			<div class="collapse" id="querycollapse">
+				<div class="card">
+					<div class="card-body">
+						<ul>
+							<li>Wenn die Spalte in deiner players-Tabelle <b>playerid</b> statt <b>pid</b> heißt, musst du in diesem Codeschnipsel natürlich auch das <code>WHERE pid</code> durch <code>WHERE playerid</code> ersetzen.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<br>
+						
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss in der <b>Datenbank</b> erfolgen:<br>
+			</div>
+			<h3>Schritt 8</h3>
+			<p>	
+				Führe die folgende Abfrage in deiner <b>Spieldatenbank</b> aus: 
+				<pre class="prettyprint">ALTER TABLE players ADD reward_stamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE players ADD reward_days int(11) NOT NULL DEFAULT 0;
+UPDATE players SET reward_days=1 WHERE uid != 0;</pre>
+			</p>
+			
+			<h3 align='center'><div class="alert alert-success" role="alert">Gratulation. Du hast nun das Rewardscript erfolgreich installiert.</div></h3>
+		
+		<hr>
+			<h3>Konfiguration</h3>
+			<p>In der Datei <code>/core/rewards/Config_Rewards.hpp</code> befindet sich die Konfiguration der <b>Rewards</b>.<br>
+			Beispielklasse:<pre class="prettyprint">class day2 { //eindeutiger Name (ohne Leerzeichen, darf nur einmal vorkommen)
+	name = "Tag 2"; //Anzeigename
+	namecolor = "#D35400"; //Farbe
+	description = "Du warst zwei Tage hintereinander auf dem Server"; //Beschreibung
+	descriptioncolor = "#FFFFFF"; //Farbe
+	sound = ""; //Soundname, falls benötigt
+	statement = ""; //Zusätzlich ausführbares Script, falls benötigt
+	condition = "life_rewarddays isEqualto 2"; //Bedingung, Beispiele im Anschluss
+	rewards[] = {}; //Belohnung, Beispiele im Anschluss
+	
+};</pre>
+<br>
+			Beispiele für <code>condition</code>:
+			<pre class="prettyprint">condition = "life_rewarddays isEqualTo 0"; //Ist der Wert 0, ist der Spieler zum ersten Mal auf dem Server</pre>
+			<pre class="prettyprint">condition = "life_rewarddays isEqualTo 3"; //Der Spieler ist 3 Tage hintereinander auf dem Server</pre>
+			<pre class="prettyprint">condition = "(life_rewarddays isEqualTo 4) && (playerSide isEqualTo WEST)"; //Der Spieler ist 4 Tage hintereinander auf dem Server und Polizist</pre>
+			<pre class="prettyprint">condition = "(life_rewarddays isEqualTo 4) && license_civ_driver"; //Der Spieler ist 4 Tage hintereinander auf dem Server und hat einen Führerschein</pre>
+			<br>
+			Beispiele für <code>rewards</code>:
+			<pre class="prettyprint">
+rewards[] = {
+	{"VEHICLE", "C_Offroad_02_unarmed_F", "Red"}, //Typ (Fahrzeug in Garage), Classname, Farbe
+	{"MONEY", 100000}, //Typ (Bargeld), Betrag
+	{"BANK", 100000}, //Typ (Bankguthaben), Betrag
+	{"LICENSE", "driver"}, //Typ (Lizenz), Classname
+	{"VITEM", "apple", 1}, //Typ (Virtueller Gegenstand), Classname, Anzahl
+	{"ITEM", "arifle_Katiba_F", 1} //Typ (Arma Gegenstand), Classname, Anzahl
+};</pre>
+<b>Hinweis:</b> <ul>
+<li>Die maximale Rucksackgröße wird bei virtuellen Gegenständen umgangen (Sie werden auch hinzugefügt, wenn man keinen Platz hat)</li>
+<li>Arma Gegenstände werden zum Inventar hinzugefügt. Besitzt man einen Rucksack und hat keinen Platz, wird das Limit vom Rucksack umgangen und diesem hinzugefügt. Sollte man keinen Rucksack haben, liegt der Gegenstand auf dem Boden (dieser ist für andere Spieler nicht sichtbar).</li>
+<li>Als Skin bei Fahrzeugen kann auch der Index im Texturenarray verwendet werden (die Zahl in der Datenbank nach erfolgreicher Speicherung)</li>
+<li>Bei Fahrzeuge, Lizenzen, virtuellen Gegenstände und normalen Gegenstände kann anstatt einem Classname, ein Array mit mehreren Classnames angegeben werden. Das Script wählt dann per Zufallsprinzip einen Classname aus.</li>
+</ul>
+			Die <b>Lizenz</b> befindet sich in der <code>LICENSE.txt</code>. Sie darf nicht aus dem Produkt entfernt werden.
+		<hr>
+		</div> <!-- /container -->
+
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst"></script>
+	</body>
+</html>

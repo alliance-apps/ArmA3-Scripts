@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Notrufverwaltung Tutorial (Deutsch)</title>
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+		<!-- Custom styles for this template -->
+		<link href="https://getbootstrap.com/docs/4.0/examples/grid/grid.css" rel="stylesheet">
+	</head>
+
+	<body>
+	<p style="display: inline; position: absolute; right: 5px; top: 5px;">Stand: 28.10.2017</p>
+
+		<div class="container">
+				<table style="width:100%">
+					<tr>
+						<th><h1>Tutorial: Notrufverwaltung</h1></th>
+						<th><a href="https://www.allianceapps.de"><img src="https://allianceapps.de/images/linksoben.png" height="75" align="right"></a></th>
+					</tr>
+				</table>
+			<h3>Hinweis</h3>
+			<p>In diesem Tutorial verändert ihr Dateien in eurer Mission sowie in eurem @life_server - das wichtigste sind also Backups! Ernsthaft, macht Backups von allen Daten bevor es hier weitergeht. AllianceApps ist nicht verantwortlich für eventuell verlorene Daten o. ä. </p>		
+			<h3>Schritt 1</h3>
+			Erstelle im <code>/core/</code> Ordner deiner Mission (.Altis, .Tanoa usw.) eine Datei namens <code>allianceapps_license.txt</code> (oder öffne Sie, wenn sie bereits existiert). Öffne diese und füge in einer neuen Zeile folgendes ein:
+			<br>
+			<code>NOTRUFVERWALTUNG: <HIER CODE EINFÜGEN></code><br>
+			Dies ist der Lizenzschlüssel für das Produkt. Dieser ermöglicht uns zu identifizieren, ob du das Produkt legal erworben hast.
+			<hr>
+
+			<h3>Schritt 2</h3>
+			<p>Kopiere die beiden .paa-Dateien (<code>ico_set.paa</code> und <code>ico_notset.paa</code>) in den Ordner <code>/icons/</code></p>
+
+			<h3>Schritt 3</h3>
+			<p>Kopiere die Datei <code>aapps_callmanagement.hpp</code> in den Ordner <code>/dialog/</code></p>
+			<p>Öffne <code>/dialog/MasterHandler.hpp</code> füge das nachfolgende hinzu:<br>
+			<pre class="prettyprint">#include "aapps_callmanagement.hpp"</pre>
+			<h3>Schritt 4</h3>
+		<p>
+			In diesem Schritt wirst du den Button im Z-Menü hinzufügen. Bitte beachte, dass du ggf. die Position verändern musst, wenn an dieser Stelle schon ein Button existiert.<br>
+			Öffne <code>/dialog/player_inv.hpp</code> und suche nach <code>class ButtonSyncData</code>. Füge nun über <code>class ButtonSyncData</code> folgendes ein:
+			<pre class="prettyprint">
+class aapps_call : Life_RscButtonMenu {
+	idc = 4111;
+	text = "$STR_DC_dispatchcenter";
+	onButtonClick = "0 call life_call_start";
+	x = 0.1 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
+	y = 0.885;
+	w = (6.25 / 40);
+	h = (1 / 25);
+};</pre>
+			Öffne nun deine <code>/core/pmenu/fn_p_openMenu.sqf</code> und füge über <code>[] call life_fnc_p_updateMenu;</code> folgendes ein:<br>
+			<br>
+			Falls du die Notrufverwaltung <b>nur</b> für die <b>Polizei</b> nutzt, dann das:
+			<pre class="prettyprint">
+if(!(playerSide isEqualTo WEST)) then {
+	ctrlShow[4111,false];
+};</pre>
+			<br>
+			Falls du die Notrufverwaltung <b>nur</b> für die <b>Sanitäter</b> nutzt, dann das:
+			<pre class="prettyprint">
+if(!(playerSide isEqualTo INDEPENDENT)) then {
+	ctrlShow[4111,false];
+};</pre>
+			<br>
+			Falls du die Notrufverwaltung für <b>beide Fraktionen</b> nutzt, dann das:
+			<pre class="prettyprint">
+if(playerSide isEqualTo CIVILIAN) then {
+	ctrlShow[4111,false];
+};</pre>
+		</p>
+		<h3>Schritt 5</h3>
+		<p>Öffne die Datei <code>/stringtable.xml</code> und gehe an das Ende der Datei. Füge nun vor dem letzten <code>&lt;/Project&gt;</code> - Tag den Inhalt der beigelegten <b>Stringtable.xml</b> ein.</P>
+			<hr>
+			<h3>Hinweis</h3>
+			<p>Dieses Script kann nur für die Polizei, nur für die Sanitäter oder für beide Fraktionen installiert werden.<br>
+			Deshalb solltest du zum Beispiel nur den Abschnitt <b>Polizei</b> anwenden, wenn du die Notrufverwaltung nur für die <b>Polizei</b> haben willst.<br>
+			Dies gilt natürlich auch für die <b>Sanitäter</b>. Falls du die Notrufverwaltung bei beiden Fraktionen verwenden willst, wendest du beide <b>Abschnitte</b> an.</p>
+			<hr>
+			<h3>Polizei</h3>
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss in der <b>Mission</b> erfolgen (.Altis, .Tanoa, .Malden usw.):<br>
+			</div>
+			<p>Kopiere die Datei <code>/cop/fn_copcallmanagement.sqf</code> in den Ordner <code>/core/cop/</code> in deiner Mission.</p>
+			<p>Öffne <code>/Functions.hpp</code> bzw. <code>/Functions.h</code> und suche nach folgendem:<br>
+			<pre class="prettyprint">class Cop {
+        file = "core\cop";
+        class bountyReceive {};
+        class containerInvSearch {};
+        class copInteractionMenu {};
+        class copLights {};
+        class copLoadout {};</pre>
+      Füge unter <code>class bountyReceive {};</code> folgendes ein: <code>class copcallmanagement {};</code>. Der Teil der Datei sollte jetzt also so aussehen:<br>
+      <pre class="prettyprint">class Cop {
+        file = "core\cop";
+        class bountyReceive {};
+        class copcallmanagement {};
+        class containerInvSearch {};
+        class copInteractionMenu {};
+        class copLights {};
+        class copLoadout {};</pre>
+		
+		Öffne nun deine <code>/core/fn_initCop.sqf</code> und füge folgendes am Ende hinzu:<br>
+		<pre class="prettyprint">0 call life_fnc_copcallmanagement;</pre>
+      </p>
+		<br>
+		<div class="alert alert-danger" role="alert">
+			Folgendes muss im <b>@life_server</b> erfolgen:<br>
+		</div>
+		<br>
+		<p>Öffne <code>/init.sqf</code> und füge folgendes vor den letzten diag_log-Zeilen ein (fast ganz unten):<br>
+			<pre class="prettyprint">life_cop_calls = [];
+publicVariable "life_cop_calls";
+
+//Das nachfolgende ist schon in der Datei vorhanden, soll nur zeigen, wo die beiden Zielen über dem Kommentar hier hin kommen
+diag_log "----------------------------------------------------------------------------------------------------";
+diag_log format ["               End of Altis Life Server Init :: Total Execution Time %1 seconds ",(diag_tickTime) - _timeStamp];
+diag_log "----------------------------------------------------------------------------------------------------";</pre>
+      
+			<br>
+      <p>Öffne <code>/functions.sqf</code> und suche nach <code>TON_fnc_cell_textcop =</code>. Füge nun <strong>vor</strong> <code>[] call life_fnc_cellphone;</code> folgendes ein:<br>
+			<pre class="prettyprint">life_cop_calls pushBack [(name player),(position player),_msg,servertime,"""", player];
+publicVariable ""life_cop_calls"";</pre>
+      </p>
+	  <hr>
+      <h3>Sanitäter</h3>
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss in der <b>Mission</b> erfolgen (.Altis, .Tanoa, .Malden usw.):<br>
+			</div>
+			<p>Kopiere die Datei <code>/medical/fn_medcallmanagement.sqf</code> in den Ordner <code>/core/medical/</code> in deiner Mission.</p>
+			<p>Öffne <code>/Functions.hpp</code> bzw. <code>/Functions.h</code> und suche nach folgendem:<br>
+			<pre class="prettyprint">class Medical_System {
+        file = "core\medical";
+        class deathScreen {};
+        class medicLights {};
+        class medicLoadout {};
+        class medicMarkers {};
+        class medicRequest {};
+        class medicSiren {};
+        class medicSirenLights {};
+        class onPlayerKilled {};
+        class onPlayerRespawn {};
+        class requestMedic {};
+        class respawned {};
+        class revived {};
+        class revivePlayer {};
+};</pre>
+      Füge unter <code>class deathScreen {};</code> folgendes ein: <code>class medcallmanagement {};</code>. Der Teil der Datei sollte jetzt also so aussehen:<br>
+      <pre class="prettyprint">class Medical_System {
+        file = "core\medical";
+        class deathScreen {};
+	class medcallmanagement {};
+        class medicLights {};
+        class medicLoadout {};
+        class medicMarkers {};
+        class medicRequest {};
+        class medicSiren {};
+        class medicSirenLights {};
+        class onPlayerKilled {};
+        class onPlayerRespawn {};
+        class requestMedic {};
+        class respawned {};
+        class revived {};
+        class revivePlayer {};
+};</pre>
+		
+		Öffne <code>/core/medical/fn_requestMedic.sqf</code> und ersetze<br>
+		<pre class="prettyprint">//Create a thread to monitor duration since last request (prevent spammage).
+[] spawn  {
+    ((findDisplay 7300) displayCtrl 7303) ctrlEnable false;
+    sleep (2 * 60);
+    ((findDisplay 7300) displayCtrl 7303) ctrlEnable true;
+};</pre>
+		durch folgendes: 
+		<pre class="prettyprint">((findDisplay 7300) displayCtrl 7303) ctrlEnable false;
+life_med_calls pushBack [(name player),(getpos life_corpse),"Ich benötige einen Revive - Automatische SOS Nachricht über das Telefon",servertime,"",player];
+publicVariable "life_med_calls";</pre>
+			<br>
+			Öffne nun deine <code>/core/fn_initMedic.sqf</code> und füge folgendes am Ende hinzu:<br>
+		<pre class="prettyprint">0 call life_fnc_medcallmanagement;</pre><br>
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss im <b>@life_server</b> erfolgen:<br>
+			</div>
+			<br>
+			Öffne <code>/init.sqf</code> und füge folgendes vor den letzten diag_log-Zeilen ein (fast ganz unten):<br>
+			<pre class="prettyprint">life_med_calls = [];
+publicVariable "life_med_calls";
+
+//Das nachfolgende ist schon in der Datei vorhanden, soll nur zeigen, wo die beiden Zielen über dem Kommentar hier hin kommen
+diag_log "----------------------------------------------------------------------------------------------------";
+diag_log format ["               End of Altis Life Server Init :: Total Execution Time %1 seconds ",(diag_tickTime) - _timeStamp];
+diag_log "----------------------------------------------------------------------------------------------------";</pre>
+      
+			<br>
+      <p>Öffne <code>/functions.sqf</code> und suche nach <code>TON_fnc_cell_emsrequest =</code>. Füge nun <b>vor</b> <code>[] call life_fnc_cellphone;</code> folgendes ein:<br>
+			<pre class="prettyprint">life_med_calls pushBack [(name player),(position player),_msg,servertime,"""",player];
+publicVariable ""life_med_calls"";</pre>
+      </p>		
+	  <hr>
+		<h3 align='center'><div class="alert alert-success" role="alert">Gratulation. Du hast nun die Notrufverwaltung erfolgreich installiert.</div></h3>
+		</div> <!-- /container -->
+
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst""></script>
+	</body>
+</html>

@@ -1,0 +1,1041 @@
+<Package name="admintool_aapps">
+	<Key ID="STR_adm_aapps_in_vehicle">
+		<Original>You need to leave your vehicle.</Original>
+		<German>Du musst dein Fahrzeug verlassen.</German>
+	</Key>
+	<Key ID="STR_adm_aappsno_entry">
+		<Original>Nothing here...</Original>
+		<German>Es wurde kein Eintrag gefunden</German>
+	</Key>
+	<Key ID="STR_adm_aappsno_entry_short">
+		<Original>No record</Original>
+		<German>Kein Eintrag</German>
+	</Key>
+	<Key ID="STR_adm_aappslicense_given">
+		<Original>You have added the license "%1" to yourself.</Original>
+		<German>Du hast dir Lizenz %1 gegeben!</German>
+	</Key>
+	<Key ID="STR_adm_aappslicense_removed">
+		<Original>You have removed the license "%1" from yourself.</Original>
+		<German>Du hast dir Lizenz %1 entfernt!</German>
+	</Key>
+	<Key ID="STR_adm_aappsselect_player">
+		<Original>Select a player</Original>
+		<German>Wähle einen Spieler aus</German>
+	</Key>
+	<Key ID="STR_adm_aappsteleport_to">
+		<Original>You have teleported yourself to %1</Original>
+		<German>Du hast dich erfolgreich zu %1 teleportiert!</German>
+	</Key>
+	<Key ID="STR_adm_aappsteleport_n_enough">
+		<Original>There arn't any other plyers on this server!</Original>
+		<German>Es sind keine anderen Spieler auf dem Server!</German>
+	</Key>
+	<Key ID="STR_adm_aappsteleport_here">
+		<Original>You have teleported %1 to your position</Original>
+		<German>Du hast %1 erfolgreich zu dir teleportiert!</German>
+	</Key>
+	<Key ID="STR_adm_aappsteleport_allhere">
+		<Original>You have teleported all players to your position</Original>
+		<German>Du hast alle Spieler erfolgreich zu dir teleportiert!</German>
+	</Key>
+	<Key ID="STR_adm_aappsneeded_player">
+		<Original>You need to select a player!</Original>
+		<German>Du hast keinen Spieler ausgewählt!</German>
+	</Key>
+	<Key ID="STR_adm_aappsneeded_group">
+		<Original>You need to select a group!</Original>
+		<German>Du hast keine Gruppe ausgewählt!</German>
+	</Key>
+	<Key ID="STR_adm_aappsneeded_lb">
+		<Original>You need to select a record!</Original>
+		<German>Du hast keinen Eintrag ausgewählt!</German>
+	</Key>
+	<Key ID="STR_adm_aappsspec_self">
+		<Original>You can't spectate yourself (obviously :D)</Original>
+		<German>Du kannst dir nicht selbst zuschauen!</German>
+	</Key>
+	<Key ID="STR_adm_aappsspec_alive">
+		<Original>This player is dead.</Original>
+		<German>Der Spieler ist nicht am Leben!</German>
+	</Key>
+	<Key ID="STR_adm_aappsspec_lower">
+		<Original>&lt;t align='center'&gt;Press &lt;t color='#2173FF'&gt;[F10]&lt;/t&gt; to exit the spectator camera</Original>
+		<German>&lt;t align='center'&gt;Drücke &lt;t color='#2173FF'&gt;[F10]&lt;/t&gt; um den Zuschauermodus zu beenden</German>
+	</Key>
+	<Key ID="STR_adm_aappsspec_lower_dead">
+		<Original>&lt;t align='center'&gt;Your target is dead. Press the key displayed below.</Original>
+		<German>&lt;t align='center'&gt;Der Spieler ist tot. Drücke die Taste, welche unten angezeigt wird.</German>
+	</Key>
+	<Key ID="STR_adm_aappsspec_higher_city">
+		<Original>Nothing in the vicinity</Original>
+		<German>Nicht in der Nähe</German>
+	</Key>
+	<Key ID="STR_adm_aappsspec_higher">
+		<Original>&lt;t align='center' size='1.3'&gt;Grid: %1 | Nearest City: %2 | Health: %3 | Water: %4 | Food: %5</Original>
+		<German>&lt;t align='center' size='1.3'&gt;Grid: %1 | Nähste Stadt: %2 | Gesundheit: %3 | Trinken: %4 | Hunger: %5</German>
+	</Key>
+	<Key ID="STR_adm_aappstp_select">
+		<Original>Select the position where you'd like to teleport</Original>
+		<German>Wähle die Position, wo du dich hinteleportieren willst!</German>
+	</Key>
+	<Key ID="STR_adm_aappstp_select_done">
+		<Original>You have teleported yourself.</Original>
+		<German>Du hast dich teleportiert.</German>
+	</Key>
+	
+	<Key ID="STR_adm_aappsspec_loading">
+		<Original>Loading...</Original>
+		<German>Lade...</German>
+	</Key>
+	<Key ID="STR_adm_aappsside_wests">
+		<Original>Police</Original>
+		<German>Polizisten</German>
+	</Key>
+	<Key ID="STR_adm_aappsside_civs">
+		<Original>Civilian</Original>
+		<German>Zivilisten</German>
+	</Key>
+	<Key ID="STR_adm_aappsside_meds">
+		<Original>EMS</Original>
+		<German>Sanitäter</German>
+	</Key>
+	<Key ID="STR_adm_aappsside_east">
+		<Original>Rebels</Original>
+		<German>Rebellen</German>
+	</Key>
+	<Key ID="STR_adm_aappsside_group">
+		<Original>Groups</Original>
+		<German>Gruppen</German>
+	</Key>
+	<Key ID="STR_adm_aappsowner">
+		<Original>Owner: %1</Original>
+		<German>Inhaber: %1</German>
+	</Key>
+	<Key ID="STR_adm_aappsmembers">
+		<Original>Members: %1/%2</Original>
+		<German>Mitglieder: %1/%2</German>
+	</Key>
+	<Key ID="STR_adm_aappsno_uniform">
+		<Original>No uniform</Original>
+		<German>Keine Uniform</German>
+	</Key>
+	<Key ID="STR_adm_aappsno_uniform_items">
+		<Original>No items in uniform</Original>
+		<German>Keine Uniformitems</German>
+	</Key>
+	<Key ID="STR_adm_aappsno_vest">
+		<Original>No vest</Original>
+		<German>Keine Weste</German>
+	</Key>
+	<Key ID="STR_adm_aappsno_vest_items">
+		<Original>No items in vest</Original>
+		<German>Keine Westenitems</German>
+	</Key>
+	<Key ID="STR_adm_aappsno_backpack">
+		<Original>No backpack</Original>
+		<German>Kein Rucksack</German>
+	</Key>
+	<Key ID="STR_adm_aappsno_backpack_items">
+		<Original>No backpackvest</Original>
+		<German>Keine Rucksackweste</German>
+	</Key>
+	<Key ID="STR_adm_aappsno_primary">
+		<Original>No primary weapon</Original>
+		<German>Keine Primärwaffe</German>
+	</Key>
+	<Key ID="STR_adm_aappsno_attachments">
+		<Original>No attachments</Original>
+		<German>Keine Aufsätze</German>
+	</Key>
+	<Key ID="STR_adm_aappsno_secondary">
+		<Original>No secondary weapon</Original>
+		<German>Keine Sekundärwaffe</German>
+	</Key>
+	<Key ID="STR_adm_aappsno_launcher">
+		<Original>No launcher</Original>
+		<German>Kein Raketenwerfer</German>
+	</Key>
+	<Key ID="STR_adm_aappsdescription">
+		<Original>&lt;t size='1' color='#2173FF'&gt;Name:&lt;/t&gt; %1&lt;br/&gt;&lt;t size='0.8'&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Uniform:&lt;/t&gt; %2&lt;br/&gt;%3&lt;br/&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Vest:&lt;/t&gt; %4&lt;br/&gt;%5&lt;br/&gt;&lt;br/&gt;&lt;t color='#2173FF'>Backpack:&lt;/t&gt; %6&lt;br/&gt;%7&lt;br/&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Primary weapon: &lt;/t&gt;%8&lt;br/&gt;%9&lt;br/&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Secondary weapon: &lt;/t&gt;%10&lt;br/&gt;%11&lt;br/&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Launcher: &lt;/t&gt;%12&lt;br/&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Godmode: &lt;/t&gt;%13</Original>
+		<German>&lt;t size='1' color='#2173FF'&gt;Name:&lt;/t&gt; %1&lt;br/&gt;&lt;t size='0.8'&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Uniform:&lt;/t&gt; %2&lt;br/&gt;%3&lt;br/&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Weste:&lt;/t&gt; %4&lt;br/&gt;%5&lt;br/&gt;&lt;br/&gt;&lt;t color='#2173FF'>Rucksack:&lt;/t&gt; %6&lt;br/&gt;%7&lt;br/&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Primärwaffe: &lt;/t&gt;%8&lt;br/&gt;%9&lt;br/&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Sekundärwaffe: &lt;/t&gt;%10&lt;br/&gt;%11&lt;br/&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Launcher: &lt;/t&gt;%12&lt;br/&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Godmode: &lt;/t&gt;%13</German>
+	</Key>
+	<Key ID="STR_adm_aappscursor_vehicle">
+		<Original>You're not aiming at a vehicle.</Original>
+		<German>Du zielst auf kein Fahrzeug.</German>
+	</Key>
+	<Key ID="STR_adm_aappsvehicle_trunk">
+		<Original>Noone is using the trunk.</Original>
+		<German>Niemand benutzt den Kofferraum.</German>
+	</Key>
+	<Key ID="STR_adm_aappsvehicle_trunk_unlocked">
+		<Original>You have unlocked the vehicle.</Original>
+		<German>Du hast das Fahrzeug entsperrt.</German>
+	</Key>
+	<Key ID="STR_adm_aappsvehicle_keys">
+		<Original>You have successfully added the vehicle's key to your inventory.</Original>
+		<German>Du hast dir die Schlüssel erfolgreich gegeben.</German>
+	</Key>
+	<Key ID="STR_adm_aappscursor_object">
+		<Original>You're not aiming at an object.</Original>
+		<German>Du zielst auf kein Objekt.</German>
+	</Key>
+	<Key ID="STR_adm_aappscursor_del_done">
+		<Original>The cursor target was deleted successfully.</Original>
+		<German>Das Ziel wurde erfolgreich gelöscht.</German>
+	</Key>
+	<Key ID="STR_adm_aappscursor_heal">
+		<Original>The cursor target was healed.</Original>
+		<German>Das Ziel wurde erfolgreich geheilt.</German>
+	</Key>
+	<Key ID="STR_adm_aappsvehicle_heal">
+		<Original>You have healed %1's vehicle.</Original>
+		<German>Du hast das Fahrzeug von %1 geheilt.</German>
+	</Key>
+	<Key ID="STR_adm_aappsvehicle_heal_notf">
+		<Original>Your vehicle was repaired by %1.</Original>
+		<German>Dein Fahrzeug wurde von %1 repariert.</German>
+	</Key>
+	<Key ID="STR_adm_aappscursor_expl_title">
+		<Original>Destroy cursor target</Original>
+		<German>Ziel zerstören</German>
+	</Key>
+	<Key ID="STR_adm_aappscursor_expl_text">
+		<Original>Are you SURE you want to destroy your cursor target?</Original>
+		<German>Willst du wirklich dein Ziel zerstören?</German>
+	</Key>
+	<Key ID="STR_adm_aappscursor_expl_done">
+		<Original>The damage was done.</Original>
+		<German>Schaden wurde erfolgreich ausgeübt.</German>
+	</Key>
+	<Key ID="STR_adm_aappsheal_self">
+		<Original>You have healed yourself.</Original>
+		<German>Du hast dich erfolgreich geheilt.</German>
+	</Key>
+	<Key ID="STR_adm_aappshealed">
+		<Original>You were healed by %1.</Original>
+		<German>Du wurdest von %1 geheilt.</German>
+	</Key>
+	<Key ID="STR_adm_aappsheal_other">
+		<Original>You healed %1.</Original>
+		<German>Du hast %1 geheilt.</German>
+	</Key>
+	<Key ID="STR_adm_aappsmoney_higher">
+		<Original>You need to choose a number > 999!</Original>
+		<German>Du musst eine Zahl größer 999 eingeben!</German>
+	</Key>
+	<Key ID="STR_adm_aappsmoney_self">
+		<Original>You have given yourself %1€.</Original>
+		<German>Du hast dir erfolgreich %1€ gegeben.</German>
+	</Key>
+	<Key ID="STR_adm_aappsmoney_other">
+		<Original>You have given %2€ to %1.</Original>
+		<German>Du hast erfolgreich %1 %2€ gegeben.</German>
+	</Key>
+	<Key ID="STR_adm_aapps_veh_del">
+		<Original>You haven't spawned any vehicles.</Original>
+		<German>Du hast noch keine Fahrzeuge gespawnt.</German>
+	</Key>
+	<Key ID="STR_adm_aapps_veh_del_text">
+		<Original>Do you really want to delete all your spawned vehicles?</Original>
+		<German>Willst du wirklich alle deine gespawnten Fahrzeuge löschen?</German>
+	</Key>
+	<Key ID="STR_adm_aapps_veh_del_title">
+		<Original>Delete Vehicles</Original>
+		<German>Fahrzeuge löschen</German>
+	</Key>
+	<Key ID="STR_adm_aapps_veh_del_success">
+		<Original>You successfully deleted %1 vehicles!</Original>
+		<German>Du hast erfolgreich %1 Fahrzeuge gelöscht.</German>
+	</Key>
+	<Key ID="STR_adm_aappsdelete_temp_text">
+		<Original>Are you sure you want to delete %1? (This vehicle is rented)</Original>
+		<German>Willst du wirklich den %1 löschen (Gemietetes Fahrzeug)?</German>
+	</Key>
+	<Key ID="STR_adm_aappsdelete_temp_title">
+		<Original>Delete vehicle</Original>
+		<German>Fahrzeug löschen</German>
+	</Key>
+	<Key ID="STR_adm_aappsdelete_temp">
+		<Original>Vehicle deleted.</Original>
+		<German>Fahrzeug erfolgreich gelöscht!</German>
+	</Key>
+	<Key ID="STR_adm_aappsdelete_perm">
+		<Original>Vehicle was successfully towed.</Original>
+		<German>Fahrzeug erfolgreich abgeschleppt!</German>
+	</Key>
+	<Key ID="STR_adm_aappsdelete_perm_text">
+		<Original>Are you sure you want to move the %1 to the garage?</Original>
+		<German>Willst du wirklich den %1 in die Garage stellen?</German>
+	</Key>
+	<Key ID="STR_adm_aappsdelete_perm_title">
+		<Original>Tow vehicle</Original>
+		<German>Fahrzeug abschleppen</German>
+	</Key>
+	<Key ID="STR_adm_aappsstrip_text">
+		<Original>Are you sure you want to strip %1?</Original>
+		<German>Willst du %1 wirklich ausziehen?</German>
+	</Key>
+	<Key ID="STR_adm_aappsstrip_title">
+		<Original>Strip player</Original>
+		<German>Spieler ausziehen</German>
+	</Key>
+	<Key ID="STR_adm_aappsstrip_self">
+		<Original>You have successfully stripped yourself.</Original>
+		<German>Du hast dich erfolgreich ausgezogen.</German>
+	</Key>
+	<Key ID="STR_adm_aappsstrip_other">
+		<Original>You have successfully stripped %1.</Original>
+		<German>Du hast %1 erfolgreich ausgezogen.</German>
+	</Key>
+	<Key ID="STR_adm_aappsmsg_to">
+		<Original>You have sent an admin message to %1.</Original>
+		<German>Du hast eine Adminnachricht an %1 gesendet.</German>
+	</Key>
+	<Key ID="STR_adm_aappsmsg_all">
+		<Original>You have sent an admin message to every player.</Original>
+		<German>Du hast eine Adminnachricht an Alle gesendet.</German>
+	</Key>
+	<Key ID="STR_adm_aappsts_warn">
+		<Original>You have called %1 to the support.</Original>
+		<German>Du hast %1 erfolgreich in den Support gerufen!</German>
+	</Key>
+	<Key ID="STR_adm_aappsts_warn_kick">
+		<Original>%1 was kicked into the lobby to force him to support.</Original>
+		<German>%1 wurde in die Lobby gekickt, damit er sich im Teamspeak einfindet!</German>
+	</Key>
+	<Key ID="STR_adm_aappsalready_cuffed">
+		<Original>%1 is already arrested!</Original>
+		<German>%1 ist schon festgenommen!</German>
+	</Key>
+	<Key ID="STR_adm_aappsalready_uncuffed">
+		<Original>%1 is not arrested.</Original>
+		<German>%1 ist nicht festgenommen.</German>
+	</Key>
+	<Key ID="STR_adm_aappscuffed">
+		<Original>You have successfully cuffed %1.</Original>
+		<German>Du hast %1 erfolgreich festgenommen!</German>
+	</Key>
+	<Key ID="STR_adm_aappsuncuffed">
+		<Original>You have released %1.</Original>
+		<German>Du hast %1 erfolgreich freigelassen!</German>
+	</Key>
+	<Key ID="STR_adm_aappsvehicle_kicked">
+		<Original>You have kicked %1 out of the vehicle.</Original>
+		<German>Du hast %1 aus dem Fahrzeug gekickt!</German>
+	</Key>
+	<Key ID="STR_adm_aappsvehicle_kicked_notf">
+		<Original>You were kicked out of the vehicle by %1.</Original>
+		<German>Du wurdest von %1 aus dem Fahrzeug gekickt!</German>
+	</Key>
+	<Key ID="STR_adm_aappsin_vehicle_self">
+		<Original>You're not in a vehicle.</Original>
+		<German>Du sitzt in keinem Fahrzeug!</German>
+	</Key>
+	<Key ID="STR_adm_aappsalready_in_vehicle">
+		<Original>You're already in that vehicle.</Original>
+		<German>Du bist bereits in diesem Fahrzeug!</German>
+	</Key>
+	<Key ID="STR_adm_aappsmoved_vehicle">
+		<Original>You're now in the vehicle %1.</Original>
+		<German>Du bist nun im Fahrzeug von %1!</German>
+	</Key>
+	<Key ID="STR_adm_aappstargetmoved_vehicle">
+		<Original>%1 is now in your vehicle.</Original>
+		<German>%1 ist nun in deinem Fahrzeug!</German>
+	</Key>
+	<Key ID="STR_adm_aappsin_vehicle_other">
+		<Original>%1 is not sitting in any vehicle.</Original>
+		<German>%1 sitzt in keinem Fahrzeug!</German>
+	</Key>
+	<Key ID="STR_adm_aappsterrain">
+		<Original>Terrain repaired successfully.</Original>
+		<German>Terrain wurde erfolgreich repariert!</German>
+	</Key>
+	<Key ID="STR_adm_aappsreceivedmoney">
+		<Original>You have received %1€ from %2!</Original>
+		<German>Du hast %1€ von %2 bekommen!</German>
+	</Key>
+	<Key ID="STR_adm_aappsreceive_ts1">
+		<Original>Connect to TS %1 ASAP!</Original>
+		<German>Bitte umgehend im TS unter %1 einfinden!</German>
+	</Key>
+	<Key ID="STR_adm_aappsreceive_ts1_low">
+		<Original>If you ignore this call, you a treated as guilty automatically.</Original>
+		<German>Solltest du dies ignorieren, wird dir automatisch die Schuld zugewiesen.</German>
+	</Key>
+	<Key ID="STR_adm_aappsreceive_speed">
+		<Original>%1 catapulted you into outer space.</Original>
+		<German>Du wurdest von %1 in den Weltraum katapuliert!</German>
+	</Key>
+	<Key ID="STR_adm_aappsreceive_ts2_low">
+		<Original>This is your last warning!</Original>
+		<German>Dies ist deine letzte Warnung!</German>
+	</Key>
+	<Key ID="STR_adm_aappsgear_copy">
+		<Original>You have successfully copied %1's gear.</Original>
+		<German>Du hast erfolgreich das Gear von %1 kopiert!</German>
+	</Key>
+	<Key ID="STR_adm_aappslogs_text">
+		<Original>Are you sure you want to delte %1's admin logs?</Original>
+		<German>Willst du wirklich %1 Adminlogs löschen?</German>
+	</Key>
+	<Key ID="STR_adm_aappslogs_title">
+		<Original>Confirmation</Original>
+		<German>Bestätigung</German>
+	</Key>
+	<Key ID="STR_adm_aappslogs_del_done">
+		<Original>You have successfully deleted the logs.</Original>
+		<German>Du hast erfolgreich die Logs gelöscht!</German>
+	</Key>
+	<Key ID="STR_adm_aappskill_text_self">
+		<Original>Are you sure you want to kill yourself?</Original>
+		<German>Willst du dich wirklich töten?</German>
+	</Key>
+	<Key ID="STR_adm_aappskill_text_other">
+		<Original>Are you sure you want to kill %1?</Original>
+		<German>Willst du wirklich %1 töten?</German>
+	</Key>
+	<Key ID="STR_adm_aappskill_other">
+		<Original>You were killed by %1.</Original>
+		<German>Du wurdest von %1 getötet!</German>
+	</Key>
+	<Key ID="STR_adm_aappskill_title">
+		<Original>Kill player</Original>
+		<German>Spieler töten</German>
+	</Key>
+	<Key ID="STR_adm_aappsspeed">
+		<Original>%1 is flying into outer space...</Original>
+		<German>%1 fliegt nun weg...</German>
+	</Key>
+	<Key ID="STR_adm_aappsreveived">
+		<Original>You have revived %1.</Original>
+		<German>Du hast %1 wiederbelebt.</German>
+	</Key>
+	<Key ID="STR_adm_aappsitem_added">
+		<Original>You have added %2 (%1x) to your inventory.</Original>
+		<German>Du hast dir %1x %2 hinzugefügt.</German>
+	</Key>
+	<Key ID="STR_adm_aappsvehicles">
+		<Original>Vehicles</Original>
+		<German>Fahrzeuge</German>
+	</Key>
+	<Key ID="STR_adm_aappsdefault">
+		<Original>Default</Original>
+		<German>Standart</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_action">
+		<Original>Action</Original>
+		<German>Aktion</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_keys">
+		<Original>Keys</Original>
+		<German>Tasten</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_trunk">
+		<Original>Trunk capacity</Original>
+		<German>Kofferraumgröße</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_actionname">
+		<Original>Actionname:</Original>
+		<German>Aktionsname:</German>
+	</Key>
+	<Key ID="STR_adm_aappshouse_too_close">
+		<Original>You're in or to close to a house. We can't spawn the vehicle here, because it might explode.</Original>
+		<German>Du bist in einem Haus bzw. zu nahe an einem Haus. Dein Fahrzeug könnte explodieren! Bitte nimm mehr Abstand!</German>
+	</Key>
+	<Key ID="STR_adm_aappsvehicle_spawned">
+		<Original>You have spawned a %1!</Original>
+		<German>Du hast einen %1 gespawnt!</German>
+	</Key>
+	<Key ID="STR_adm_aappsgodmode_give">
+		<Original>Are you SURE you want to enable godmode for %1?</Original>
+		<German>Willst du wirklich %1 Godmode geben?</German>
+	</Key>
+	<Key ID="STR_adm_aappsgodmode_remove">
+		<Original>Are your sure you  want to disable godmode for %1?</Original>
+		<German>Willst du wirklich %1 Godmode entfernen?</German>
+	</Key>
+	<Key ID="STR_adm_aappsgodmode_give_notf">
+		<Original>You have enabled godmode for %1.</Original>
+		<German>Du hast %1 Godmode gegeben!</German>
+	</Key>
+	<Key ID="STR_adm_aappsgodmode_remove_notf">
+		<Original>You have disabled godmode for %1.</Original>
+		<German>Du hast %1 Godmode entfernt!</German>
+	</Key>
+	<Key ID="STR_adm_aappsgodmode_get_notf">
+		<Original>%1 has activated godmode for you.</Original>
+		<German>Du hast von %1 Godmode erhalten!</German>
+	</Key>
+	<Key ID="STR_adm_aappsgodmode_unget_notf">
+		<Original>%1 has disabled godmode for you.</Original>
+		<German>Godmode wurde von %1 entfernt!</German>
+	</Key>
+	
+	<Key ID="STR_adm_aappsdialog_plist">
+		<Original>Players</Original>
+		<German>Spielerliste</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_toggle">
+		<Original>Toggle information</Original>
+		<German>Information umschalten</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_savecode">
+		<Original>Save code</Original>
+		<German>Code speichern</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_save">
+		<Original>Save</Original>
+		<German>Speichern</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_loadcode">
+		<Original>Load code</Original>
+		<German>Code laden</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_count">
+		<Original>Count:</Original>
+		<German>Anzahl:</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_stats">
+		<Original>Own stats</Original>
+		<German>Eigene Statistiken</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_stats_other">
+		<Original>Stats of selected player</Original>
+		<German>Statistiken des ausgewählten Spielers</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_exec_local">
+		<Original>Execute locally</Original>
+		<German>Lokal ausführen</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_exec_global">
+		<Original>Execute globally</Original>
+		<German>Global ausführen</German>
+	</Key>
+	
+	<Key ID="STR_adm_aappsdialog_exec_server">
+		<Original>Execute on server</Original>
+		<German>Auf Server ausführen</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_exec_target">
+		<Original>Selected player</Original>
+		<German>Ausgewählter Spieler</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_exec_group">
+		<Original>Selected group</Original>
+		<German>Ausgewählte Gruppe</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_classname">
+		<Original>Classname</Original>
+		<German>Klassenname</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_weight">
+		<Original>Weight</Original>
+		<German>Gewicht</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_flist">
+		<Original>Functions</Original>
+		<German>Funktionsliste</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_description">
+		<Original>Description</Original>
+		<German>Beschreibung</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_search">
+		<Original>Search...</Original>
+		<German>Suchen...</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_extented">
+		<Original>Extented Input</Original>
+		<German>Erweiterte Eingabe</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_playername">
+		<Original>Playername</Original>
+		<German>Spielername</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_console">
+		<Original>Console</Original>
+		<German>Konsole</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_codef">
+		<Original>Important Scripting Functions</Original>
+		<German>Wichtige Codefunktionen</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_clickinfo">
+		<Original>* Doubleclick line to execute</Original>
+		<German>* Doppelklick auf eine Zeile, um sie auszuführen</German>
+	</Key>
+	<Key ID="STR_adm_aappsdialog_reset">
+		<Original>Reset</Original>
+		<German>Zurücksetzen</German>
+	</Key>
+	<Key ID="STR_adm_aappsinvisibility">
+		<Original>You're now invisible.</Original>
+		<German>Du bist nun unsichtbar.</German>
+	</Key>
+	<Key ID="STR_adm_aappsvisibility">
+		<Original>You're now visible again.</Original>
+		<German>Du bist nun wieder sichtbar.</German>
+	</Key>
+	<Key ID="STR_adm_aappsfreecam_exit">
+		<Original>Press [ESC] and then "Abort" to leave the freecam mode.</Original>
+		<German>Drücke [ESC] und dann "Abbrechen" um den Kameramodus zu verlassen.</German>
+	</Key>
+	<Key ID="STR_adm_aappsrandom_skin_self">
+		<Original>Now you have a different skin. Put down the clothes and drag them on your character again to get the normal texture back.</Original>
+		<German>Du hast nun einen anderen Skin. Lege die Kleidung auf den Boden und zieh sie nochmal an, um wieder eine normale Textur zu haben.</German>
+	</Key>
+	<Key ID="STR_adm_aappsrandom_skin_other">
+		<Original>%1 has given you a different skin. Put down the clothes and drag them on your character again to get the normal texture back.</Original>
+		<German>%1 hat dir einen anderen Skin gegeben. Ziehe die Kleidung aus und wieder an, damit der Skin verfällt!</German>
+	</Key>
+	<Key ID="STR_adm_aappsfreeze_notf">
+		<Original>You're an idiot - I unfreezed you again!</Original>
+		<German>Du bist ein Idiot - Ich hab dich mal wieder entfreezed!</German>
+	</Key>
+	<Key ID="STR_adm_aappsfreeze">
+		<Original>You have freezed %1!</Original>
+		<German>Du hast %1 gefreezed!</German>
+	</Key>
+	<Key ID="STR_adm_aappsunfreeze">
+		<Original>You have unfreezed %1!</Original>
+		<German>Du hast %1 entfreezed!</German>
+	</Key>
+	<Key ID="STR_adm_aappsget_unfreeze">
+		<Original>You were unfreezed by %1.</Original>
+		<German>Du wurdest von %1 entfreezed!</German>
+	</Key>
+	<Key ID="STR_adm_aappsget_freeze">
+		<Original>You were freezed by %1.</Original>
+		<German>Du wurdest von %1 gefreezed!</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_title">
+		<Original>[AllianceApps] Development Environment</Original>
+		<German>[AllianceApps] Entwicklerumgebung</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_selected">
+		<Original>Selected: %1</Original>
+		<German>Ausgewählt: %1</German>
+	</Key>
+	<Key ID="STR_adm_aapps_tpall">
+		<Original>Do you really want to teleport all players to your position?</Original>
+		<German>Willst du wirklich alle Spieler zu dir teleportieren?</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_viewer_running">
+		<Original>running</Original>
+		<German>läuft</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_viewer_done">
+		<Original>done</Original>
+		<German>fertig</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_viewer_line">
+		<Original>Current line: %1</Original>
+		<German>Momentane Zeile: %1</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_viewer_count">
+		<Original>Count: &lt;t align='right'&gt;%1</Original>
+		<German>Anzahl: &lt;t align='right'&gt;%1</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_over_code">
+		<Original>You are going to overwrite your current console input. Continue?</Original>
+		<German>Du überschreibst deinen Konsoleninhalt. Willst du fortsetzen?</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_returned_val">
+		<Original>No value returned</Original>
+		<German>Kein Wert zurückgegeben</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_ran_player">
+		<Original>[AllianceApps] - Code executed on player!</Original>
+		<German>[AllianceApps] - Der Code wurde ausgeführt!</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_ran_group">
+		<Original>[AllianceApps] - Code executed on Group %1!</Original>
+		<German>[AllianceApps] - Der Code wurde bei Gruppe %1 ausgeführt!</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_ran_group_text">
+		<Original>Do you want to execute your code on Group %1?</Original>
+		<German>Willst du deinen Code wirklich bei Gruppe %1 ausführen?</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_ran_server">
+		<Original>[AllianceApps] - Code executed on your server!</Original>
+		<German>[AllianceApps] - Der Code wurde auf dem Server ausgeführt!</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_ran_target">
+		<Original>[AllianceApps] - Code executed on %1!</Original>
+		<German>[AllianceApps] - Der Code wurde bei %1 ausgeführt!</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_ran_everyone">
+		<Original>[AllianceApps] - Code executed on EVERYONE!</Original>
+		<German>[AllianceApps] - Der Code wurde bei JEDEM ausgeführt!</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_ran_everyone_text">
+		<Original>Do you want to execute your code on EVERYONE?</Original>
+		<German>Willst du deinen Code wirklich bei JEDEM ausführen?</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_ran_server_text">
+		<Original>Do you want to execute your code on your server?</Original>
+		<German>Willst du deinen Code wirklich auf dem Server ausführen?</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_ran_target_text">
+		<Original>Do you want to execute your code on %1?</Original>
+		<German>Willst du deinen Code wirklich bei %1 ausführen?</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_already_present">
+		<Original>This name is already present. Do you want to overwrite this?</Original>
+		<German>Dieser Name existiert bereits. Willst du ihn überschreiben?</German>
+	</Key>
+	<Key ID="STR_adm_aappsdev_description">
+		<Original>&lt;t color='#2173FF'&gt;Police: &lt;/t&gt;&lt;t align='right'&gt;%1 Units&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Medics: &lt;/t&gt;&lt;t align='right'&gt;%2 Units&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Civilians: &lt;/t>&lt;t align='right'&gt;%3 Units&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Rebels: &lt;/t>&lt;t align='right'&gt;%4 Units&lt;/t&gt;</Original>
+		<German>&lt;t color='#2173FF'&gt;Polizei: &lt;/t&gt;&lt;t align='right'&gt;%1 Einheiten&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Sanitäter: &lt;/t&gt;&lt;t align='right'&gt;%2 Einheiten&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Zivilisten: &lt;/t>&lt;t align='right'&gt;%3 Einheiten&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Rebellen: &lt;/t>&lt;t align='right'&gt;%4 Einheiten&lt;/t&gt;</German>
+	</Key>
+	<Key ID="STR_adm_aapps_key_unsaved_text">
+		<Original>You've got unsaved keybindings. Do you want to save them?</Original>
+		<German>Du hast ungespeicherte Tastenänderungen. Willst du sie speichern?</German>
+	</Key>
+	<Key ID="STR_adm_aapps_key_reset_text">
+		<Original>To you really want to reset your keybindings?</Original>
+		<German>Willst du wirklich deine Tastenbelegungen zurücksetzen?</German>
+	</Key>
+	<Key ID="STR_adm_aapps_key_reset_success">
+		<Original>You successfully reseted your keybindings!</Original>
+		<German>Du hast deine Tastenbelegungen erfolgreich zurückgesetzt!</German>
+	</Key>
+	<Key ID="STR_adm_aapps_key_saved">
+		<Original>You successfully saved your keybindings!</Original>
+		<German>Du hast deine Tastenbelegungen erfolgreich gespeichert!</German>
+	</Key>
+	<Key ID="STR_adm_aapps_key_notdefined">
+		<Original>Not defined</Original>
+		<German>Nicht definiert</German>
+	</Key>
+	<Key ID="STR_adm_aapps_key_changing">
+		<Original>Changing Key...</Original>
+		<German>Ändere Taste...</German>
+	</Key>
+	<Key ID="STR_adm_aapps_key_executed">
+		<Original>Close your dialog first!</Original>
+		<German>Schließe zuerst deinen Dialog!</German>
+	</Key>
+	<Key ID="STR_adm_aapps_key_change">
+		<Original>&lt;t align='center'&gt;Press that key, which you want to bind to this action. &lt;br /&gt;&lt;br /&gt;&lt;br /&gt;Press [ESC] to reset the key.</Original>
+		<German>&lt;t align='center'&gt;Drücke eine Taste, welche du tätigen willst, um die Aktion auszuführen. &lt;br /&gt;&lt;br /&gt;&lt;br /&gt;Drücke [ESC] um die Taste zu löschen.</German>
+	</Key>
+	<Key ID="STR_adm_aapps_server_info">
+		<Original>&lt;t color='#F5BF1D' align='center' size='1.4'&gt;Player-Info&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Police:&lt;/t&gt;&lt;t align='right'&gt;%1&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Medics:&lt;/t&gt;&lt;t align='right'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Civilians:&lt;/t&gt;&lt;t align='right'&gt;%3&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#F5BF1D' align='center' size='1.4'&gt;DB-Info&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Number of players:&lt;/t&gt;&lt;t align='right'&gt;%4 records&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Number of vehicles:&lt;/t&gt; &lt;t align='right'&gt;%5 records&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;- exploded:&lt;/t&gt; &lt;t align='right'&gt;%6 records&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Number of houses:&lt;/t&gt; &lt;t align='right'&gt;%7 records&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Number of gangs:&lt;/t&gt; &lt;t align='right'&gt;%8 records&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;- deleted:&lt;/t&gt; &lt;t align='right'&gt;%9 records&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Number of adminlogs:&lt;/t&gt; &lt;t align='right'&gt;%10 records</Original>
+		<German>&lt;t color='#F5BF1D' align='center' size='1.4'&gt;Spieler-Info&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Polizisten:&lt;/t&gt;&lt;t align='right'&gt;%1&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Sanitäter:&lt;/t&gt;&lt;t align='right'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Zivilisten:&lt;/t&gt;&lt;t align='right'&gt;%3&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#F5BF1D' align='center' size='1.4'&gt;DB-Info&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Spieler lt. DB:&lt;/t&gt;&lt;t align='right'&gt;%4 Einträge&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Fahrzeuge lt. DB:&lt;/t&gt; &lt;t align='right'&gt;%5 Einträge&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;davon explodiert:&lt;/t&gt; &lt;t align='right'&gt;%6 Einträge&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Häuser lt. DB:&lt;/t&gt; &lt;t align='right'&gt;%7 Einträge&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Gangs lt. DB:&lt;/t&gt; &lt;t align='right'&gt;%8 Einträge&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;davon gelöscht:&lt;/t&gt; &lt;t align='right'&gt;%9 Einträge&lt;/t&gt;&lt;br/&gt;&lt;t color='#2173FF'&gt;Adminlogs lt. DB:&lt;/t&gt; &lt;t align='right'&gt;%10 Einträge</German>
+	</Key>
+	<Key ID="STR_adm_aapps_player_extended">
+		<Original>&lt;t color='#2173FF'>Name:&lt;/t> %1&lt;br/>&lt;t color='#2173FF'>UID:&lt;/t> %2&lt;br/>&lt;t color='#2173FF'>Playerside:&lt;/t> %4&lt;br/>&lt;br/>&lt;t color='#2173FF'>Steamprofile:&lt;/t> &lt;a href='http://steamcommunity.com/profiles/%2/'>%3&lt;/a>&lt;br/>&lt;t color='#2173FF'>PlayerIndex:&lt;/t> &lt;a href='https://webinterface.playerindex.de/default.aspx?id=%2'>Click me&lt;/a>&lt;br/>&lt;br/>&lt;t color='#2173FF'>Money:&lt;/t> %5€&lt;br/>&lt;t color='#2173FF'>ATM:&lt;/t> %6€</Original>
+		<German>&lt;t color='#2173FF'>Name:&lt;/t> %1&lt;br/>&lt;t color='#2173FF'>UID:&lt;/t> %2&lt;br/>&lt;t color='#2173FF'>Spielerseite:&lt;/t> %4&lt;br/>&lt;br/>&lt;t color='#2173FF'>Steamprofil:&lt;/t> &lt;a href='http://steamcommunity.com/profiles/%2/'>%3&lt;/a>&lt;br/>&lt;t color='#2173FF'>PlayerIndex:&lt;/t> &lt;a href='https://webinterface.playerindex.de/default.aspx?id=%2'>Klick mich&lt;/a>&lt;br/>&lt;br/>&lt;t color='#2173FF'>Bargeld:&lt;/t> %5€&lt;br/>&lt;t color='#2173FF'>Bankgeld:&lt;/t> %6€</German>
+	</Key>
+	<Key ID="STR_adm_aapps_not_driver">
+		<Original>You need to be the driver. Please change your seat.</Original>
+		<German>Du bist nicht der Fahrer des Fahrzeugs!</German>
+	</Key>
+	<Key ID="STR_adm_aapps_time_change">
+		<Original>The time will change in a few seconds...</Original>
+		<German>Die Zeit wird sich in ein paar Sekunden ändern...</German>
+	</Key>
+	<Key ID="STR_adm_time_change_text">
+		<Original>Do you really want to change the time?</Original>
+		<German>Willst du wirklich die Zeit ändern?</German>
+	</Key>
+	<Key ID="STR_adm_time_change_title">
+		<Original>SkipTime Confirmation</Original>
+		<German>SkipTime Bestätigung</German>
+	</Key>
+	<Key ID="STR_adm_zeus_text">
+		<Original>Do you really want to zeus %1</Original>
+		<German>Willst du %1 wirklich blitzen?</German>
+	</Key>
+	<Key ID="STR_adm_zeus_title">
+		<Original>Zeus Confirmation</Original>
+		<German>Zeus Bestätigung</German>
+	</Key>
+	<Key ID="STR_adm_markeron">
+		<Original>Your playermarkers are now available!</Original>
+		<German>Deine Spielermarker sind jetzt verfügbar!</German>
+	</Key>
+	<Key ID="STR_adm_markeroff">
+		<Original>Your playermarkers are now deactivated!</Original>
+		<German>Deine Spielermarker sind jetzt deaktiviert!</German>
+	</Key>
+	<Key ID="STR_adm_waitingforinput">
+		<Original>Waiting for input...</Original>
+		<German>Warte auf Eingabe...</German>
+	</Key>
+	<Key ID="STR_adm_activated">
+		<Original>Activated</Original>
+		<German>Aktiviert</German>
+	</Key>
+	<Key ID="STR_adm_deactivated">
+		<Original>Deactivated</Original>
+		<German>Deaktiviert</German>
+	</Key>
+	<Key ID="STR_adm_kicked_off">
+		<Original>&lt;t align='center'&gt;You were kicked off by &lt;t color='#2173FF'&gt;%1&lt;/t&gt;. &lt;br /&gt;&lt;br /&gt;&lt;t color='#2173FF'&gt;TeamSpeak 3: &lt;/t&gt;%2&lt;br /&gt;&lt;br /&gt;&lt;t color='#2173FF'&gt;Reason: &lt;/t&gt;&lt;br /&gt;%3</Original>
+		<German>&lt;t align='center'&gt;Du wurdest von &lt;t color='#2173FF'&gt;%1&lt;/t&gt; gekickt. &lt;br /&gt;&lt;br /&gt;&lt;t color='#2173FF'&gt;TeamSpeak 3: &lt;/t&gt;%2&lt;br /&gt;&lt;br /&gt;&lt;t color='#2173FF'&gt;Grund: &lt;/t&gt;&lt;br /&gt;%3</German>
+	</Key>
+	<Key ID="STR_adm_kick_text">
+		<Original>Do you really want to kick %1?</Original>
+		<German>Willst du %1 wirklich vom Server kicken?</German>
+	</Key>
+	<Key ID="STR_adm_kick_notf">
+		<Original>>> Adminkick: %1 was kicked off by %2!</Original>
+		<German>>> Adminkick: %1 wurde von %2 vom Server gekickt!</German>
+	</Key>
+	<Key ID="STR_adm_fix_weather">
+		<Original>Do you really want to fix the weather?</Original>
+		<German>Willst du wirklich das Wetter reparieren?</German>
+	</Key>
+	<Key ID="STR_adm_3dmarker_on">
+		<Original>3d Marker activated</Original>
+		<German>3d Markierungen aktiviert</German>
+	</Key>
+	<Key ID="STR_adm_3dmarker_off">
+		<Original>3d Marker deactivated</Original>
+		<German>3d Markierungen deaktiviert</German>
+	</Key>
+	<Key ID="STR_adm_godmode_on">
+		<Original>Godmode activated!</Original>
+		<German>Godmode aktiviert!</German>
+	</Key>
+	<Key ID="STR_adm_godmode_off">
+		<Original>Godmode deactivated!</Original>
+		<German>Godmode deaktiviert!</German>
+	</Key>
+	<Key ID="STR_adm_aappstargetgear_copy">
+		<Original>You have successfully copied your gear on %1.</Original>
+		<German>Du hast erfolgreich das Gear auf %1 kopiert!</German>
+	</Key>
+</Package>
+<Package name="admintool_aapps_fncs">
+	<Key ID="STR_adm_fnc_trunkunlock">
+		<Original>Unlock trunk</Original>
+		<German>Kofferraum entsperren</German>
+	</Key>
+	<Key ID="STR_adm_fnc_trunkopen">
+		<Original>Open trunk</Original>
+		<German>Kofferraum öffnen</German>
+	</Key>
+	<Key ID="STR_adm_fnc_spec">
+		<Original>Spectate player</Original>
+		<German>Spieler spectaten</German>
+	</Key>
+	<Key ID="STR_adm_fnc_tp">
+		<Original>Teleport</Original>
+		<German>Teleportieren</German>
+	</Key>
+	<Key ID="STR_adm_fnc_tpto">
+		<Original>Teleport to player</Original>
+		<German>Zu Spieler teleportieren</German>
+	</Key>
+	<Key ID="STR_adm_fnc_tphere">
+		<Original>Teleport here</Original>
+		<German>Spieler herteleportieren</German>
+	</Key>
+	<Key ID="STR_adm_fnc_tpallhere">
+		<Original>Teleport here (ALL)</Original>
+		<German>Alle Spieler herteleportieren</German>
+	</Key>
+	<Key ID="STR_adm_fnc_givekey">
+		<Original>Give vehiclekeys</Original>
+		<German>Fahrzeugschlüssel geben</German>
+	</Key>
+	<Key ID="STR_adm_fnc_delcur">
+		<Original>Delete cursorobject</Original>
+		<German>Zielobjekt löschen</German>
+	</Key>
+	<Key ID="STR_adm_fnc_explcur">
+		<Original>Explode cursorobject</Original>
+		<German>Zielobjekt explodieren</German>
+	</Key>
+	<Key ID="STR_adm_fnc_healplayer">
+		<Original>Heal player</Original>
+		<German>Spieler heilen</German>
+	</Key>
+	<Key ID="STR_adm_fnc_givemoney">
+		<Original>Give money</Original>
+		<German>Geld geben</German>
+	</Key>
+	<Key ID="STR_adm_fnc_impound">
+		<Original>Impound vehicle</Original>
+		<German>Fahrzeug abschleppen</German>
+	</Key>
+	<Key ID="STR_adm_fnc_strip">
+		<Original>Strip player</Original>
+		<German>Spieler strippen</German>
+	</Key>
+	<Key ID="STR_adm_fnc_admin">
+		<Original>Adminmessage</Original>
+		<German>Adminnachricht</German>
+	</Key>
+	<Key ID="STR_adm_fnc_adminall">
+		<Original>Adminmessage to ALL</Original>
+		<German>Adminnachricht an ALLE</German>
+	</Key>
+	<Key ID="STR_adm_fnc_ts1">
+		<Original>Teamspeak warning 1</Original>
+		<German>Teamspeak Warnung 1</German>
+	</Key>
+	<Key ID="STR_adm_fnc_ts2">
+		<Original>Teamspeak warning 2</Original>
+		<German>Teamspeak Warnung 2</German>
+	</Key>
+	<Key ID="STR_adm_fnc_ts3">
+		<Original>Teamspeak warning 3</Original>
+		<German>Teamspeak Warnung 3</German>
+	</Key>
+	<Key ID="STR_adm_fnc_pindex">
+		<Original>Playerindex link</Original>
+		<German>Playerindex Link</German>
+	</Key>
+	<Key ID="STR_adm_fnc_restrain">
+		<Original>Restrain player</Original>
+		<German>Spieler festnehmen</German>
+	</Key>
+	<Key ID="STR_adm_fnc_unrestrain">
+		<Original>Unrestrain player</Original>
+		<German>Spieler freilassen</German>
+	</Key>
+	<Key ID="STR_adm_fnc_eject">
+		<Original>Force eject</Original>
+		<German>Aussteigen erzwingen</German>
+	</Key>
+	<Key ID="STR_adm_fnc_repaircur">
+		<Original>Repair cursorobject</Original>
+		<German>Zielobjekt reparieren</German>
+	</Key>
+	<Key ID="STR_adm_fnc_repairveh">
+		<Original>Repair vehicle of player</Original>
+		<German>Fahrzeug v. Spieler reparieren</German>
+	</Key>
+	<Key ID="STR_adm_fnc_repairterrain">
+		<Original>Repair terrain (250m)</Original>
+		<German>Terrain reparieren (250m)</German>
+	</Key>
+	<Key ID="STR_adm_fnc_copygear">
+		<Original>Copy target's gear</Original>
+		<German>Gear von Spieler kopieren</German>
+	</Key>
+	<Key ID="STR_adm_fnc_addlicense">
+		<Original>Add licenses</Original>
+		<German>Lizenzen hinzufügen</German>
+	</Key>
+	<Key ID="STR_adm_fnc_addvitems">
+		<Original>Add virtual items</Original>
+		<German>V-Items hinzufügen</German>
+	</Key>
+	<Key ID="STR_adm_fnc_dellogs">
+		<Original>Delete ingamelogs</Original>
+		<German>Ingamelogs löschen</German>
+	</Key>
+	<Key ID="STR_adm_fnc_showlogs">
+		<Original>Show ingamelogs</Original>
+		<German>Ingamelogs anzeigen</German>
+	</Key>
+	<Key ID="STR_adm_fnc_statistic">
+		<Original>Server statistics</Original>
+		<German>Server Statistik</German>
+	</Key>
+	<Key ID="STR_adm_fnc_killplayer">
+		<Original>Kill player</Original>
+		<German>Spieler töten</German>
+	</Key>
+	<Key ID="STR_adm_fnc_boost">
+		<Original>Boost player into space</Original>
+		<German>Werfe Spieler in Weltraum</German>
+	</Key>
+	<Key ID="STR_adm_fnc_revive">
+		<Original>Revive player</Original>
+		<German>Spieler wiederbeleben</German>
+	</Key>
+	<Key ID="STR_adm_fnc_invisibility">
+		<Original>Invisibility</Original>
+		<German>Unsichtbarkeit</German>
+	</Key>
+	<Key ID="STR_adm_fnc_freecam">
+		<Original>Freecam</Original>
+		<German>Freie Kamera</German>
+	</Key>
+	<Key ID="STR_adm_fnc_godmode">
+		<Original>Player godmode</Original>
+		<German>Spieler Godmode</German>
+	</Key>
+	<Key ID="STR_adm_fnc_colorize">
+		<Original>Randomskin</Original>
+		<German>Zufallsskin</German>
+	</Key>
+	<Key ID="STR_adm_fnc_extended">
+		<Original>Extended information</Original>
+		<German>Erweiterte Informationen</German>
+	</Key>
+	<Key ID="STR_adm_fnc_freeze">
+		<Original>Freeze player</Original>
+		<German>Spieler einfrieren</German>
+	</Key>
+	<Key ID="STR_adm_fnc_movein">
+		<Original>Move into target vehicle</Original>
+		<German>In Spielerfahrzeug einsteigen</German>
+	</Key>
+	<Key ID="STR_adm_fnc_moveinmine">
+		<Original>Move into my vehicle</Original>
+		<German>In Fahrzeug herteleportieren</German>
+	</Key>
+	<Key ID="STR_adm_fnc_spawnveh">
+		<Original>Spawn vehicle</Original>
+		<German>Fahrzeug spawnen</German>
+	</Key>
+	<Key ID="STR_adm_fnc_developenvir">
+		<Original>Developenvironment</Original>
+		<German>Entwicklerumgebung</German>
+	</Key>
+	<Key ID="STR_adm_fnc_keymapper">
+		<Original>Keymapper</Original>
+		<German>Tastenbelegung</German>
+	</Key>
+	<Key ID="STR_adm_admintool">
+		<Original>Admintool</Original>
+		<German>Adminmenü</Original>
+	</Key>
+	<Key ID="STR_adm_fnc_arsenal">
+		<Original>VR-Arsenal</Original>
+	</Key>
+	<Key ID="STR_adm_fnc_skiptime">
+		<Original>Switch day/night</Original>
+		<German>Tag/Nacht Wechsel</German>
+	</Key>
+	<Key ID="STR_adm_fnc_zeus">
+		<Original>Zeus</Original>
+	</Key>
+	<Key ID="STR_adm_fnc_marker">
+		<Original>Playermarker</Original>
+		<German>Spielermarker</German>
+	</Key>
+	<Key ID="STR_adm_fnc_vehgod">
+		<Original>Vehicle godmode</Original>
+		<German>Fahrzeug Godmode</German>
+	</Key>
+	<Key ID="STR_adm_fnc_kick">
+		<Original>Kick player</Original>
+		<German>Spieler kicken</German>
+	</Key>
+	<Key ID="STR_adm_fnc_fixweather">
+		<Original>Fix weather</Original>
+		<German>Wetter reparieren</German>
+	</Key>
+	<Key ID="STR_adm_fnc_3dmarker">
+		<Original>3d Marker</Original>
+		<German>3d Markierungen</German>
+	</Key>
+	<Key ID="STR_adm_fnc_jump">
+		<Original>Jump</Original>
+		<German>Springen</German>
+	</Key>
+	<Key ID="STR_adm_fnc_copytargetgear">
+		<Original>Copy player's gear</Original>
+		<German>Gear auf Spieler kopieren</German>
+	</Key>	
+</Package>

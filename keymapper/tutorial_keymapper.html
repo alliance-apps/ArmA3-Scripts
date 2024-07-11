@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Keymapper Tutorial (Deutsch)</title>
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+		<!-- Custom styles for this template -->
+		<link href="https://getbootstrap.com/docs/4.0/examples/grid/grid.css" rel="stylesheet">
+		
+		<!-- JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<p style="display: inline; position: absolute; right: 5px; top: 5px;">Stand: 15.05.2018</p>
+
+		<div class="container">
+				<table style="width:100%">
+					<tr>
+						<th><h1>Tutorial: Keymapper</h1></th>
+						<th><a href="https://www.allianceapps.de"><img src="https://allianceapps.de/images/linksoben.png" height="75" align="right"></a></th>
+					</tr>
+				</table>
+			<h3>Hinweis</h3>
+			<p>In diesem Tutorial verändert ihr Dateien in eurer Mission - das Wichtigste sind also Backups! Ernsthaft, macht Backups von allen Daten bevor es hier weitergeht. AllianceApps ist nicht verantwortlich für eventuell verlorene Daten o. ä.</p>		
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss in der <b>Mission</b> erfolgen (.Altis, .Tanoa, .Malden usw.):<br>
+			</div>
+			<h3>Schritt 1</h3>
+			Erstelle im <code>/core/</code> Ordner deiner Mission (.Altis, .Tanoa usw.) eine Datei namens <code>allianceapps_license.txt</code> (oder öffne Sie, wenn sie bereits existiert). Öffne diese und füge in einer neuen Zeile folgendes ein:
+			<br>
+			<code>KEYMAPPER: &lt;HIER CODE EINFÜGEN></code><br>
+			Dies ist der Lizenzschlüssel für das Produkt. Dieser ermöglicht uns zu identifizieren, ob du das Produkt legal erworben hast.
+			
+			<h3>Schritt 2</h3>
+			<p>So, jetzt geht es los. Backups gemacht? Wirklich? Ernsthaft, macht Backups eurer <b>Mission</b>. BACKUPS!</p>
+			
+			
+			<h3>Schritt 3</h3>
+			<p>Kopiere den Ordner <code>keymapper</code> in den Ordner <code>/core/</code>.</p>
+			<p>
+			Öffne <code>/Functions.hpp</code> bzw. <code>/Functions.h</code> und füge dort vor der letzten geschweiften Klammer <code>}</code> (nach <code>class Vehicle</code>) folgendes ein:<br>
+			<pre class="prettyprint">class allianceapps_keymapper {
+	file = "core\keymapper";  
+	class keymapper_build {};  
+	class keymapper_init {}; 
+	class keymapper_postinit {};
+};</pre>
+			</p>
+			<h3>Schritt 4</h3>
+			<p>Öffne die Datei <code>/dialog/masterhandler.hpp</code> und füge folgendes am Ende der Datei an:</p>
+			<pre class="prettyprint">#include "..\core\keymapper\aapps_keymapper_SA.hpp" //keymapper </pre>
+			
+			<h3>Schritt 5</h3>
+			In diesem Schritt wirst du den Button im Z-Menü hinzufügen. Bitte beachte, dass du ggf. die Position verändern musst, wenn an dieser Stelle schon ein Button existiert.<br>
+			Öffne <code>/dialog/player_inv.hpp</code> und suche nach <code>class ButtonSyncData</code>. Füge nun über <code>class ButtonSyncData</code> Folgendes ein:
+			<pre class="prettyprint">class aapps_keymapper : Life_RscButtonMenu {
+	idc = -1;
+	text = "Tasten";
+	onButtonClick = "0 call life_fnc_keymapper_init";
+	x = 0.42 + (6.25 / 19.8) + (1 / 250 / (safezoneW / safezoneH));
+	y = 0.805;
+	w = (6.25 / 40);
+	h = (1 / 25);
+};</pre>
+			<h3>Schritt 6</h3>
+			<p>Öffne die Datei <code>/core/configuration.sqf</code> und füge folgendes am Ende der Datei ein:</p>
+			<pre class="prettyprint">0 spawn life_fnc_keymapper_postinit;</pre>
+			
+			<h3>Schritt 7</h3>
+			<p>Öffne die Datei <code>/stringtable.xml</code> und gehe an das Ende der Datei. Füge nun vor dem letzten <code>&lt;/Project&gt;</code> - Tag den Inhalt der beigelegten <b>Stringtable.xml</b> ein.</P>
+			
+			<h3>Schritt 8</h3>
+			<p>Nun müssen wir den Keyhandler anpassen, damit immer die richtigen Aktionen ausgeführt werden.<br>
+			Öffne dafür deine <code>/core/functions/fn_keyhandler.sqf</code>.
+			<br><br>
+			Falls die Datei noch der von <b>Altis Life 5.0</b> entspricht und sie <b>nicht</b> verändert wurde, kannst du den gesammten Keyhandler mit der beigelegten Datei <code>/fn_keyhandler.sqf</code> ersetzen.<br>
+			Falls du einen veränderten <b>Keyhandler</b> hast, empfehlen wir, die Datei zu ersetzen und die neuen Aktionen nachzutragen.<br><br>
+			Keyhandler manuell bearbeiten: <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#manuell" aria-expanded="false" aria-controls="manuell">Manuell</button><br><br>
+			
+			<div class="collapse" id="manuell">
+				<div class="card">
+					<div class="card-body">
+						<ul>
+							<li>Suche im oberen Teil des Keyhandlers nach <code>|| (player getVariable ["playerSurrender",false]) ||</code> und ersetze diesen mit <code>||</code></li>
+							<li>Füge nun über <code>switch (_code) do {</code> Folgendes ein:
+								<pre class="prettyprint">/*		AAPPS - KEYMAPPER		*/
+//Interaction key (default is Left Windows, can be mapped via Controls -> Custom -> User Action 10)
+if(_code isEqualTo _interactionKey) exitWith {
+	if (!life_action_inUse) then {
+		[] spawn  {
+			private "_handle";
+			_handle = [] spawn life_fnc_actionKeyHandler;
+			waitUntil {scriptDone _handle};
+			life_action_inUse = false;
+		};
+	};
+	true
+};
+if (LIFE_SETTINGS(getNumber,"disableCommanderView") isEqualTo 1) then {
+	private _CommandMode = actionKeys "tacticalView";
+
+	if (_code in _CommandMode) then {
+		hint localize "STR_NOTF_CommanderView";
+		_handled = true;
+	};
+};
+
+_sca = [parseNumber _shift,parseNumber _ctrlKey,parseNumber _alt];
+if(dialog) exitWith {false};
+_found = false;
+{
+	if(((_x select 1) isEqualTo _code) && {_sca isEqualTo (_x select 2)}) exitWith {
+		_code = _x select 0;
+		_found = true;
+	};
+} forEach keymapper_saved_keys;
+if(!_found) exitWith {false};
+/*		END OF AAPPS - KEYMAPPER		*/</pre>
+							</li>
+							<li>Nummeriere nun die <code>cases</code> der Switchfunktion forlaufend durch. (<code>case 1: {</code>,<code>case 2: {</code>,<code>case 3: {</code>,<code>case 4: {</code>...)</li>
+							<li>Erstelle nun in unserer Config <code>/core/keymapper/aapps_keymapper_SA.hpp</code> nun eine neue Gruppe und füge dort die <b>Tasten ein</b> (Mehr Informationen dazu am Ende des Tutorials)</li>
+							<li>Entferne nun alle <b>Alt-</b>, <b>Shift-</b> und <b>Strg-Abfragen</b> aus der Switchfunktion, da man diese nicht mehr benötigt (Man konfiguriert diese Ingame).</li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			Jetzt wird dir erklärt, wie du Aktionen <b>nachtragen</b> kannst beziehungsweise neue Aktionen <b>hinzufügen</b> kannst. <br>
+			
+			<p>
+				<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#hinzufügen" aria-expanded="false" aria-controls="hinzufügen">Hinzufügen</button>
+			</p>
+			<div class="collapse" id="hinzufügen">
+				<div class="card">
+					<div class="card-body">
+						Gehe an das <b>Ende</b> der Datei, dort findest du Folgendes:
+						<pre class="prettyprint">};
+						
+_handled;</pre>
+Gehe nun an den <b>Anfang der darüber liegenden Klasse</b> (z.b. <code>case 12</code>) und merke dir diese <b>fortlaufende</b> Zahl (in diesem Fall <b>12</b>).<br>
+Füge nun vor der Klammer vor <code>_handled;</code> deine Aktion ein.<br>Dies sieht zum Beispiel so aus: <pre class="prettyprint">
+//Farmen mit Shift+E
+case 18: {
+	if (_shift && _ctrlkey && (playerSide isEqualTo civilian)) then {
+		if(!life_action_gathering) then {
+			0 spawn {
+				private "_handle";
+				_whatIsIt = [] call life_fnc_whereAmI;
+				if (life_action_gathering) exitWith {}; //Action is in use, exit to prevent spamming.
+				switch (_whatIsIt) do {
+					case "mine" : { _handle = [] spawn life_fnc_mine };
+					default { _handle = [] spawn life_fnc_gather };
+				};
+				life_action_gathering = true;
+				waitUntil {scriptDone _handle};
+				life_action_gathering = false;
+			};
+		};
+	};
+};</pre>
+<ul>
+	<li>Ersetze nun die Casenummer mit der forlaufenden Zahl. In diesem Beispiel wäre das nun <code>case 13: {</code>.</li>
+	<li>Entferne nun jene Abfragen, welche Überprüfen, ob man <b>Alt</b>, <b>Shift</b> oder <b>Strg</b> gedrückt hat, da man diese Kombination ab jetzt Ingame konfiguriert.</li>
+</ul>
+Optional:<br>
+<ul>
+	<li>In diesem Beispiel ist noch eine Abfrage, ob man Zivilist ist (<code>(playerside isEqualTo CIVILIAN)</code>),<br>
+	du kannst diese Abfrage <b>entfernen</b> und <b>direkt in der folgenden Config eintragen</b>, damit die Aktion im Keymapper <b>nur angezeigt wird, wenn man auch Zivilist ist</b>.
+</ul>
+Die ganze Klasse im Keyhandler sieht nun wie folgt aus:
+<p>
+	<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#erweitern" aria-expanded="false" aria-controls="erweitern">Erweitern</button>
+</p>
+<div class="collapse" id="erweitern">
+<pre class="prettyprint">//Farmen mit Shift+E
+case 13: {
+	if(!life_action_gathering) then {
+		0 spawn {
+			private "_handle";
+			_whatIsIt = [] call life_fnc_whereAmI;
+			if (life_action_gathering) exitWith {}; //Action is in use, exit to prevent spamming.
+			switch (_whatIsIt) do {
+				case "mine" : { _handle = [] spawn life_fnc_mine };
+				default { _handle = [] spawn life_fnc_gather };
+			};
+			life_action_gathering = true;
+			waitUntil {scriptDone _handle};
+			life_action_gathering = false;
+		};
+	};
+};</pre>
+</div>
+<br>
+Gehe nun in deine <code>/core/keymapper/aapps_keymapper_SA.hpp</code>.<br>
+Du findest nun die Klasse <code>aapps_keymapper_config</code> und darin die Klasse <code>sections</code>.<br>
+Hier sind nun die <b>Aktionsgruppen</b>. Wir gehen nun in die Klasse <code>keys[]</code> einer beliebigen Aktionsgruppe.<br>
+Dort tragen wir nun unsere Aktion ein. Die <b>Struktur</b> sieht wie folgt aus: <code>{FORTLAUFENDE NUMMER, ANZEIGE-TEXT, KONDITION}</code>.<br><br>
+Dies sieht nun, passend zum oben angeführten Beispiel, so aus:<pre class="prettyprint">
+keys[] = {
+	{1,"Springen",""}, //Enter a valid name or a valid localizable STRING
+	{2,"Ergeben",""},
+	{3,"Holstern",""},
+	{12,"Farmen","(playerSide isEqualto CIVILIAN)"} //<-- neue Klasse
+};
+</pre><br>
+Die Config wird am Ende dieses <b>Tutorials</b> ausführlicher erklärt.<br>
+					</div>
+				</div>
+			</div>
+			<h3>Schritt 9</h3>
+			<p>Bitte beachte, dass du für diesen Schritt ein <b>Ingameadminlevel</b> benötigst!<br>
+			Falls du <b>unseren beigelegten Keyhandler</b> verwendest, kannst du zur letzten Zeile dieses Schritts gehen.<br>
+				Wenn du Ingame bist, solltest du eine Meldung bekommen haben, in der es heißt, dass du <b>[K]</b> drücken sollst. Damit öffnest du <b>temporär</b> den Keymapper, und kannst somit deine Tastenkombinationen konfigurieren.<br><br>
+				Drücke nun im Menü erst auf <b>Speichern</b>, anschließest drückst du rechts oben auf <b>EXPORT</b> (Falls der Button nicht da ist, hast du kein Adminlevel). <br>
+				Kopiere nun den <b>gesammten Inhalt</b> des Eingabefeldes, welches nun erschienen ist.<br><br>
+				Öffne deine <code>/core/keymapper/aapps_keymapper_SA.hpp</code>. Ganz oben findest du nun <code>#define KEYPRESETS {}</code>.<br>
+				Ersetze nun <code>{}</code> mit dem kopierten Inhalt deines Eingabefeldes.<br><br>
+				Falls du <b>unseren beigelegten Keyhandler</b> eingefügt hast, kannst du dir diese Schritte sparen und folgendes anstatt dem kopierten Inhalt einfügen:<br>
+				<pre class="prettyprint">{{1,57,{1,0,0}},{2,48,{1,0,0}},{3,35,{1,0,0}},{4,19,{1,0,0}},{5,34,{1,0,0}},{6,20,{0,0,0}},{7,38,{1,0,0}},{8,21,{0,0,0}},{9,33,{0,0,0}},{10,24,{1,0,0}},{11,22,{0,0,0}}}</pre>
+			</p>
+			<br>
+			
+			
+		<h3 align='center'><div class="alert alert-success" role="alert">Gratulation. Du hast nun den Keymapper erfolgreich installiert.</div></h3>
+		
+		<hr>
+			<h3>Hinweis</h3>
+			<p>In der Datei <code>/core/keymapper/aapps_keymapper_SA.hpp</code> befindet sich die Konfiguration der Tasten, Gruppierungen und des Presets.<br>
+			Ganz am Anfang der Datei kann man das <b>exportierte Keypreset</b> eintragen, das sieht zum Beispiel so aus:
+			<pre class="prettyprint">{{1,57,{1,0,0}}}</pre>
+			Anschließend findest du die eigentliche Config - die <code>class aapps_keymapper_config</code>. 
+			Darin findest du die <code>sections</code>, welches die Gruppierungen sind. Es kann beliebig viele Gruppierungen geben.<br><br>
+			Eine Gruppierung sieht zum Beispiel so aus:<br>
+			<pre class="prettyprint">class section1 {
+	displayName = "Funktionen"; //Anzeigename Ingame
+	condition = ""; //Bedingung, welche erfüllt werden muss, damit die Klasse angezeigt wird
+	/* "" bedeuet immer anzeigen - so könnte es aussehen: condition = "playerSide isEqualTo WEST"; */
+	keys[] = { //Tasten
+		/* {fortlaufende Nummer im Keyhandler, Anzeigename, Bedingung}	*/
+		{1,"Springen",""},
+		{2,"Ergeben",""},
+		{3,"Holstern",""} //Beim letzten Einrtag in dieser Klasse darf kein Komma am Ende sein
+	};
+};</pre>
+			<hr>
+			Die <b>Lizenz</b> befindet sich in der <code>LICENSE.txt</code>. Sie darf nicht aus dem produkt entfernt werden. Außerdem darf das Produkt gleichzeitig nur auf einem <b>öffentlichen Gameserver</b> installiert sein (Testserver sind nicht als Gameserver zu werten) - für <b>mehrere Server</b> sind <b>mehrere Lizenzen</b> erforderlich.
+		<hr>
+		</div> <!-- /container -->
+
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst"></script>
+	</body>
+</html>

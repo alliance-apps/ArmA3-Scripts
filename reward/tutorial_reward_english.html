@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Reward Tutorial (English)</title>
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+		<!-- Custom styles for this template -->
+		<link href="https://getbootstrap.com/docs/4.0/examples/grid/grid.css" rel="stylesheet">
+		
+		<!-- JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<p style="display: inline; position: absolute; right: 5px; top: 5px;">Last update: 05-09-2019</p>
+
+		<div class="container">
+				<table style="width:100%">
+					<tr>
+						<th><h1>Tutorial: Reward</h1></th>
+						<th><a href="https://allianceapps.io"><img src="https://cdn.allianceapps.io/img/aa_logo.png" height="75" align="right"></a></th>
+					</tr>
+				</table>
+			<h3>Warning</h3>
+			<p>In this tutorial we will change files in your clientside mission, in your @life_server - so please make backups before starting. Seriously, do it. AllianceApps is not responsible for any data loss.</p>
+			<div class="alert alert-danger" role="alert">
+				The next steps need to be executed in the <b>clientside mission</b> (.Altis, .Tanoa, .Malden):<br>
+			</div>
+			<h3>Step 1</h3>
+			<p>Dont forget a backup!</p>
+			
+			
+			<h3>Step 2</h3>
+			<p>Copy the folder <code>rewards</code> into <code>/core/</code>.</p>
+			<p>
+			Edit <code>/Functions.hpp</code> or <code>/Functions.h</code> and add the following before the last curly bracket <code>}</code> (after <code>class Vehicle {</code>):<br>
+			<pre class="prettyprint">class rewards {
+	file = "core\rewards";
+	class addReward {};
+	class animtext {};
+	class getRewards {};
+};</pre></p>
+			<h3>Step 3</h3>
+			<p>Edit <code>/CfgRemoteExec.hpp</code> and add the following after <code>/* Functions for everyone */</code>:</p>
+			<pre class="prettyprint">F(TON_fnc_RewardVehicleCreate,SERVER) //rewards</pre>
+			
+			<h3>Step 4</h3>
+			<p>Edit <code>/core/configuration.sqf</code> and add the following at the end of the file:</p>
+			<pre class="prettyprint">life_rewarddays = -1;</pre>
+			
+			<h3>Step 5</h3>
+			<p>Edit <code>/config/Config_Master.hpp</code> and add the following at the end of the file:</p>
+			<pre class="prettyprint">#include "..\core\rewards\Config_Rewards.hpp"</pre>
+			<br>
+			<div class="alert alert-danger" role="alert">
+				The next steps need to be executed in the <b>@life_server</b>:<br>
+			</div>
+			<h3>Step 6</h3>
+			<p>Edit <code>/Config.cpp</code> and search for <code>class keyManagement {};</code> and add the following after it:<br>
+				<pre class="prettyprint">class rewardVehicleCreate {}; //rewards</pre><br>
+				Now add the file <code>fn_rewardVehicleCreate.sqf</code> we provided into this folder: <code>/Functions/Systems</code>.<br>
+			</p>
+			<h3>Step 7</h3>
+			<p>Edit <code>/Functions/MySQL/fn_queryRequest.sqf</code> and add the following at the end of the file:</p> 
+<pre class="prettyprint">_query = format["SELECT DATEDIFF(current_timestamp(), reward_stamp) as reward_diff, reward_days FROM players WHERE pid='%1'",_uid];
+_queryResult = [_query,2] call DB_fnc_asyncCall;
+_queryResult pushBack false;
+call {
+    if(_queryResult isEqualTo [0,0]) exitWith { //first-time connected
+        [format["UPDATE players SET reward_days=1 WHERE pid='%1'",_uid],1] call DB_fnc_asyncCall;
+        _queryResult set[2, true];
+    };
+    _reward_diff = _queryResult select 0;
+    if(_reward_diff isEqualTo 0) exitWith {};
+    if(_reward_diff isEqualto 1) exitWith {
+        //reward
+        [format["UPDATE players SET reward_stamp=current_timestamp(), reward_days=reward_days+1 WHERE pid='%1'",_uid],1] call DB_fnc_asyncCall;
+        _queryResult set[1, (_queryResult select 1)+1];
+        _queryResult set[2, true];
+    };
+    if(_reward_diff > 1) exitWith {
+        [format["UPDATE players SET reward_stamp=current_timestamp(), reward_days=1 WHERE pid='%1'",_uid],1] call DB_fnc_asyncCall;
+        _queryResult set[1, 1];
+    };
+    //time changed?
+};
+_queryResult remoteExec ["life_fnc_getRewards",_ownerID];
+</pre>
+			<b>Additional step if you're using an older version of Altis Life:</b><br>
+			<br>
+			<p>
+				<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#querycollapse" aria-expanded="false" aria-controls="querycollapse">Additional step</button>
+			</p>
+			<div class="collapse" id="querycollapse">
+				<div class="card">
+					<div class="card-body">
+						<ul>
+							<li>Check the players table in your database. If the column is called <b>playerid</b> instead of <b>pid</b>, you will need to replace <code>WHERE pid</code> with <code>WHERE playerid</code> in the following SQL query.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<br>
+						
+			<div class="alert alert-danger" role="alert">
+				The following must be done in your <b>database</b>:<br>
+			</div>
+			<h3>Step 8</h3>
+			<p>	
+				Run this query in your <b>altislife database</b>: 
+				<pre class="prettyprint">ALTER TABLE players ADD reward_stamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE players ADD reward_days int(11) NOT NULL DEFAULT 0;
+UPDATE players SET reward_days=1 WHERE uid != 0;</pre>
+			</p>
+			
+			<h3 align='center'><div class="alert alert-success" role="alert">Congratulations. You have now successfully installed the loyalty rewards.</div></h3>
+		
+		<hr>
+			<h3>Configuration</h3>
+			<p>The file <code>/core/rewards/Config_Rewards.hpp</code> contains this scripts configuration.<br>
+			Example class:<pre class="prettyprint">class day2 { //unique name, without spaces
+	name = "Tag 2"; //Display name
+	namecolor = "#D35400"; //Color
+	description = "Du warst zwei Tage hintereinander auf dem Server"; //Description
+	descriptioncolor = "#FFFFFF"; //Color
+	sound = ""; //Soundname, if required
+	statement = ""; //Additional script, if required
+	condition = "life_rewarddays isEqualto 2"; //Condition
+	rewards[] = {}; //Reward
+	
+};</pre>
+<br>
+			Examples for <code>condition</code>:
+			<pre class="prettyprint">condition = "life_rewarddays isEqualTo 0"; //If the value is 0, the player joined the server for the first time</pre>
+			<pre class="prettyprint">condition = "life_rewarddays isEqualTo 3"; //The player has been on the server for 3 consecutive days</pre>
+			<pre class="prettyprint">condition = "(life_rewarddays isEqualTo 4) && (playerSide isEqualTo WEST)"; //The player has been on the server for 4 consecutive days AND hes a cop</pre>
+			<pre class="prettyprint">condition = "(life_rewarddays isEqualTo 4) && license_civ_driver"; //The player has been on the server for 4 consecutive days AND he has a drivers license</pre>
+			<br>
+			Example for <code>rewards</code>:
+			<pre class="prettyprint">
+rewards[] = {
+	{"VEHICLE", "C_Offroad_02_unarmed_F", "Red"}, //Type (Vehicle in garage), Classname, Color
+	{"MONEY", 100000}, //Type (Cash), Amount
+	{"BANK", 100000}, //Type (Bank), Amount
+	{"LICENSE", "driver"}, //Type (License), Classname
+	{"VITEM", "apple", 1}, //Type (Virtual item), Classname, Count
+	{"ITEM", "arifle_Katiba_F", 1} //Type (ArmA item), Classname, Count
+};</pre>
+<b>Note:</b> <ul>
+<li>This script will ignore the max backpack capacity for virtual items and will add the item regardless of backpack usage.</li>
+<li>Same thing goes for ArmA items. If the player does not wear a backpack, it will drop on the ground (not visible for other players, will only spawn locally).</li>
+
+<li>For vehicle color you can also use the texture array index (the number which is stored in the vehicles table).</li>
+<li>For vehicles, v items and arma items you can also define arrays instead of single classnames. The reward will then be chosen randomly.</li>
+</ul>
+			The <b>license</b> is stored in the file <code>LICENSE.txt</code>. It must not be removed from the product. The script can only be installed on <b>1 public gameserver</b> at a time (non-public testservers are allowed) - if you want to run the script on <b>several servers</b> you'll need <b>several licenses</b>.
+		<hr>
+		</div> <!-- /container -->
+
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst"></script>
+	</body>
+</html>

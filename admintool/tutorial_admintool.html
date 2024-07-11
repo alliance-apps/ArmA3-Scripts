@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Admintool Tutorial (Deutsch)</title>
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+		<!-- Custom styles for this template -->
+		<link href="https://getbootstrap.com/docs/4.0/examples/grid/grid.css" rel="stylesheet">
+		
+		<!-- JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<p style="display: inline; position: absolute; right: 5px; top: 5px;">Stand: 01.02.2018</p>
+
+		<div class="container">
+				<table style="width:100%">
+					<tr>
+						<th><h1>Tutorial: Admintool</h1></th>
+						<th><a href="https://www.allianceapps.de"><img src="https://allianceapps.de/images/linksoben.png" height="75" align="right"></a></th>
+					</tr>
+				</table>
+			<h3>Hinweis</h3>
+			<p>In diesem Tutorial verändert ihr Dateien in eurer Mission sowie in eurem @life_server - das Wichtigste sind also Backups! Ernsthaft, macht Backups von allen Daten bevor es hier weitergeht. AllianceApps ist nicht verantwortlich für eventuell verlorene Daten o. ä.</p>		
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss in der <b>Mission</b> erfolgen (.Altis, .Tanoa, .Malden usw.):<br>
+			</div>
+			<h3>Schritt 1</h3>
+			Erstelle im <code>/core/</code> Ordner deiner Mission (.Altis, .Tanoa usw.) eine Datei namens <code>allianceapps_license.txt</code> (oder öffne Sie, wenn sie bereits existiert). Öffne diese und füge in einer neuen Zeile folgendes ein:
+			<br>
+			<code>ADMINTOOL: &lt;HIER CODE EINFÜGEN></code><br>
+			Dies ist der Lizenzschlüssel für das Produkt. Dieser ermöglicht uns zu identifizieren, ob du das Produkt legal erworben hast.
+			
+			<h3>Schritt 2</h3>
+			<p>So, jetzt geht es los. Backups gemacht? Wirklich? Ernsthaft, macht Backups eurer <b>Mission</b>, dem <b>@life_server</b> und der <b>Datenbank</b>. BACKUPS!</p>
+			
+			<h3>Schritt 3</h3>
+			<p>Kopiere die Datei <code>aapps_admintool.hpp</code> in den Ordner <code>/dialog/</code>.</p>
+			<h3>Schritt 4</h3>
+			<p>Öffne die Datei <code>/dialog/masterhandler.hpp</code> und füge folgendes am Ende der Datei an:</p>
+			<pre class="prettyprint">#include "aapps_admintool.hpp" //admintool</pre>
+			
+			<h3>Schritt 5</h3>
+			<p>Öffne die Datei <code>/CfgRemoteExec.hpp</code> und füge folgendes unter <code>/* Functions for everyone */</code> ein:</p>
+			<pre class="prettyprint">F(ton_fnc_rem_proxy,SERVER) //admintool</pre>
+			
+			<h3>Schritt 6</h3>
+			<p>Öffne die Datei <code>/dialog/player_inv.hpp</code> und ersetze <code>closeDialog 0; createDialog ""life_admin_menu"";</code> mit Folgendem:</p>
+			<pre class="prettyprint">abcdefghijklmnopqrstuvwxy = true</pre>
+			<h3>Schritt 7</h3>
+			<p>Kopiere die Datei <code>allianceapps_logo.paa</code> in den Ordner <code>/textures/</code>.</p>
+			<h3>Schritt 8</h3>
+			<p>Öffne die Datei <code>/stringtable.xml</code> und gehe an das Ende der Datei. Füge nun vor dem letzten <code>&lt;/Project&gt;</code> - Tag den Inhalt der beigelegten <b>Stringtable.xml</b> ein.</P>
+			<br>
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss im <b>@life_server</b> erfolgen:<br>
+			</div>
+			<h3>Schritt 9</h3>
+			<p>Öffne die Datei <code>/Functions/MySQL/fn_queryRequest.sqf</code> und füge unter <code>_ownerID = [_this,2,objNull,[objNull]] call BIS_fnc_param;</code> Folgendes ein:<br></p>
+				<pre class="prettyprint">[_ownerID] spawn ton_fnc_makeandsendp;</pre>
+			<br>
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss in deinem <b>Arma 3 Server Verzeichnis</b> erfolgen:<br>
+			</div>
+			<h3>Schritt 10</h3>
+			<p>Kopiere den Ordner <code>@allianceapps_admintool</code> in dein <code>Serververzeichnis (dort wo die arma3server.exe ist)</code>.</p>
+			<b>Zusatzschritt falls man eine ältere Altis Life Version hat:</b><br/>
+				<br>
+				<p>
+					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#requestrecieved" aria-expanded="false" aria-controls="requestrecieved">Zusatzschritt</button>
+				</p>
+				<div class="collapse" id="requestrecieved">
+					<div class="card">
+						<div class="card-body">
+							Öffne die Datei <code>/@allianceapps_admintool/addons/allianceapps_admintool/fn_makeandsendp.sqf</code> und ersetze<br> <code>SELECT adminlevel FROM players WHERE pid='%1'</code> mit Folgendem:
+							<pre class="prettyprint">SELECT adminlevel FROM players WHERE playerid='%1'</pre>
+						
+						</div>
+					</div>
+				</div>
+				
+			</p>
+			<h3>Schritt 11</h3>
+			<p>Füge <code>@allianceapps_admintool</code> deinen Startparametern als Servermod hinzu.<br>
+			Falls du eine <code>start.bat</code> hast, sieht das dann zum Beispiel so aus: <pre class="prettyprint">-servermod=@life_server;@extdb3;@allianceapps_admintool</pre></p>
+			<br>
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss in der <b>Datenbank</b> erfolgen:<br>
+			</div>
+			<h3>Schritt 12</h3>
+			<p>	
+				Führe die folgende Abfrage in deiner <b>Spieldatenbank</b> aus: 
+				<pre class="prettyprint">CREATE TABLE IF NOT EXISTS `adminlogs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name_admin` varchar(255) NOT NULL,
+  `uid_admin` varchar(17) NOT NULL,
+  `name_player` varchar(255) NOT NULL,
+  `uid_player` varchar(17) NOT NULL,
+  `log` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;</pre>
+			</p>
+			
+			
+			
+		<h3 align='center'><div class="alert alert-success" role="alert">Gratulation. Du hast nun das Admintool erfolgreich installiert.</div></h3>
+		
+		<hr>
+			<h3>Hinweis zur Verwendung</h3>
+			<p>Alle Funktionen können via <b>Doppelklick</b> auf einen Eintrag inder Funktionsliste ausgeführt werden.<br>
+			Da für manche Funktionen (z.b. Geld geben) eine <b>Eingabebox</b> benötigt wird, wird diese eingeblendet, wenn man eine solche Funktion ausgewählt hat.<br>
+			Die Eingabe <b>bestätigt</b> man auch mit einem <b>Doppelklick</b> auf einen Eintrag in der Funktionsliste.<br><br>
+			In der <b>Tastenbelegung</b> kann man eine Taste zuteilen, indem man einen <b>Doppelklick</b> auf eine Funktion macht.<br>
+		<hr>
+			<h3>Hinweis zu den Einstellungen</h3>
+			<p>In der Datei <code>/@allianceapps_admintool/addons/allianceapps_admintool/rights_config.hpp</code> befindet sich die Konfiguration der Rechte, sowie weitere kleine <b>Einstellungen</b>.<br><br>
+			Konfiguriere erst deine Teamspeak IP, damit den Leuten die richtige IP angezeigt wird, wenn sie in den Teamspeak gerufen werden:
+			<pre class="prettyprint">teamspeakaddress = "ts.YOURteamspeakADDRESS.net"</pre>
+			Konfiguriere nun deine Entwicklerumgebung:<pre class="prettyprint">
+/* Falls true wird die Entwicklerumgebung aktiviert, ansonsten bleibt sie deaktiviert. */
+enableDebugConsole = true;
+/* Füge jene UIDs ein, welche berechtigt sind, die Entwicklerumgebung zu öffnen */
+devtoolUIDWhitelist[] = {"12345678912345678","12345678912345678"}; </pre>
+			Konfiguriere nun deine Rechte:<pre class="prettyprint">
+class trunkunlock { //Klassenname (benötigt für Sonderrechte)
+	fncname = "_admin_trunkunlock";
+	displayname = "STR_adm_fnc_trunkunlock";
+	level = 7; //Level, welches man mindestens benötigt, damit man diese Funktion ausführen kann
+	type = false;
+	edit = false;
+	map = true;
+};</pre>
+Es gibt <b>Sonderrechte</b>, welcher ein Admin zusätzlich zu seinem <b>Level</b> bekommen kann. Diese sehen wie folgt aus:
+<pre class="prettyprint">class general {
+	teamspeakaddress = "ts.YOURteamspeakADDRESS.net";
+	/* SONDERRECHTE - AUFBAU: "UID_" + SPIELERUID */
+	uid_12345678912345678[] = {"zeus","trunkopen","delcursor"}; //Klassennamen der Funktionen, welche man zusätzlich bekommt
+	uid_12345678912345679[] = {"marker","teleportall"};//Klassennamen der Funktionen, welche man zusätzlich bekommt
+};</pre>
+		</p>
+			<br>
+		<hr>
+			Die <b>Lizenz</b> befindet sich in der <code>LICENSE.txt</code>. Sie darf nicht aus dem produkt entfernt werden. Außerdem darf das Produkt gleichzeitig nur auf einem <b>öffentlichen Gameserver</b> installiert sein (Testserver sind nicht als Gameserver zu werten) - für <b>mehrere Server</b> sind <b>mehrere Lizenzen</b> erforderlich.
+			
+		<hr>
+		</div> <!-- /container -->
+
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst"></script>
+	</body>
+</html>

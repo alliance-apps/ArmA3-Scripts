@@ -1,0 +1,176 @@
+﻿<Package name="dispatchcenter_aapps">
+	<Key ID="STR_DC_noaccess">
+		<Original>Access denied</Original>
+		<German>Kein Zugriff</German>
+	</Key>
+	<Key ID="STR_DC_nodispatches">
+		<Original>No calls</Original>
+		<German>Keine Notrufe</German>
+	</Key>
+	<Key ID="STR_DC_notassigned">
+		<Original>Unassigned</Original>
+		<German>Nicht zugeteilt</German>
+	</Key>
+	<Key ID="STR_DC_accept">
+		<Original>Assign</Original>
+		<German>Annehmen</German>
+	</Key>
+	<Key ID="STR_DC_take_dispatch">
+		<Original>I'll do it</Original>
+		<German>Übernehmen</German>
+	</Key>
+	<Key ID="STR_DC_minute">
+		<Original>minute</Original>
+		<German>Minute</German>
+	</Key>
+	<Key ID="STR_DC_minutes">
+		<Original>minutes</Original>
+		<German>Minuten</German>
+	</Key>
+	<Key ID="STR_DC_secondes">
+		<Original>seconds</Original>
+		<German>Sekunden</German>
+	</Key>
+	<Key ID="STR_DC_notselected">
+		<Original>Please select a call...</Original>
+		<German>Du musst zuerst einen Notruf auswählen.</German>
+	</Key>
+	<Key ID="STR_DC_reload">
+		<Original>Please reopen the dialog</Original>
+		<German>Bitte lade das Menü neu...</German>
+	</Key>
+	<Key ID="STR_DC_alreadytoken">
+		<Original>You have already assigned this call to you</Original>
+		<German>Du hast diesen Auftrag bereits angenommen!</German>
+	</Key>
+	<Key ID="STR_DC_gui_take">
+		<Original>This call is already dispatched to %1. Do you want to take over?</Original>
+		<German>Dieser Auftrag wird bereits von %1 erledigt. Willst du ihn übernehmen?</German>
+	</Key>
+	<Key ID="STR_DC_del_dispatch">
+		<Original>Do you really want to delete %1's call?</Original>
+		<German>Willst du den Notruf von %1 wirklich löschen?</German>
+	</Key>
+	<Key ID="STR_DC_usepreset">
+		<Original>Please enter a text or choose a preset.</Original>
+		<German>Bitte gebe einen Text an oder wähle eine Vorlage.</German>
+	</Key>
+	<Key ID="STR_DC_sendmsg">
+		<Original>Answer sent successfully</Original>
+		<German>Nachricht erfolgreich gesendet</German>
+	</Key>
+	<Key ID="STR_DC_tooclose">
+		<Original>You're too close to the caller's location</Original>
+		<German>Du bist zu Nahe am Einsatzort</German>
+	</Key>
+	<Key ID="STR_DC_title">
+		<Original>Call</Original>
+		<German>Notruf</German>
+	</Key>
+	<Key ID="STR_DC_msg_allcops">
+		<Original>All Officers</Original>
+		<German>Alle Polizisten</German>
+	</Key>
+	<Key ID="STR_DC_msg_allmeds">
+		<Original>All Medics</Original>
+		<German>Alle Sanitäter</German>
+	</Key>
+	<Key ID="STR_DC_msg_to">
+		<Original>To</Original>
+		<German>An</German>
+	</Key>
+	<Key ID="STR_DC_msg_by">
+		<Original>By</Original>
+		<German>Von</German>
+	</Key>
+	<Key ID="STR_DC_med_auto_dispatch">
+		<Original>I am in need of reviving (This is an automatic message dispatched by the almost-dead guy)</Original>
+		<German>Ich benötige einen Revive - Automatische SOS Nachricht über das Telefon</German>
+	</Key>
+	<Key ID="STR_DC_delete">
+		<Original>Delete</Original>
+		<German>Löschen</German>
+	</Key>
+	<Key ID="STR_DC_send">
+		<Original>Send</Original>
+		<German>Senden</German>
+	</Key>
+	<Key ID="STR_DC_sendposition">
+		<Original>Send position</Original>
+		<German>Position mitsenden</German>
+	</Key>
+	<Key ID="STR_DC_seedispatch">
+		<Original>Show call</Original>
+		<German>Notruf anzeigen</German>
+	</Key>
+	<Key ID="STR_DC_unfinished">
+		<Original>Unfinished since:</Original>
+		<German>Ausstehend seit:</German>
+	</Key>
+	<Key ID="STR_DC_distance">
+		<Original>Distance:</Original>
+		<German>Distanz:</German>
+	</Key>
+	<Key ID="STR_DC_assigned">
+		<Original>Assigned:</Original>
+		<German>Bearbeiter:</German>
+	</Key>
+	<Key ID="STR_DC_answer">
+		<Original>Answer</Original>
+		<German>Antwort</German>
+	</Key>
+	<Key ID="STR_DC_information">
+		<Original>Information</Original>
+		<German>Informationen</German>
+	</Key>
+	<Key ID="STR_DC_availabledispatches">
+		<Original>Available calls</Original>
+		<German>Verfügbare Notrufe</German>
+	</Key>
+	<Key ID="STR_DC_dispatchcenter">
+		<Original>911 Call Management</Original>
+		<German>Notrufverwaltung</German>
+	</Key>
+	<Key ID="STR_DC_message">
+		<Original>Message</Original>
+		<German>Nachricht</German>
+	</Key>
+</Package>
+<Package name="dispatchcenter_presets_aapps">
+	<Key ID="STR_DC_MSG_own_message_title">
+		<Original>Custom Message</Original>
+		<German>Eigene Nachricht</German>
+	</Key>
+	<Key ID="STR_DC_MSG_cop_onmyway_title">
+		<Original>On my way</Original>
+		<German>Unterwegs</German>
+	</Key>
+	<Key ID="STR_DC_MSG_cop_onmyway">
+		<Original>We are working as good as we can and will be with you ASAP. Please stay calm and follow any instructions by authorities.</Original>
+		<German>Guten Tag! Wir sind schnellstmöglich bei Ihnen. Bitte bewahren Sie Ruhe und beachten Sie eventuelle Anweisungen von Beamten.</German>
+	</Key>
+	<Key ID="STR_DC_MSG_cop_wquestions_title">
+		<Original>W-questions</Original>
+		<German>W-Fragen</German>
+	</Key>
+	<Key ID="STR_DC_MSG_cop_wquestions">
+		<Original>We are unable to follow this call due to your instructions not being clear. Please give us more information (5 W-questions)</Original>
+		<German>Guten Tag! Leider können wir mit Ihren mangelhaften Informationen noch nicht handeln. Bitte beachten Sie die Fünf W-Fragen. Danke!</German>
+	</Key>
+	<Key ID="STR_DC_MSG_cop_understaffed_title">
+		<Original>Understaffed</Original>
+		<German>Unterbesetzt</German>
+	</Key>
+	<Key ID="STR_DC_MSG_cop_understaffed">
+		<Original>We are sorry, but as we are understaffed at the moment we're unable to dispatch a unit to you.</Original>
+		<German>Guten Tag! Leider können wir Ihrem Notruf im Moment nicht bzw. nur sehr verspätet nachgehen, da wir stark unterbesetzt sind.</German>
+	</Key>
+	<Key ID="STR_DC_MSG_cop_terrorist_title">
+		<Original>Terrorist</Original>
+		<German>Terrorist</German>
+	</Key>
+	<Key ID="STR_DC_MSG_cop_terrorist">
+		<Original>We. do. not. negotiate. with. terorist. Find yourself a bomb!</Original>
+		<German>Guten Tag! Wir verhandeln nicht mit Terroristen. Suchen Sie sich einfach eine Bombe!</German>
+	</Key>
+</Package>

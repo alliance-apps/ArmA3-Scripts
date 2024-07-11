@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>911 Call Management Tutorial (English)</title>
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+		<!-- Custom styles for this template -->
+		<link href="https://getbootstrap.com/docs/4.0/examples/grid/grid.css" rel="stylesheet">
+	</head>
+
+	<body>
+	<p style="display: inline; position: absolute; right: 5px; top: 5px;">Stand: 28.10.2017</p>
+
+		<div class="container">
+				<table style="width:100%">
+					<tr>
+						<th><h1>Tutorial: 911 Call Management (English)</h1></th>
+						<th><a href="https://www.allianceapps.de"><img src="https://allianceapps.de/images/linksoben.png" height="75" align="right"></a></th>
+					</tr>
+				</table>
+			<h3>Hinweis</h3>
+			<p>In this tutorial we will change files in your clientside mission, in your @life_server - so please make backups before starting. Seriously, do it. AllianceApps is not responsible for any data loss.</p>
+			<div class="alert alert-danger" role="alert">
+				The next steps need to be executed in the <b>clientside mission</b> (.Altis, .Tanoa, .Malden):<br>
+			</div>
+			<h3>Step 1</h3>
+			Create a file named <code>allianceapps_license.txt</code> in your <code>/core/</code> folder in your mission (.Altis, .Tanoa usw.) or open it up, if it already exists. Add the following line to this file:
+			<br>
+			<code>911CM: LICENSEKEY HERE</code><br>
+			Replace the licensekey with your personal key.
+
+			<h3>Step 2</h3>
+			<p>Copy the .paa files (<code>ico_set.paa</code> and <code>ico_notset.paa</code>) to <code>/icons/</code></p>
+
+			<h3>Step 3</h3>
+			<p>Copy the file <code>aapps_callmanagement.hpp</code> to <code>/dialog/</code></p>
+			<p>Open <code>/dialog/MasterHandler.hpp</code> and add the following:<br>
+			<pre class="prettyprint">#include "aapps_callmanagement.hpp"</pre>
+					<h3>Step 4</h3>
+		<p>
+			Now we will add the button to the Y-Menu. Please note that you might have to change the position if another button already exists there.<br>
+			Open <code>/dialog/player_inv.hpp</code> and search for <code>class ButtonSyncData</code>. Add the following above <code>class ButtonSyncData</code>:
+			<pre class="prettyprint">
+class aapps_call : Life_RscButtonMenu {
+	idc = 4111;
+	text = "$STR_DC_dispatchcenter";
+	onButtonClick = "0 call life_call_start";
+	x = 0.1 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
+	y = 0.885;
+	w = (6.25 / 40);
+	h = (1 / 25);
+};</pre>
+			Now open <code>/core/pmenu/fn_p_openMenu.sqf</code> and add the following above <code>[] call life_fnc_p_updateMenu;</code>:<br>
+			<br>
+			If you're using the CM <b>only</b> for the police:
+			<pre class="prettyprint">
+if(!(playerSide isEqualTo WEST)) then {
+	ctrlShow[4111,false];
+};</pre>
+			<br>
+			If you're using the CM <b>only</b> for the medics:
+			<pre class="prettyprint">
+if(!(playerSide isEqualTo INDEPENDENT)) then {
+	ctrlShow[4111,false];
+};</pre>
+			<br>
+			If you installed it for <b>both fractions</b>:
+			<pre class="prettyprint">
+if(playerSide isEqualTo CIVILIAN) then {
+	ctrlShow[4111,false];
+};</pre>
+		</p>
+		<h3>Step 5</h3>
+			<p>Open the file <code>/stringtable.xml</code> and go to the end of the file. Add the content of the downloaded <b>Stringtable.xml</b> BEFORE the last <code>&lt;/Project&gt;</code> - Tag.</P>
+			<hr>
+			<h3>Important</h3>
+			<p>This script can be installed only for cops, only for medics or for both fractions.<br>
+			If you want to install it for the police, follow all steps under <b>Police</b>.<br>
+			If you want to install it for the medics, follow all steps under <b>Medics</b>.<br>
+			If you want to install it for both fractions, run both steps.</p>
+			<hr>
+			<h3>Police</h3>
+
+			<p>Copy the file <code>/cop/fn_copcallmanagement.sqf</code> to <code>/core/cop/</code>.</p>
+			<p>Open <code>/Functions.hpp</code> or <code>/Functions.h</code> and search for the following:<br>
+			<pre class="prettyprint">class Cop {
+        file = "core\cop";
+        class bountyReceive {};
+        class containerInvSearch {};
+        class copInteractionMenu {};
+        class copLights {};
+        class copLoadout {};</pre>
+      After <code>class bountyReceive {};</code> add the following: <code>class copcallmanagement {};</code>. This part of the file should now look like that:<br>
+      <pre class="prettyprint">class Cop {
+        file = "core\cop";
+        class bountyReceive {};
+        class copcallmanagement {};
+        class containerInvSearch {};
+        class copInteractionMenu {};
+        class copLights {};
+        class copLoadout {};</pre>
+
+		Now open <code>/core/fn_initCop.sqf</code> and add the following at the end:<br>
+		<pre class="prettyprint">0 call life_fnc_copcallmanagement;</pre>
+      </p>
+		<br>
+		<div class="alert alert-danger" role="alert">
+			The following steps must be executed in the <b>@life_server</b>:<br>
+		</div>
+		<br>
+		<p>Open <code>/init.sqf</code> and add the following before the last diag_log-Zeilen ein (almost at the end):<br>
+			<pre class="prettyprint">life_cop_calls = [];
+publicVariable "life_cop_calls";
+
+//The following 3 lines are already there, this is just an example of how it should look like
+diag_log "----------------------------------------------------------------------------------------------------";
+diag_log format ["               End of Altis Life Server Init :: Total Execution Time %1 seconds ",(diag_tickTime) - _timeStamp];
+diag_log "----------------------------------------------------------------------------------------------------";</pre>
+
+			<br>
+      <p>Open <code>/functions.sqf</code> and search for <code>TON_fnc_cell_textcop =</code>. Now add the following <strong>before</strong> <code>[] call life_fnc_cellphone;</code>:<br>
+			<pre class="prettyprint">life_cop_calls pushBack [(name player),(position player),_msg,servertime,"""", player];
+publicVariable ""life_cop_calls"";</pre>
+      </p>
+	  <hr>
+      <h3>Medics</h3>
+			<div class="alert alert-danger" role="alert">
+				The following must be executed in your <b>client mission</b> (e. g.: .Altis, .Tanoa, .Malden):<br>
+			</div>
+			<p>Copy the file <code>/medical/fn_medcallmanagement.sqf</code> to <code>/core/medical/</code>.</p>
+			<p>Open <code>/Functions.hpp</code> or <code>/Functions.h</code> and search for the following:<br>
+			<pre class="prettyprint">class Medical_System {
+        file = "core\medical";
+        class deathScreen {};
+        class medicLights {};
+        class medicLoadout {};
+        class medicMarkers {};
+        class medicRequest {};
+        class medicSiren {};
+        class medicSirenLights {};
+        class onPlayerKilled {};
+        class onPlayerRespawn {};
+        class requestMedic {};
+        class respawned {};
+        class revived {};
+        class revivePlayer {};
+};</pre>
+      After <code>class deathScreen {};</code> add the following: <code>class medcallmanagement {};</code>. This part of the file should now look like that::<br>
+      <pre class="prettyprint">class Medical_System {
+        file = "core\medical";
+        class deathScreen {};
+	class medcallmanagement {};
+        class medicLights {};
+        class medicLoadout {};
+        class medicMarkers {};
+        class medicRequest {};
+        class medicSiren {};
+        class medicSirenLights {};
+        class onPlayerKilled {};
+        class onPlayerRespawn {};
+        class requestMedic {};
+        class respawned {};
+        class revived {};
+        class revivePlayer {};
+};</pre>
+
+		Open <code>/core/medical/fn_requestMedic.sqf</code> and replace<br>
+		<pre class="prettyprint">//Create a thread to monitor duration since last request (prevent spammage).
+[] spawn  {
+    ((findDisplay 7300) displayCtrl 7303) ctrlEnable false;
+    sleep (2 * 60);
+    ((findDisplay 7300) displayCtrl 7303) ctrlEnable true;
+};</pre>
+		with the following:
+		<pre class="prettyprint">((findDisplay 7300) displayCtrl 7303) ctrlEnable false;
+life_med_calls pushBack [(name player),(getpos life_corpse),"I need a revive - automatic SOS message via telephone",servertime,"",player];
+publicVariable "life_med_calls";</pre>
+			<br>
+			Öffne nun deine <code>/core/fn_initMedic.sqf</code> und füge folgendes am Ende hinzu:<br>
+		<pre class="prettyprint">0 call life_fnc_medcallmanagement;</pre><br>
+			<div class="alert alert-danger" role="alert">
+				The following steps must be executed in the <b>@life_server</b>:<br>
+			</div>
+			<br>
+			Now open <code>/init.sqf</code> and add the following before the last diag_log-Zeilen ein (almost at the end):<br>
+			<pre class="prettyprint">life_med_calls = [];
+publicVariable "life_med_calls";
+
+//Das nachfolgende ist schon in der Datei vorhanden, soll nur zeigen, wo die beiden Zielen über dem Kommentar hier hin kommen
+diag_log "----------------------------------------------------------------------------------------------------";
+diag_log format ["               End of Altis Life Server Init :: Total Execution Time %1 seconds ",(diag_tickTime) - _timeStamp];
+diag_log "----------------------------------------------------------------------------------------------------";</pre>
+
+			<br>
+      <p>Open <code>/functions.sqf</code> and search for <code>TON_fnc_cell_emsrequest =</code>. Now add the following <b>before</b> <code>[] call life_fnc_cellphone;</code>:<br>
+			<pre class="prettyprint">life_med_calls pushBack [(name player),(position player),_msg,servertime,"""",player];
+publicVariable ""life_med_calls"";</pre>
+      </p>
+	  <hr>
+		<h3 align='center'><div class="alert alert-success" role="alert">Congratulations. You installed the 911 Call Management successfully.</div></h3>
+
+
+		</div> <!-- /container -->
+
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst""></script>
+	</body>
+</html>

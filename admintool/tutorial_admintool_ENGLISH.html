@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Admintool Tutorial (English)</title>
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+		<!-- Custom styles for this template -->
+		<link href="https://getbootstrap.com/docs/4.0/examples/grid/grid.css" rel="stylesheet">
+		
+		<!-- JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<p style="display: inline; position: absolute; right: 5px; top: 5px;">Stand: 01.02.2018</p>
+
+		<div class="container">
+				<table style="width:100%">
+					<tr>
+						<th><h1>Tutorial: Admintool</h1></th>
+						<th><a href="https://www.allianceapps.de"><img src="https://allianceapps.de/images/linksoben.png" height="75" align="right"></a></th>
+					</tr>
+				</table>
+			<h3>Warning</h3>
+			<p>In this tutorial we will change files in your clientside mission, in your @life_server - so please make backups before starting. Seriously, do it. AllianceApps is not responsible for any data loss.</p>
+			<div class="alert alert-danger" role="alert">
+				The next steps need to be executed in the <b>clientside mission</b> (.Altis, .Tanoa, .Malden):<br>
+			</div>
+			<h3>Step 1</h3>
+			Create a file named <code>allianceapps_license.txt</code> in your <code>/core/</code> folder in your mission (.Altis, .Tanoa usw.) or open it up, if it already exists. Add the following line to this file:
+			<br>
+			<code>ADMINTOOL: LICENSEKEY HERE</code><br>
+			Replace the licensekey with your personal key.
+
+			<h3>Step 2</h3>
+			<p>So let's get started. Did you back everything up? Are you sure? Ok, let's go.</p>
+			
+			
+			<h3>Step 3</h3>
+			<p>Copy the file <code>aapps_admintool.hpp</code> into the folder <code>/dialog/</code>.</p>
+			<h3>Step 4</h3>
+			<p>Open the file <code>/dialog/masterhandler.hpp</code> and add the following at the end of the file:</p>
+			<pre class="prettyprint">#include "aapps_admintool.hpp" //admintool</pre>
+			
+			<h3>Step 5</h3>
+			<p>Open the file <code>/CfgRemoteExec.hpp</code> and add the following under <code>/* Functions for everyone */</code>:</p>
+			<pre class="prettyprint">F(ton_fnc_rem_proxy,SERVER) //admintool</pre>
+			
+			<h3>Step 6</h3>
+			<p>Open the file <code>/dialog/player_inv.hpp</code> and replace <code>closeDialog 0; createDialog ""life_admin_menu"";</code> with:</p>
+			<pre class="prettyprint">abcdefghijklmnopqrstuvwxy = true</pre>
+			<h3>Step 7</h3>
+			<p>Copy the file <code>allianceapps_logo.paa</code> into the folder <code>/textures/</code>.</p>
+			<h3>Step 8</h3>
+			<p>Open the file <code>/stringtable.xml</code> and go to the end of the file. Add the content of the downloaded <b>Stringtable.xml</b> BEFORE the last <code>&lt;/Project&gt;</code> - Tag.</P>
+			<br>
+			<div class="alert alert-danger" role="alert">
+				The next steps need to be executed in the <b>@life_server</b>:<br>
+			</div>
+			<h3>Step 9</h3>
+			<p>Open the file <code>/Functions/MySQL/fn_queryRequest.sqf</code> and add the following after <code>_ownerID = [_this,2,objNull,[objNull]] call BIS_fnc_param;</code>:<br></p>
+				<pre class="prettyprint">[_ownerID] spawn ton_fnc_makeandsendp;</pre>
+			<br>
+			<div class="alert alert-danger" role="alert">
+				The following must be done in your <b>ArmA 3 server directory</b> (where @life_server and @extDB are):<br>
+			</div>
+			<h3>Step 10</h3>
+			<p>Copy the folder <code>@allianceapps_admintool</code> in your <code>server directory (where you arma3server.exe is located)</code>.</p>
+			<b>Additional step if you are using an old version of Altis Life:</b><br/>
+				<br>
+				<p>
+					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#requestrecieved" aria-expanded="false" aria-controls="requestrecieved">Additional step</button>
+				</p>
+				<div class="collapse" id="requestrecieved">
+					<div class="card">
+						<div class="card-body">
+							Open the file <code>/@allianceapps_admintool/addons/allianceapps_admintool/fn_makeandsendp.sqf</code> and replace <br> <code>SELECT adminlevel FROM players WHERE pid='%1'</code> with the following
+							<pre class="prettyprint">SELECT adminlevel FROM players WHERE playerid='%1'</pre>
+						
+						</div>
+					</div>
+				</div>
+				
+			</p>
+			<h3>Step 11</h3>
+			<p>Add <code>@allianceapps_admintool</code> as a server mod in your startup params.<br>
+			If you have a <code>start.bat</code>, it'll maybe look like this: <pre class="prettyprint">-servermod=@life_server;@extdb3;@allianceapps_admintool</pre></p>
+			<br>
+			<div class="alert alert-danger" role="alert">
+				The following must be done in your <b>database</b>:<br>
+			</div>
+			<h3>Step 12</h3>
+			<p>	
+				Führe die folgende Abfrage in deiner <b>Spieldatenbank</b> aus: 
+				<pre class="prettyprint">CREATE TABLE IF NOT EXISTS `adminlogs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name_admin` varchar(255) NOT NULL,
+  `uid_admin` varchar(17) NOT NULL,
+  `name_player` varchar(255) NOT NULL,
+  `uid_player` varchar(17) NOT NULL,
+  `log` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;</pre>
+			</p>
+			
+			
+			
+		<h3 align='center'><div class="alert alert-success" role="alert">Congratulations. You have now successfully installed the Admintool.</div></h3>
+		
+		<hr>
+			<h3>Notes</h3>
+			<p>All functions in the functions list can be run by <b>double click</b>.<br>
+			Some functions (e. g. giving money) require an <b>input box</b> - so it will be displayed before the function is run. Just single click it and enter the needed information.<br>
+			You can then <b>confirm</b> the function using a <b>double click</b> on it.<br><br>
+			In the <b>keymapper</b> you can assign a hotkey for running a function - also using <b>double click</b> on the function..<br>
+		<hr>
+			<h3>Settings</h3>
+			<p>In the file <code>/@allianceapps_admintool/addons/allianceapps_admintool/rights_config.hpp</code> you can define the permissions for your admin levels and some more <b>settings</b>.<br><br>
+			First configure your TeamSpeak IP, so users get displayed the correct address ingame:
+			<pre class="prettyprint">teamspeakaddress = "ts.YOURteamspeakADDRESS.net"</pre>
+			Now configure the dev environment:<pre class="prettyprint">
+/* If set to true, the dev environment is enabled. If set to false, it is disabled. */
+enableDebugConsole = true;
+/* Whitelist the UIDs that are allowed to use the dev env */
+devtoolUIDWhitelist[] = {"12345678912345678","12345678912345678"}; </pre>
+			Now configure your permissions:<pre class="prettyprint">
+class trunkunlock { //Classname (needed for special rights)
+	fncname = "_admin_trunkunlock";
+	displayname = "STR_adm_fnc_trunkunlock";
+	level = 7; //Admin level which is required to run this function
+	type = false;
+	edit = false;
+	map = true;
+};</pre>
+You can give an admin <b>special rights</b>, which he can use additionally to the functions his levels give him. You can define them like that:
+<pre class="prettyprint">class general {
+	teamspeakaddress = "ts.YOURteamspeakADDRESS.net";
+	/* SPECIALRIGHTS - Look like this: "UID_" + SPIELERUID */
+	uid_12345678912345678[] = {"zeus","trunkopen","delcursor"}; //Klassennamen der Funktionen, welche man zusätzlich bekommt
+	uid_12345678912345679[] = {"marker","teleportall"};//Klassennamen der Funktionen, welche man zusätzlich bekommt
+};</pre>
+		</p>
+			<br>
+		<hr>
+			<h3>License</h3>
+			
+			The <b>license</b> is stored in the file <code>LICENSE.txt</code>. It must not be removed from the product. The script can only be installed on <b>1 public gameserver</b> at a time (non-public testservers are allowed) - if you want to run the script on <b>several servers</b> you'll need <b>several licenses</b>.
+
+		<hr>
+		</div> <!-- /container -->
+
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst"></script>
+	</body>
+</html>

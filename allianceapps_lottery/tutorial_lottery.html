@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Lottery Tutorial (Deutsch)</title>
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+		<!-- Custom styles for this template -->
+		<link href="https://getbootstrap.com/docs/4.0/examples/grid/grid.css" rel="stylesheet">
+	</head>
+
+	<body>
+	<p style="display: inline; position: absolute; right: 5px; top: 5px;">Stand: 21.12.2017</p>
+
+		<div class="container">
+				<table style="width:100%">
+					<tr>
+						<th><h1>Tutorial: Lottery</h1></th>
+						<th><a href="https://www.allianceapps.de"><img src="https://allianceapps.de/images/linksoben.png" height="75" align="right"></a></th>
+					</tr>
+				</table>
+			<h3>Hinweis</h3>
+			<p>In diesem Tutorial verändert ihr Dateien in eurer Mission sowie in eurem @life_server - das wichtigste sind also Backups! Ernsthaft, macht Backups von allen Daten bevor es hier weitergeht. AllianceApps ist nicht verantwortlich für eventuell verlorene Daten o. ä. </p>		
+			<h3>Schritt 1</h3>
+			Erstelle im <code>/core/</code> Ordner deiner Mission (.Altis, .Tanoa usw.) eine Datei namens <code>allianceapps_license.txt</code> (oder öffne Sie, wenn sie bereits existiert). Öffne diese und füge in einer neuen Zeile folgendes ein:
+			<br>
+			<code>LOTTERY: &lt;HIER CODE EINFÜGEN></code><br>
+			Dies ist der Lizenzschlüssel für das Produkt. Dieser ermöglicht uns zu identifizieren, ob du das Produkt legal erworben hast.
+			<hr>
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss in der <b>Mission</b> erfolgen (.Altis, .Tanoa, .Malden usw.):<br>
+			</div>
+			<h3>Schritt 2</h3>
+			<p>Kopiere die Datei <code>aapps_lottery.hpp</code> in den Ordner <code>/dialog/</code>.</p>
+			<p>Öffne <code>/dialog/MasterHandler.hpp</code> und füge das Nachfolgende am Ende ein:<br>
+			<pre class="prettyprint">#include "aapps_lottery.hpp"</pre></p>
+
+			
+			<h3>Schritt 3</h3>
+			<p>Kopiere die Datei <code>/fn_aapps_checklotteryinput.sqf</code> in den Ordner <code>/core/functions/</code> in deiner Mission.</p>
+			<p>Öffne <code>/Functions.hpp</code> bzw. <code>/Functions.h</code> und suche nach folgendem:<br>
+			<pre class="prettyprint">class Functions {
+	file = "core\functions";</pre>
+      Füge unter <code>file = "core\functions";</code> folgendes ein: <code>class aapps_checklotteryinput {};</code>. Der Teil der Datei sollte jetzt also so aussehen:<br>
+      <pre class="prettyprint">class Functions {
+        file = "core\functions";
+	class aapps_checklotteryinput {};</pre></p>
+	  
+	  <h3>Schritt 4</h3>
+	  <p>
+		Öffne deine <code>/CfgRemoteExec.hpp</code> und füge unter <code>F(life_fnc_animSync,ANYONE)</code> folgendes ein:
+		<pre class="prettyprint">F(life_fnc_aapps_checklotteryinput,CLIENT)
+F(ton_fnc_aapps_lottery_action,SERVER)
+F(ton_fnc_aapps_lottery_fetchWinners,SERVER)</pre>
+	  </p>
+	  <h3>Schritt 5</h3>
+		<p>Öffne die Datei <code>/stringtable.xml</code> und gehe an das Ende der Datei. Füge nun vor dem letzten <code>&lt;/Project&gt;</code> - Tag den Inhalt der beigelegten <b>Stringtable.xml</b> ein.</P>
+
+		<br>
+		<div class="alert alert-danger" role="alert">
+			Folgendes muss im <b>@life_server</b> erfolgen:<br>
+		</div>
+		<h3>Schritt 6</h3>
+		<p>
+		<p>Kopiere den Ordner<code>/lottery/</code> in den Ordner <code>/Functions/</code> in deinem Life_Server.</p>
+			<p>Öffne deine <code>/config.cpp</code> und suche nach folgendem:<br>
+			<pre class="prettyprint">class PlayTime {</pre>
+      Füge über <code>class PlayTime {</code> folgendes ein: 
+      <pre class="prettyprint">class lottery {
+	file = "\life_server\Functions\lottery";
+	class aapps_lottery_action;
+	class aapps_lottery_fetchWinners;
+};</pre></p>
+<h3>Schritt 7</h3>
+		<p>
+		<p>Füge folgende Zeile am Ende deiner <code>init.sqf</code> ein:</p>
+			<pre class="prettyprint">0 call ton_fnc_aapps_lottery_fetchWinners;</pre></p>
+	<br>
+		<div class="alert alert-danger" role="alert">
+				Folgendes muss in der <b>Datenbank</b> erfolgen:<br>
+			</div>
+			<h3>Schritt 8</h3>
+			<p>	
+				Führe die folgende Abfrage oder den beigelegten SQL Dump in deiner <b>Altis Life Datenbank</b> aus: 
+				<pre class="prettyprint">-- Tables
+CREATE TABLE IF NOT EXISTS `lottery_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `value` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `lottery_tickets` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` varchar(17) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Columns
+ALTER TABLE players ADD lottery_win int(100) NOT NULL DEFAULT '0';
+
+-- Data
+INSERT INTO `lottery_info` (`id`, `name`, `value`) VALUES
+	(1, 'lottery_lvl2', 3),
+	(2, 'lottery_lvl3', 7),
+	(3, 'lottery_lvl4', 25),
+	(4, 'lottery_lvl5', 65),
+	(5, 'lottery_lvl6', 100),
+	(6, 'lottery_jackpot', 0);
+
+-- Procedures
+DELIMITER //
+CREATE DEFINER=`arma3`@`localhost` PROCEDURE `lotterydeltickets`()
+BEGIN
+	 UPDATE `lottery_tickets` SET `deleted_at`= CURRENT_TIMESTAMP;
+END//
+
+CREATE DEFINER=`arma3`@`localhost` PROCEDURE `lotterydelwin`()
+BEGIN
+	UPDATE `players` SET `lottery_win`= 0;
+END//
+DELIMITER ;</pre>
+			</p>
+			<h3>Schritt 9</h3>
+			<p>
+				Füge im Editor Objekte ein, worüber man sich qualifizieren kann.<br>
+				<b>Aktion, damit man ein Ticket erstellen kann:</b>
+				<pre class="prettyprint">this addAction[localize "STR_lottery_gui_title",{[0] call life_fnc_aapps_checklotteryinput},"",0,false,false,"",'playerSide isEqualTo CIVILIAN'];</pre>
+				<b>Aktion, damit man den Gewinn abrufen kann:</b>
+				<pre class="prettyprint">this addAction[localize "STR_lottery_action_receive",{[3] call life_fnc_aapps_checklotteryinput},"",0,false,false,"",'playerSide isEqualTo CIVILIAN'];</pre>
+				<br>
+				<b>Beachte:</b> Verwende kein <b>SimpleObject</b>, da darauf keine <b>Aktionen</b> hinzugefügt werden können.
+			</p>
+			<hr>
+			<h3>Hinweis</h3>
+			<p>In der Datei <code>/dialog/aapps_lottery.hpp</code> befindet sich die Konfiguration der Preise, sowie weitere kleine <b>Einstellungen</b>.
+			<br>			
+		<hr>
+		<h3 align='center'><div class="alert alert-success" role="alert">Gratulation. Du hast nun das Lotteriesystem erfolgreich installiert.</div></h3>
+		</div> <!-- /container -->
+
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst""></script>
+	</body>
+</html>

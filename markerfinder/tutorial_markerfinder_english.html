@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Marker Finder Tutorial (English)</title>
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+		<!-- Custom styles for this template -->
+		<link href="https://getbootstrap.com/docs/4.0/examples/grid/grid.css" rel="stylesheet">
+		
+		<!-- JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<p style="display: inline; position: absolute; right: 5px; top: 5px;">Last update: 21-08-2019</p>
+
+		<div class="container">
+				<table style="width:100%">
+					<tr>
+						<th><h1>Tutorial: Marker Finder</h1></th>
+						<th><a href="https://www.allianceapps.io"><img src="https://cdn.allianceapps.io/img/aa_logo.png" height="75" align="right"></a></th>
+					</tr>
+				</table>
+			<h3>Warning</h3>
+			<p>In this tutorial we will change files in your clientside mission, in your @life_server - so please make backups before starting. Seriously, do it. AllianceApps is not responsible for any data loss.</p>
+			<div class="alert alert-danger" role="alert">
+				The next steps need to be executed in the <b>clientside mission</b> (.Altis, .Tanoa, .Malden):<br>
+			</div>
+			<h3>Step 1</h3>
+			<p>Dont forget to create backups!</p>
+			
+			
+			<h3>Step 2</h3>
+			<p>Copy the folder <code>markerfinder</code> into <code>/core/</code>.</p>
+			<p>
+			Open <code>/Functions.hpp</code> or <code>/Functions.h</code> and add the following before the last curly bracket <code>}</code> (after <code>class Vehicle {</code>):<br>
+			<pre class="prettyprint">class markerfinder {
+	file = "core\markerfinder";
+	class animateMarkerFinder {};
+	class closeMarkerFinder {};
+	class initMarkerFinder {};
+	class markerFinder {};
+	class markerFinderInput {};
+};</pre></p>
+			<h3>Step 3</h3>
+			<p>Edit <code>/stringtable.xml</code> and go to the end of the file. Now add the content of the included stringtable.xml before the last <code>&lt;/Project&gt;</code> - tag:.</p>
+
+			
+			<h3>Step 4</h3>
+			<p>Edit <code>/core/configuration.sqf</code> and add the following before the end of the file:</p>
+			<pre class="prettyprint">life_markerFinder = false;</pre>
+			
+			<h3>Step 5</h3>
+			<p>Edit <code>/config/Config_Master.hpp</code> and add the following before the end of the file:</p>
+			<pre class="prettyprint">#include "..\core\markerfinder\Config_MarkerFinder.hpp"</pre>
+
+			<h3>Step 6</h3>
+			<p>Edit <code>/core/init.sqf</code> and add the following before the end of the file:</p>
+			<pre class="prettyprint">call life_fnc_initMarkerFinder;</pre>
+			<br>
+			
+			<h3 align='center'><div class="alert alert-success" role="alert">Congratulations. You have now successfully installed the markerfinder script.</div></h3>
+		
+		<hr>
+			<h3>Configuration</h3>
+			<p>The file <code>/core/markerfinder/Config_Markerfinder.hpp</code> contains the configuration for this script.<br>
+			The <b>license</b> is stored in the file <code>LICENSE.txt</code>. It must not be removed from the product. The script can only be installed on <b>1 public gameserver</b> at a time (non-public testservers are allowed) - if you want to run the script on <b>several servers</b> you'll need <b>several licenses</b>.
+
+		<hr>
+		</div> <!-- /container -->
+
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst"></script>
+	</body>
+</html>

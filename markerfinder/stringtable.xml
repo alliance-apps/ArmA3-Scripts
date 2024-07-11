@@ -1,0 +1,22 @@
+<Package name="marker_aapps">
+	<Key ID="STR_openMarkerFinder">
+		<Original>Open Markerfinder</Original>
+		<German>Marker Finder öffnen</German>
+	</Key>
+	<Key ID="STR_closeMarkerFinder">
+		<Original>Close Markerfinder</Original>
+		<German>Marker Finder schließen</German>
+	</Key>
+	<Key ID="STR_noMapMarkerFinder">
+		<Original>You don't have a map with you!</Original>
+		<German>Du hast keine Karte bei dir!</German>
+	</Key>
+	<Key ID="STR_MarkerFinderTitle">
+		<Original>&lt;t align="center"&gt;Markerfinder</Original>
+		<German>&lt;t align="center"&gt;Marker Finder</German>
+	</Key>
+	<Key ID="STR_noMarkerFoundFinder">
+		<Original>No marker found</Original>
+		<German>Kein Marker gefunden</German>
+	</Key>
+</Package>

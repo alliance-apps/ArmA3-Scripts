@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Ausweis Tutorial (Deutsch)</title>
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+		<!-- Custom styles for this template -->
+		<link href="https://getbootstrap.com/docs/4.0/examples/grid/grid.css" rel="stylesheet">
+		
+		<!-- JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<p style="display: inline; position: absolute; right: 5px; top: 5px;">Stand: 30.06.2018</p>
+
+		<div class="container">
+				<table style="width:100%">
+					<tr>
+						<th><h1>Tutorial: Ausweis</h1></th>
+						<th><a href="https://www.allianceapps.de"><img src="https://allianceapps.de/images/linksoben.png" height="75" align="right"></a></th>
+					</tr>
+				</table>
+			<h3>Hinweis</h3>
+			<p>In diesem Tutorial verändert ihr Dateien in eurer Mission sowie in eurem @life_server - das Wichtigste sind also Backups! Ernsthaft, macht Backups von allen Daten bevor es hier weitergeht. AllianceApps ist nicht verantwortlich für eventuell verlorene Daten o. ä.</p>		
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss in der <b>Mission</b> erfolgen (.Altis, .Tanoa, .Malden usw.):<br>
+			</div>
+			<h3>Schritt 1</h3>
+			Erstelle im <code>/core/</code> Ordner deiner Mission (.Altis, .Tanoa usw.) eine Datei namens <code>allianceapps_license.txt</code> (oder öffne Sie, wenn sie bereits existiert). Öffne diese und füge in einer neuen Zeile folgendes ein:
+			<br>
+			<code>IDCARD: &lt;HIER CODE EINFÜGEN></code><br>
+			Dies ist der Lizenzschlüssel für das Produkt. Dieser ermöglicht uns zu identifizieren, ob du das Produkt legal erworben hast.
+			
+			<h3>Schritt 2</h3>
+			<p>So, jetzt geht es los. Backups gemacht? Wirklich? Ernsthaft, macht Backups eurer <b>Mission</b>, dem <b>@life_server</b> und der <b>Datenbank</b>. BACKUPS!</p>
+			
+			
+			<h3>Schritt 3</h3>
+			<p>Kopiere den Ordner <code>idcard</code> in den Ordner <code>/core/</code>.</p>
+			<p>
+			Öffne <code>/Functions.hpp</code> bzw. <code>/Functions.h</code> und füge dort vor der letzten geschweiften Klammer <code>}</code> (nach <code>class Vehicle {</code>) folgendes ein:<br>
+			<pre class="prettyprint">class allianceapps_idcard {
+	file = "core\idcard";  
+	class idcard_NameCheck {};  
+	class idcard {};  
+	class idcard_Created {};  
+	class show_idcard {};
+};</pre></p>
+			<h3>Schritt 4</h3>
+			<p>Öffne die Datei <code>/dialog/masterhandler.hpp</code> und füge folgendes am Ende der Datei an:</p>
+			<pre class="prettyprint">#include "..\core\idcard\idcard.hpp" //idcard</pre>
+			
+			<h3>Schritt 5</h3>
+			<p>Öffne die Datei <code>/CfgRemoteExec.hpp</code> und füge folgendes unter <code>/* Functions for everyone */</code> ein:</p>
+			<pre class="prettyprint">F(life_fnc_idcard_Created,CLIENT) //idcard
+F(ton_fnc_updateidcard,SERVER) //idcard
+F(life_fnc_show_idcard,CLIENT) //idcard</pre>
+			
+			<h3>Schritt 6</h3>
+			<p>Öffne die Datei <code>/core/configuration.sqf</code> und füge folgendes am Ende der Datei ein:</p>
+			<pre class="prettyprint">life_idcard_data = [];
+life_side_noidcard = false;</pre>
+			
+			<h3>Schritt 7</h3>
+			<p>Öffne die Datei <code>/description.ext</code> und füge folgendes in die Klasse <code>RscTitles</code> ein:</p>
+			<pre class="prettyprint">#include "core\idcard\idcard_show.hpp"</pre>
+						
+			<hr>			
+			<h3>Hinweis</h3>
+			<p>Standardmäßig werden <b>Polizisten</b> und <b>Sanitäter</b> beim ersten Join gezwungen, einen Ausweis zu erstellen. <b>Zivilisten</b> können dies später an einem Infostand ausführen.
+			Wähle in <b>Schritt 8</b> aus, ob du den Ausweis bei Zivilisten erzwingen willst.</p>
+			<hr>
+			
+			<h3>Schritt 8</h3>
+			<p>Öffne die Datei <code>/core/initCiv.sqf</code> und füge folgendes nach <code>waitUntil {!(isNull (findDisplay 46))};</code> ein:</p>
+			
+			<div id="civforcepanel" data-children=".itemciv">
+				<button class="btn btn-primary" type="button" data-toggle="collapse" data-parent="#civforcepanel" href="#civnormal" aria-expanded="false" aria-controls="civnormal">Normal</button>
+				<button class="btn btn-primary" type="button" data-toggle="collapse" data-parent="#civforcepanel" href="#civforce" aria-expanded="false" aria-controls="civforce">Ausweis-Formular erzwingen</button>
+				<div class="itemciv">
+					<div class="collapse" id="civnormal" data-parent="#accordion" role="tabpanel">
+<pre class="prettyprint">_12 = 0 call life_fnc_idcard_NameCheck;
+waitUntil {_12};</pre>
+					</div>
+				</div>
+				<div class="itemciv">
+					<div class="collapse" id="civforce" data-parent="#accordion" role="tabpanel">
+					<pre class="prettyprint">if(life_side_noidcard) then {
+	createDialog "aapps_idcard";
+	//Abort can't be closeDialog in loadingscreen -> endmission  
+	((findDisplay 4689200) displayCtrl 4689213) ctrlSetEventHandler
+	[
+		"ButtonDown",
+		"
+			endmission ""END1"";
+		"
+	];
+	(findDisplay 4689200) displaySetEventHandler ["keyDown","_this call life_fnc_displayHandler"];
+	waitUntil{!(life_idcard_data isEqualTo [])};
+}; 
+_12 = 0 call life_fnc_idcard_NameCheck; 
+waitUntil {_12};</pre>
+					</div>
+				</div>
+			</div>
+			<h3>Schritt 9</h3>
+			<p>Öffne die Dateien <code>/core/initCop.sqf</code> und <code>/core/initMedic.sqf</code>. Füge nun in beiden Dateien vor <code>[] call life_fnc_spawnMenu;</code> folgendes ein:</p>
+			<pre class="prettyprint">if(life_side_noidcard) then {
+	createDialog "aapps_idcard";
+	//Abort can't be closeDialog in loadingscreen -> endmission  
+	((findDisplay 4689200) displayCtrl 4689213) ctrlSetEventHandler
+	[
+		"ButtonDown",
+		"
+			endmission ""END1"";
+		"
+	];
+	(findDisplay 4689200) displaySetEventHandler ["keyDown","_this call life_fnc_displayHandler"];
+	waitUntil{!(life_idcard_data isEqualTo [])};
+}; 
+_12 = 0 call life_fnc_idcard_NameCheck; 
+waitUntil {_12};</pre>
+			
+			<h3>Schritt 10</h3>
+			<p>Öffne die Datei <code>/core/functions/fn_keyHandler.sqf</code> und suche manuell nach <code>//Space key for Jumping</code>. Füge darüber folgende <b>zwei Cases</b> ein:</P>
+			<pre class="prettyprint">case 68: {
+	if(!(life_idcard_data isEqualto [])) then {
+		if(!isnull cursorTarget) then {
+			if(alive cursorTarget) then {
+				if(cursorTarget isKindOf "Man") then {
+					[life_idcard_data,getplayeruid player] remoteExecCall ["life_fnc_show_idcard",cursorTarget];
+					hint format[localize "STR_capps_cur_error_success",name cursorTarget];
+				} else {
+					[life_idcard_data,getplayeruid player] spawn life_fnc_show_idcard;
+					hint localize "STR_capps_cur_error_no_target";
+				};
+			} else {
+				[life_idcard_data,getplayeruid player] spawn life_fnc_show_idcard;
+				hint localize "STR_capps_cur_error_not_alive";
+			};
+		} else {
+			[life_idcard_data,getplayeruid player] spawn life_fnc_show_idcard;
+			hint localize "STR_capps_cur_error_no_target";
+		};
+	} else {
+		hint localize "STR_capps_cur_error_no_idcard";
+	};
+};
+case 87: {
+	if(!(playerSide isEqualto CIVILIAN)) then {
+		if(!(life_idcard_data isEqualto [])) then {
+			if(!isnull cursorTarget) then {
+				if(alive cursorTarget) then {
+					if(cursorTarget isKindOf "Man") then {
+						[life_idcard_data,getplayeruid player,playerSide,(call life_coplevel) + (call life_mediclevel)] remoteExecCall ["life_fnc_show_idcard",cursorTarget];
+						hint format[localize "STR_capps_cur_error_success_card",name cursorTarget];
+					} else {
+						[life_idcard_data,getplayeruid player,playerSide,(call life_coplevel) + (call life_mediclevel)] spawn life_fnc_show_idcard;
+						hint localize "STR_capps_cur_error_no_target";
+					};
+				} else {
+					[life_idcard_data,getplayeruid player,playerSide,(call life_coplevel) + (call life_mediclevel)] spawn life_fnc_show_idcard;
+					hint localize "STR_capps_cur_error_not_alive";
+				};
+			} else {
+				[life_idcard_data,getplayeruid player,playerSide,(call life_coplevel) + (call life_mediclevel)] spawn life_fnc_show_idcard;
+				hint localize "STR_capps_cur_error_no_target";
+			};
+		} else {
+			hint localize "STR_capps_cur_error_no_idcard";
+		};
+	};
+};</pre>
+			<p>Die Zahl <b>68</b> bzw. <b>87</b> in der ersten Zeile steht für die Taste, welche man benutzt um jemanden seinen <b>Ausweis</b> bzw. <b>Dienstausweis</b> zu zeigen.<br>
+			Standardmäßig wird die Taste <b>F10 (68)</b> bzw. <b>F11 (87)</b> genutzt. Diese Nummern kannst du im Bohemia Wiki nachschlagen und gegebenenfalls ändern: <br>
+			<a href="https://community.bistudio.com/wiki/DIK_KeyCodes#German_keyboard">BI Arma 3 DIK_KeyCodes</a></p>
+			
+			<h3>Schritt 11</h3>
+			<p>Öffne die Datei <code>/stringtable.xml</code> und gehe an das Ende der Datei. Füge nun vor dem letzten <code>&lt;/Project&gt;</code> - Tag den Inhalt der beigelegten <b>Stringtable.xml</b> ein.</P>
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss im <b>@life_server</b> erfolgen:<br>
+			</div>
+			<h3>Schritt 12</h3>
+			<p>Öffne die Datei <code>/Config.cpp</code> und suche nach <code>class keyManagement {};</code> und füge darunter folgendes ein:<br>
+				<pre class="prettyprint">class updateIdCard {}; //IdCard</pre><br>
+				Füge nun die Datei <code>fn_updateIdCard.sqf</code> aus dem <b>Downloadordner</b> in folgendem Ordner ein: <code>/Functions/Systems</code>.<br>
+				<b>Zusatzschritt falls man eine ältere Altis Life Version hat:</b><br/>
+				<br>
+				<p>
+					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#idcardupdatecollapse" aria-expanded="false" aria-controls="idcardupdatecollapse">Zusatzschritt</button>
+				</p>
+				<div class="collapse" id="idcardupdatecollapse">
+					<div class="card">
+						<div class="card-body">
+							Öffne die Datei <code>/Functions/Systems/fn_updateIdCard.sqf</code> und suche mit einem Editor deiner Wahl nach <code>pid</code>.<br>
+							Ersetze diesen Text <b>überall</b> in dieser Datei mit <code>playerid</code>.
+						</div>
+					</div>
+				</div>
+				
+			</p>
+			<h3>Schritt 13</h3>
+			<p>Öffne die Datei <code>/Functions/MySQL/fn_queryRequest.sqf</code>. Falls die Datei noch der von <b>Altis Life 5.0</b> entspricht und <b>nicht</b> verändert wurde, kannst du folgendes 
+<pre class="prettyprint">_query = switch (_side) do {
+	// West - 11 entries returned
+	case west: {format ["SELECT pid, name, cash, bankacc, adminlevel, donorlevel, cop_licenses, coplevel, cop_gear, blacklist, cop_stats, playtime FROM players WHERE pid='%1'",_uid];};
+	// Civilian - 12 entries returned
+	case civilian: {format ["SELECT pid, name, cash, bankacc, adminlevel, donorlevel, civ_licenses, arrested, civ_gear, civ_stats, civ_alive, civ_position, playtime FROM players WHERE pid='%1'",_uid];};
+	// Independent - 10 entries returned
+	case independent: {format ["SELECT pid, name, cash, bankacc, adminlevel, donorlevel, med_licenses, mediclevel, med_gear, med_stats, playtime FROM players WHERE pid='%1'",_uid];};
+};</pre>
+Einfach mit diesem Codeschnipsel ersetzen: 
+<pre class="prettyprint">_query = switch (_side) do {
+	// West - 12 entries returned
+	case west: {format ["SELECT pid, name, cash, bankacc, adminlevel, donorlevel, cop_licenses, coplevel, cop_gear, blacklist, cop_stats, playtime, idcard_data_cop FROM players WHERE pid='%1'",_uid];};
+	// Civilian - 13 entries returned
+	case civilian: {format ["SELECT pid, name, cash, bankacc, adminlevel, donorlevel, civ_licenses, arrested, civ_gear, civ_stats, civ_alive, civ_position, playtime, idcard_data_civ FROM players WHERE pid='%1'",_uid];};
+	// Independent - 11 entries returned
+	case independent: {format ["SELECT pid, name, cash, bankacc, adminlevel, donorlevel, med_licenses, mediclevel, med_gear, med_stats, playtime, idcard_data_med FROM players WHERE pid='%1'",_uid];};
+};</pre>
+			<b>Zusatzschritt falls man eine ältere Altis Life Version hat:</b><br>
+			<br>
+			<p>
+				<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#querycollapse" aria-expanded="false" aria-controls="querycollapse">Zusatzschritt</button>
+			</p>
+			<div class="collapse" id="querycollapse">
+				<div class="card">
+					<div class="card-body">
+						<ul>
+							<li>Wenn die Spalte in deiner players-Tabelle <b>playerid</b> statt <b>pid</b> heißt, musst du in diesem Codeschnipsel natürlich auch das <code>SELECT pid</code> durch <code>SELECT playerid</code> ersetzen.</li>
+							<li>Suche nach <code>_queryResult set[15,_keyArr];</code> und ersetze es mit <code>_queryResult set[16,_keyArr];</code></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<br>
+			Falls deine Datei <b>nicht</b> der Orginalen entspricht, gehe wie folgt vor:<br>
+			<ul>
+				<li>Nimm folgende Zeile <code>// West - XY entries returned</code> und <b>ersetzte</b> XY mit der Zahl, die an dieser Stelle steht, allerdings +1. Sprich wenn da 13 steht, steht anschließend 14. Dies machst du nun genauso mit <code>// Civilian - 12 entries returned</code> und <code>// Independent - 10 entries returned</code>.</li>
+				<li>Nun musst du die <b>cases</b> bearbeiten: </li>
+				<li>Füge in der SQL Abfrage für <code>case west</code> vor <code>FROM players</code> folgendes ein:  <code>, idcard_data_cop</code>.</li>
+				<li>Füge in der SQL Abfrage für <code>case civilian</code> vor <code>FROM players</code> folgendes ein: <code>, idcard_data_civ</code>.</li>
+				<li>Füge in der SQL Abfrage für <code>case independent</code> vor <code>FROM players</code> folgendes ein: <code>, idcard_data_med</code>.</li>
+			</ul>
+			Merke dir diese drei Zahlen, also <b>XY entries returned</b>, diese benötigt man im <b>14. Schritt</b> und <b>15. Schritt</b>.
+			</p>
+			<h3>Schritt 14</h3>
+			<p>	
+				Suche manuell nach <code>switch (_side) do {</code>.<br>
+				Wenn die Datei noch dem Original entspricht, ersetze die gesamte Switch-Schleife (diese endet mit <code>};</code>) mit folgender und gehe zum nächsten Schritt: 
+				<p>
+					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#sessionreceived5" aria-expanded="false" aria-controls="sessionreceived5">Code</button>
+				</p>
+				<div class="collapse" id="sessionreceived5">
+					<pre class="prettyprint">switch (_side) do {
+	case west: {
+		_queryResult set[9,([_queryResult select 9,1] call DB_fnc_bool)];
+
+		//Parse Stats
+		_new = [(_queryResult select 10)] call DB_fnc_mresToArray;
+		if (_new isEqualType "") then {_new = call compile format ["%1", _new];};
+		_queryResult set[10,_new];
+
+		//Playtime
+		_new = [(_queryResult select 11)] call DB_fnc_mresToArray;
+		if (_new isEqualType "") then {_new = call compile format ["%1", _new];};
+		_index = TON_fnc_playtime_values_request find [_uid, _new];
+		if (_index != -1) then {
+			TON_fnc_playtime_values_request set[_index,-1];
+			TON_fnc_playtime_values_request = TON_fnc_playtime_values_request - [-1];
+			TON_fnc_playtime_values_request pushBack [_uid, _new];
+		} else {
+			TON_fnc_playtime_values_request pushBack [_uid, _new];
+		};
+		[_uid,_new select 0] call TON_fnc_setPlayTime;
+		
+		//idcard_data
+		_new = [(_queryResult select 12)] call DB_fnc_mresToArray;
+		if (_new isEqualType "") then {_new = call compile format["%1", _new];};
+		_queryResult set[12,_new];
+	};
+
+	case civilian: {
+		//idcard_data
+		_new = [(_queryResult select 13)] call DB_fnc_mresToArray;
+		if (_new isEqualType "") then {_new = call compile format["%1", _new];};
+		_queryResult set[13,_new];
+		
+		_queryResult set[7,([_queryResult select 7,1] call DB_fnc_bool)];
+
+		//Parse Stats
+		_new = [(_queryResult select 9)] call DB_fnc_mresToArray;
+		if (_new isEqualType "") then {_new = call compile format ["%1", _new];};
+		_queryResult set[9,_new];
+
+		//Position
+		_queryResult set[10,([_queryResult select 10,1] call DB_fnc_bool)];
+		_new = [(_queryResult select 11)] call DB_fnc_mresToArray;
+		if (_new isEqualType "") then {_new = call compile format ["%1", _new];};
+		_queryResult set[11,_new];
+
+		//Playtime
+		_new = [(_queryResult select 12)] call DB_fnc_mresToArray;
+		if (_new isEqualType "") then {_new = call compile format ["%1", _new];};
+		_index = TON_fnc_playtime_values_request find [_uid, _new];
+		if (_index != -1) then {
+			TON_fnc_playtime_values_request set[_index,-1];
+			TON_fnc_playtime_values_request = TON_fnc_playtime_values_request - [-1];
+			TON_fnc_playtime_values_request pushBack [_uid, _new];
+		} else {
+			TON_fnc_playtime_values_request pushBack [_uid, _new];
+		};
+		[_uid,_new select 2] call TON_fnc_setPlayTime;
+		
+		/* Make sure nothing else is added under here */
+		_houseData = _uid spawn TON_fnc_fetchPlayerHouses;
+		waitUntil {scriptDone _houseData};
+		_queryResult pushBack (missionNamespace getVariable [format ["houses_%1",_uid],[]]);
+		_gangData = _uid spawn TON_fnc_queryPlayerGang;
+		waitUntil{scriptDone _gangData};
+		_queryResult pushBack (missionNamespace getVariable [format ["gang_%1",_uid],[]]);
+	};
+
+	case independent: {
+		//Parse Stats
+		_new = [(_queryResult select 9)] call DB_fnc_mresToArray;
+		if (_new isEqualType "") then {_new = call compile format ["%1", _new];};
+		_queryResult set[9,_new];
+
+		//Playtime
+		_new = [(_queryResult select 10)] call DB_fnc_mresToArray;
+		if (_new isEqualType "") then {_new = call compile format ["%1", _new];};
+		_index = TON_fnc_playtime_values_request find [_uid, _new];
+		if !(_index isEqualTo -1) then {
+			TON_fnc_playtime_values_request set[_index,-1];
+			TON_fnc_playtime_values_request = TON_fnc_playtime_values_request - [-1];
+			TON_fnc_playtime_values_request pushBack [_uid, _new];
+		} else {
+			TON_fnc_playtime_values_request pushBack [_uid, _new];
+		};
+		[_uid,_new select 1] call TON_fnc_setPlayTime;
+		
+		//idcard_data
+		_new = [(_queryResult select 11)] call DB_fnc_mresToArray;
+		if (_new isEqualType "") then {_new = call compile format["%1", _new];};
+		_queryResult set[11,_new];
+	};
+};</pre>
+				</div>
+				Falls du keine Standard-Dateien hast, gehe wie folgt vor:
+				<ul>
+					<li>Gehe in die <code>case west</code> und füge am Ende vor <code>};</code> folgendes ein:<br>
+					<pre class="prettyprint">//idcard_data
+_new = [(_queryResult select XY)] call DB_fnc_mresToArray;
+if (_new isEqualType "") then {_new = call compile format["%1", _new];};
+_queryResult set[XY,_new];</pre>
+						Hier musst du nun XY mit der Zahl der Fraktion <b>West</b> ersetzen, allerdings um Eins minimiert. Wenn die Zahl <b>13</b> war, fügst du nun eine <b>12</b> ein.</li>
+					<li>Wiederhole nun den oben genannten Schritt für die Fraktion <b>independent</b>.</li>
+					<li>Suche nach <code>case civilian: {</code> und füge folgendes darunter ein:<br>
+					<pre class="prettyprint">//idcard_data
+_new = [(_queryResult select XY)] call DB_fnc_mresToArray;
+if (_new isEqualType "") then {_new = call compile format["%1", _new];};
+_queryResult set[XY,_new];</pre>
+					Hier musst du nun XY mit der Zahl der Fraktion <b>Civilian</b> ersetzen, allerdings um Eins minimiert. Wenn die Zahl <b>13</b> war, fügst du nun eine <b>12</b> ein.</li>
+				</ul>
+			</p>
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss in der <b>Mission</b> erfolgen (.Altis, .Tanoa, .Malden usw.):<br>
+			</div>
+			<h3>Schritt 15</h3>
+			<p>	
+				Öffne die Datei <code>/core/session/fn_requestReceived.sqf</code> und suche nach <code>switch</code>.<br>
+				Dies ist eine Switch-Schleife, welche in <b>cases</b> unterteilt ist. Diese <b>cases</b> beginnen mit <code>{</code> und enden mit <code>}</code>.<br>
+				<br>
+				Falls deine <b>Abfrage</b>, die sich im <b>@life_server</b> befindet, nicht die Standard-Abfrage ist, musst du folgende <b>Codeteile</b> anpassen.<br>
+				Ersetzte dazu einfach die <b>Indexe</b> (die Zahlen). Diese sind jene <b>Zahlen</b>, welche du dir in <b>Schritt 13</b> gemerkt hast.<br>
+				<br>
+				Füge in der <code>case west</code> vor dem Ende dieser <b>Case</b> folgendes ein:
+				<pre class="prettyprint">//idcard
+if((_this select 12) isEqualTo []) then {
+	life_side_noidcard = true;
+} else {
+	life_idcard_data = _this select 12;
+};</pre>
+			Füge in der <code>case civilian</code> über <code>//Position</code> folgendes ein:<br>
+			<br>
+			<div id="trollclass" data-children=".item">
+				<button class="btn btn-primary" type="button" data-toggle="collapse" data-parent="#trollclass" href="#civiliannormal" aria-expanded="false" aria-controls="civiliannormal">Normal</button>
+				<button class="btn btn-primary" type="button" data-toggle="collapse" data-parent="#trollclass" href="#civilianforce" aria-expanded="false" aria-controls="civilianforce">Ausweis-Formular erzwingen</button>
+				<div class="item">
+					<div class="collapse" id="civiliannormal" data-parent="#accordion" role="tabpanel">
+<pre class="prettyprint">//idcard
+life_idcard_data = _this select 13;</pre>
+					</div>
+				</div>
+				<div class="item">
+					<div class="collapse" id="civilianforce" data-parent="#accordion" role="tabpanel">
+					<pre class="prettyprint">//idcard
+if((_this select 13) isEqualTo []) then {
+	life_side_noidcard = true;
+} else {
+	life_idcard_data = _this select 13;
+};</pre>
+					</div>
+				</div>
+			</div>
+			<br>
+			Füge in der <code>case independent</code> vor dem Ende dieser <b>Case</b> folgendes ein:
+			<pre class="prettyprint">//idcard
+if((_this select 11) isEqualTo []) then {
+	life_side_noidcard = true;
+} else {
+	life_idcard_data = _this select 11;
+};</pre>
+			<b>Zusatzschritt falls man eine ältere Altis Life Version hat:</b><br/>
+				<br>
+				<p>
+					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#requestrecieved" aria-expanded="false" aria-controls="requestrecieved">Zusatzschritt</button>
+				</p>
+				<div class="collapse" id="requestrecieved">
+					<div class="card">
+						<div class="card-body">
+							Suche nach <code>if (count (_this select 15) > 0) then {</code> und ersetze diese Zeile mit <code>if (count (_this select 16) > 0) then {</code>.<br>
+							Suche nach <code>life_houses = _this select 13;</code> und ersetze diese Zeile mit <code>life_houses = _this select 14;</code>.<br>
+							Suche nach <code>life_gangData = _this select 14;</code> und ersetze diese Zeile mit <code>life_gangData = _this select 15;</code>.<br>
+						</div>
+					</div>
+				</div>
+				
+			</p>
+			
+			<h3>Schritt 16 (Optional - Fakeausweise)</h3>
+			<p>
+				Öffne deine <code>/core/pmenu/fn_useItem.sqf</code> und suche nach <code>case (_item isEqualTo "boltcutter"): {</code>. Füge darüber folgenden Code ein:
+				<pre class="prettyprint">case (_item isEqualTo "fakeidcard"): {
+	life_idcard_fake = true;
+	createDialog "aapps_idcard";
+};</pre>
+Öffne nun deine <code>/config/Config_vItems.hpp</code> oder <code>/Config_vItems.hpp</code> und suche nach <code>class pickaxe {</code>. Füge darüber folgenden Code ein:
+<pre class="prettyprint">class fakeidcard {
+	variable = "fakeidcard";
+	displayName = "STR_Item_fakeidcard";
+	weight = 5;
+	buyPrice = 50000;
+	sellPrice = 1000;
+	illegal = true;
+	edible = -1;
+	icon = "a3\3den\data\cfg3den\history\pasteitems_ca.paa";
+};</pre>
+Füge nun am Anfang dieser Datei dieses Item <code>fakeidcard</code> in einem Shop deiner Wahl ein.</p>
+						
+			<div class="alert alert-danger" role="alert">
+				Folgendes muss in der <b>Datenbank</b> erfolgen:<br>
+			</div>
+			<h3>Schritt 17</h3>
+			<p>	
+				Führe die folgende Abfrage in deiner <b>Spieldatenbank</b> aus: 
+				<pre class="prettyprint">ALTER TABLE players ADD idcard_data_civ varchar(500) NOT NULL DEFAULT '"[]"';
+ALTER TABLE players ADD idcard_data_cop varchar(500) NOT NULL DEFAULT '"[]"';
+ALTER TABLE players ADD idcard_data_med varchar(500) NOT NULL DEFAULT '"[]"';</pre>
+			Falls du schon eine ältere Version <b>unseres</b> Ausweisscripts hattest, kannst du die bereits bestehenden Daten in der Dankbank einfach updaten lassen. Änder dazu <b>nichts</b> in der Datenbank und starte die <b>/Updater/UpdateIDCardDB.exe</b>.
+			</p>
+			
+			<h3>Schritt 18 (Optional)</h3>
+			<p>
+				Falls du deinen <b>Fraktionen</b> ermöglichen willst, dass diese gegebenenfalls Ausweise <b>erstellen</b> können beziehungsweise deren Namen gegen Geld ändern können, musst du folgendes in die Init eines <b>Objekts</b> deiner Wahl einfügen.<br>
+				<b>Aktion fürs Ausweiserstellen:</b>
+				<pre class="prettyprint">this addAction[localize "STR_capps_apply_idcard",{createDialog "aapps_idcard"},"",0,false,false,"",'playerSide isEqualTo CIVILIAN && (life_idcard_data isEqualTo [])'];</pre>
+				<b>Aktion fürs Namenändern:</b>
+				<pre class="prettyprint">this addAction[localize "STR_capps_change_idcard",{createDialog "aapps_idcard"},"",0,false,false,"",'(!(life_idcard_data isEqualTo []))'];</pre>
+				<br>
+				<b>Beachte:</b> Verwende kein <b>SimpleObject</b>, da darauf keine <b>Aktionen</b> hinzugefügt werden können.
+			</p>
+		<h3 align='center'><div class="alert alert-success" role="alert">Gratulation. Du hast nun das Ausweisscript erfolgreich installiert.</div></h3>
+		
+		<hr>
+			<h3>Hinweis</h3>
+			<p>In der Datei <code>/core/idcard/idcard.hpp</code> befindet sich die Konfiguration der Preise, sowie weitere kleine <b>Einstellungen</b>.<br>
+			<br>
+			Die <b>Lizenz</b> befindet sich in der <code>LICENSE.txt</code>. Sie darf nicht aus dem produkt entfernt werden. Außerdem darf das Produkt gleichzeitig nur auf einem <b>öffentlichen Gameserver</b> installiert sein (Testserver sind nicht als Gameserver zu werten) - für <b>mehrere Server</b> sind <b>mehrere Lizenzen</b> erforderlich.
+			
+		<hr>
+		</div> <!-- /container -->
+
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst"></script>
+	</body>
+</html>

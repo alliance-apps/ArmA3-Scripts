@@ -1,0 +1,190 @@
+﻿<Package name="card_capps">
+	<Key ID="STR_Item_fakeidcard">
+		<Original>Fake idcard</Original>
+		<German>Fakeausweis</German>
+	</Key>
+	<Key ID="STR_Item_fakeidcard_notgiven">
+		<Original>You don't have a fake idcard.</Original>
+		<German>Du hast keinen Fakeausweis.</German>
+	</Key>
+	<Key ID="STR_capps_abort">
+		<Original>Cancel</Original>
+		<German>Abbruch</German>
+	</Key>
+	<Key ID="STR_capps_sign">
+		<Original>Sign</Original>
+		<German>Unterschreiben</German>
+	</Key>
+	<Key ID="STR_capps_norealdata">
+		<Original>! Please don't use any real data !</Original>
+		<German>! Bitte geben Sie keine echten Daten an !</German>
+	</Key>
+	<Key ID="STR_capps_bloodtype">
+		<Original>Blood Type:</Original>
+		<German>Blutgruppe:</German>
+	</Key>
+	<Key ID="STR_capps_city">
+		<Original>Zipcode / City:</Original>
+		<German>PLZ / Ort:</German>
+	</Key>
+	<Key ID="STR_capps_address">
+		<Original>Address:</Original>
+		<German>Anschrift:</German>
+	</Key>
+	<Key ID="STR_capps_gender">
+		<Original>Gender:</Original>
+		<German>Geschlecht:</German>
+	</Key>
+	<Key ID="STR_capps_birthplace">
+		<Original>Place o. B:</Original>
+		<German>Geburtsort:</German>
+	</Key>
+	<Key ID="STR_capps_birthcountry">
+		<Original>State o. B:</Original>
+		<German>Geburtsland:</German>
+	</Key>
+	<Key ID="STR_capps_birthdate">
+		<Original>Date of Birth:</Original>
+		<German>Geburtsdatum:</German>
+	</Key>
+	<Key ID="STR_capps_card_register">
+		<Original>ID card application</Original>
+		<German>Ausweis erstellen</German>
+	</Key>
+	<Key ID="STR_capps_already_db">
+		<Original>Your name is already in use. Please use another.</Original>
+		<German>Dein Name ist bereits vergeben. Bitte wähle einen anderen Namen.</German>
+	</Key>
+	<Key ID="STR_capps_success">
+		<Original>You successfully applied for an ID card.</Original>
+		<German>Dein Ausweis wurde erfolgreich registriert.</German>
+	</Key>
+	<Key ID="STR_capps_wrongname">
+		<Original>Wrong Profile-Name. Please change your name to your old name and reconnect.&lt;t align='center'&gt;&lt;br/&gt;&lt;br/&gt;Your old name:&lt;br/&gt;&lt;t size='2'&gt;%1&lt;/t&gt;1</Original>
+		<German>Bitte gehe zurück ins Hauptmenü und ändere deinen Namen zu deinem zuletzt verwendeten Namen.&lt;t align='center'&gt;&lt;br/&gt;&lt;br/&gt;Er lautete:&lt;br/&gt;&lt;t size='2'&gt;%1&lt;/t&gt;</German>
+	</Key>
+	<Key ID="STR_capps_gender_male">
+		<Original>Male</Original>
+		<German>Männlich</German>
+	</Key>
+	<Key ID="STR_capps_gender_female">
+		<Original>Female</Original>
+		<German>Weiblich</German>
+	</Key>
+	<Key ID="STR_capps_name_too_short">
+		<Original>Name too short</Original>
+		<German>Dein Name ist zu kurz!</German>
+	</Key>
+	<Key ID="STR_capps_name_not_valid">
+		<Original>Name is invalid</Original>
+		<German>Dein Name ist nicht gültig!</German>
+	</Key>
+	<Key ID="STR_capps_birth_not_valid_day">
+		<Original>Your DoB day is not between 1 and 31.</Original>
+		<German>Dein Geburtstag ist nicht zwischen 1 und 31.</German>
+	</Key>
+	<Key ID="STR_capps_birth_not_valid_month">
+		<Original>Your DoB month is not between 1 and 12.</Original>
+		<German>Dein Geburtsmonat ist nicht zwischen 1 und 12.</German>
+	</Key>
+	<Key ID="STR_capps_birth_not_valid_years">
+		<Original>Your DoB year is not between 1950 and 2001.</Original>
+		<German>Dein Geburtsjahr ist nicht zwischen 1950 und 2001.</German>
+	</Key>
+	<Key ID="STR_capps_birth_february">
+		<Original>February only has 28 days.</Original>
+		<German>Der Februar hat nur 28 Tage.</German>
+	</Key>
+	<Key ID="STR_capps_birth_place">
+		<Original>Your place of birth is too short.</Original>
+		<German>Dein Geburtsort ist zu kurz.</German>
+	</Key>
+	<Key ID="STR_capps_birth_place_not_valid">
+		<Original>Your place of birth is invalid.</Original>
+		<German>Dein Geburtsort ist nicht gültig.</German>
+	</Key>
+	<Key ID="STR_capps_birth_country">
+		<Original>You didn't choose a state of birth.</Original>
+		<German>Du hast kein Geburtsland ausgewählt.</German>
+	</Key>
+	<Key ID="STR_capps_no_gender">
+		<Original>You didn't choose a gender.</Original>
+		<German>Du hast kein Geschlecht ausgewählt.</German>
+	</Key>
+	<Key ID="STR_capps_short_address">
+		<Original>Your address is too short.</Original>
+		<German>Deine Anschrift ist zu kurz.</German>
+	</Key>
+	<Key ID="STR_capps_wrong_zip">
+		<Original>The zip code can only contain numbers (3-5)</Original>
+		<German>Deine PLZ besteht nicht nur aus Zahlen bzw. beträgt nicht 3, 4 oder 5 Ziffern.</German>
+	</Key>
+	<Key ID="STR_capps_short_place">
+		<Original>City is too short.</Original>
+		<German>Dein Ort ist zu kurz.</German>
+	</Key>
+	<Key ID="STR_capps_wrong_blood_type">
+		<Original>Your Blood Type is invalid</Original>
+		<German>Deine Blutgruppe ist nicht korrekt!</German>
+	</Key>
+	<Key ID="STR_capps_some_inputs_too_long">
+		<Original>Some of your inputs are too long</Original>
+		<German>Manche Texte sind zu lang.</German>
+	</Key>
+	<Key ID="STR_capps_gui_question">
+		<Original>I hereby confirm the validity of my data and I have not entered any real information&lt;br/&gt;&lt;br/&gt;The application fee is &lt;t color='#8cff9b'&gt;%1€&lt;/t&gt;.</Original>
+		<German>Ich bestätige hiermit die Gültigkeit meiner angegebenen Daten. Ich vergewissere mich, dass ich keine echten Daten angegeben habe.&lt;br/&gt;&lt;br/&gt;Die Kosten für den Ausweis betragen &lt;t color='#8cff9b'&gt;%1€&lt;/t&gt;.</German>
+	</Key>
+	<Key ID="STR_capps_gui_question_fake">
+		<Original>I hereby confirm the validity of my data and I have not entered any real information.</Original>
+		<German>Ich bestätige hiermit die Gültigkeit meiner angegebenen Daten. Ich vergewissere mich, dass ich keine echten Daten angegeben habe.</German>
+	</Key>
+	<Key ID="STR_capps_fake_done">
+		<Original>You successfully changed your name to %1.</Original>
+		<German>Du hast deinen Namen erfolgreich zu %1 geändert.</German>
+	</Key>
+	<Key ID="STR_capps_gui_title">
+		<Original>ID card application confirmed</Original>
+		<German>Ausweis Bestätigung</German>
+	</Key>
+	<Key ID="STR_capps_gui_accept">
+		<Original>Accept</Original>
+		<German>Akzeptieren</German>
+	</Key>
+	<Key ID="STR_capps_gui_decline">
+		<Original>Decline</Original>
+		<German>Ablehnen</German>
+	</Key>
+	<Key ID="STR_capps_not_enough">
+		<Original>You don't have %1€</Original>
+		<German>Du hast keine %1€</German>
+	</Key>
+	<Key ID="STR_capps_change_idcard">
+		<Original>Change ID Card</Original>
+		<German>Ausweis ändern</German>
+	</Key>
+	<Key ID="STR_capps_apply_idcard">
+		<Original>Apply for an ID card</Original>
+		<German>Ausweis anfordern</German>
+	</Key>
+	<Key ID="STR_capps_cur_error_success">
+		<Original>You showed %1 your ID Card</Original>
+		<German>Ausweis erfolgreich %1 gezeigt</German>
+	</Key>
+	<Key ID="STR_capps_cur_error_success_card">
+		<Original>You showed %1 your service card</Original>
+		<German>Dienstausweis erfolgreich %1 gezeigt</German>
+	</Key>
+	<Key ID="STR_capps_cur_error_no_target">
+		<Original>There is no person</Original>
+		<German>Du zeigst auf keine Person...</German>
+	</Key>
+	<Key ID="STR_capps_cur_error_not_alive">
+		<Original>That person is not alive!</Original>
+		<German>Du zeigst auf keine lebende Person...</German>
+	</Key>
+	<Key ID="STR_capps_cur_error_no_idcard">
+		<Original>You don't have an ID card. Please apply for one.</Original>
+		<German>Du hast keinen Ausweis! Du musst zuerst einen beantragen...</German>
+	</Key>
+</Package>

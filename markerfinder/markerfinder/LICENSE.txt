@@ -1,0 +1,51 @@
+AllianceApps Digital Software License v1.0
+
+Copyright (c) 2017 AllianceApps Tim Vogler
+
+
+1. Eine Nutzungslizenz (=ein Kauf) erlaubt es dem Käufer, das Script auf
+einem (1) ArmA 3 Gameserver zu installieren und zu betreiben. Eine Nutz-
+ung auf mehreren Servern mit der gleichen Lizenz ist nicht gestattet.
+Wenn sie einen Verstoß gegen diese Regeln feststellen, kontaktieren sie
+uns sofort unter support@allianceapps.de mit Details zum entsprechenden
+Gameserver, und wir leiten entsprechende Schritte ein.
+
+2. Die Weitergabe der Dateien aus diesem Archiv ist nicht gestattet. Weder
+dürfen einzelne Scriptdateien, der gesamte Inhalt noch das Installations-
+tutorial an Dritte weitergegeben werden. Der Käufer ist verpflichtet, seine
+Lizenz so gut wie möglich zu schützen um einem Missbrauch dieser zu ver-
+hindern.
+
+3. Dieses Produkt darf nicht weiterverkauft werden, noch darf es in Teilen
+in kostenpflichtiger Software enthalten sein.
+
+
+Dieser Copyright-Hinweis (die Lizenz) darf nicht aus dem Produkt entfernt
+werden und muss in allen Kopien vorhanden sein.
+___________________________________________________________________________
+
+1. One License allows the owner of this product to install this script on
+one (1) ArmA 3 gameserver he operates. Using this product on more than one
+gameserver is not allowed. If you see any server you think is violating
+this, please contact support@allianceapps.de and we will take care of it.
+
+2. You may not share the files from this archive (product) with anyone. No
+3rd party must have access to scriptfiles, all files or the installation
+tutorial. The owner is obligated to protect his files and license against
+misuse.
+
+3. This product must not be sold to a third party and it may not be sold as
+part of another product
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+__________________________________________________________________________
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Objectsell Tutorial (English)</title>
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+		<!-- Custom styles for this template -->
+		<link href="https://getbootstrap.com/docs/4.0/examples/grid/grid.css" rel="stylesheet">
+	</head>
+
+	<body>
+	<p style="display: inline; position: absolute; right: 5px; top: 5px;">Stand: 21.12.2017</p>
+
+		<div class="container">
+				<table style="width:100%">
+					<tr>
+						<th><h1>Tutorial: Objectsell</h1></th>
+						<th><a href="https://www.allianceapps.de"><img src="https://allianceapps.de/images/linksoben.png" height="75" align="right"></a></th>
+					</tr>
+				</table>
+			<h3>Warning</h3>
+			<p>In this tutorial we will change files in your clientside mission, in your @life_server - so please make backups before starting. Seriously, do it. AllianceApps is not responsible for any data loss.</p>
+			<div class="alert alert-danger" role="alert">
+				The next steps need to be executed in the <b>clientside mission</b> (.Altis, .Tanoa, .Malden):<br>
+			</div>
+			<h3>Step 1</h3>
+			Create a file named <code>allianceapps_license.txt</code> in your <code>/core/</code> folder in your mission (.Altis, .Tanoa usw.) or open it up, if it already exists. Add the following line to this file:
+			<br>
+			<code>OBJECTSELL: LICENSEKEY HERE</code><br>
+			Replace the licensekey with your personal key.
+			
+			
+			<hr>
+
+			<h3>Step 2</h3>
+			<p>Copy the file <code>aapps_sellobject.hpp</code> into the folder <code>/dialog/</code>.</p>
+			<p>Open <code>/dialog/MasterHandler.hpp</code> and add the following at the end of the file:<br>
+			<pre class="prettyprint">#include "aapps_sellobject.hpp"</pre></p>
+
+			
+			<h3>Step 3</h3>
+			<p>Copy the file <code>/fn_aapps_sellObject.sqf</code> into the folder <code>/core/functions/</code>.</p>
+			<p>Open <code>/Functions.hpp</code> or <code>/Functions.h</code> and search for the following:<br>
+			<pre class="prettyprint">class Functions {
+	file = "core\functions";</pre>
+      Add <code>class aapps_sellObject {};</code> under <code>file = "core\functions";</code>. This part of the file should now look like this:<br>
+      <pre class="prettyprint">class Functions {
+        file = "core\functions";
+	class aapps_sellObject {};</pre></p>
+		<h3>Step 4</h3>
+		<p>Now open your <code>/core/init.sqf</code> and add the following under <code>[] spawn life_fnc_survival;</code>:<br>
+		<pre class="prettyprint">0 call life_fnc_aapps_sellObject;</pre>
+      </p>
+	  <h3>Step 5</h3>
+		<p>Now open your <code>/core/housing/fn_houseMenu.sqf</code> and search for:<br>
+		<pre class="prettyprint">if (((_curTarget getVariable "house_owner") select 0) != getPlayerUID player) then {
+	_Btn1 ctrlEnable false;
+};</pre>
+		Replace that part with the following codeblock: <br>
+		<pre class="prettyprint">if (((_curTarget getVariable "house_owner") select 0) != getPlayerUID player) then {
+	_Btn1 ctrlEnable false;
+} else {
+	_Btn8 ctrlSetText localize "STR_trade_sell_object";
+	_Btn8 buttonSetAction "[life_pInact_curTarget] call life_fnc_initSellObject";
+	_Btn8 ctrlShow true;
+};</pre>
+	Search for:<br>
+	<pre class="prettyprint">if (((_curTarget getVariable "house_owner") select 0) != (getPlayerUID player)) then {
+	_Btn4 ctrlEnable false;
+};</pre>
+		and replace that part with the following codeblock: <br>
+		<pre class="prettyprint">if (((_curTarget getVariable "house_owner") select 0) != (getPlayerUID player)) then {
+	_Btn4 ctrlEnable false;
+} else {
+	_Btn8 ctrlSetText localize "STR_trade_sell_object";
+	_Btn8 buttonSetAction "[life_pInact_curTarget] call life_fnc_initSellObject";
+	_Btn8 ctrlShow true;
+};</pre>
+
+      </p>
+	  <h3>Step 6</h3>
+		<p>Now open your <code>/core/vehicle/fn_vInteractionMenu.sqf</code> and search for the following at the end of the file:<br>
+		<pre class="prettyprint">_Btn4 ctrlShow false;
+_Btn5 ctrlShow false;
+_Btn6 ctrlShow false;</pre>
+		Replace this part with the following: <br>
+		<pre class="prettyprint">_Btn4 ctrlShow false;
+_Btn5 ctrlShow false;
+if(((_curTarget getVariable ['dbInfo',['-1',-1]]) select 0) isEqualTo (getplayeruid player)) then {
+	_Btn6 ctrlSetText localize "STR_trade_sell_object";
+	_Btn6 buttonSetAction "[life_vInact_curTarget] call life_fnc_initSellObject";
+	_Btn6 ctrlShow true;
+} else {
+	_Btn6 ctrlShow false;
+};</pre>
+      </p>
+	  <h3>Step 7</h3>
+	  <p>
+		Open <code>/CfgRemoteExec.hpp</code> and add the following under <code>F(life_fnc_animSync,ANYONE)</code>:
+		<pre class="prettyprint">F(life_fnc_acceptSellRequest,CLIENT)
+F(life_fnc_doneObjectSell,CLIENT)
+F(life_fnc_sellobject_keys,CLIENT)
+F(ton_fnc_aapps_changeObjectOwner,SERVER)</pre>
+	  </p>
+	  <h3>Step 8</h3>
+		<p>Open the file <code>/stringtable.xml</code> and go to the end of the file. Add the content of the downloaded <b>Stringtable.xml</b> BEFORE the last <code>&lt;/Project&gt;</code> - Tag.</P>
+
+		<br>
+		<div class="alert alert-danger" role="alert">
+				The next steps need to be executed in the <b>@life_server</b>:<br>
+			</div>
+		<h3>Step 9</h3>
+		<p>
+		<p>Copy the file <code>/fn_aapps_changeObjectOwner.sqf</code> into the folder <code>/Functions/Systems/</code> in your @life_server.</p>
+			<p>Open <code>/config.cpp</code> and search for the following:<br>
+			<pre class="prettyprint">class Systems {
+	file = "\life_server\Functions\Systems";</pre>
+      After <code>file = "\life_server\Functions\Systems";</code> add this: <code>class aapps_changeObjectOwner {};</code>. That part of the file should now look like this:<br>
+      <pre class="prettyprint">class Systems {
+	file = "\life_server\Functions\Systems";
+	class aapps_changeObjectOwner {};</pre></p>
+	<br>
+		<div class="alert alert-danger" role="alert">
+				The following must be done in your <b>database</b>:<br>
+			</div>
+			<h3>Step 10</h3>
+			<p>	
+				Run this query in your <b>Altis Life database</b>: 
+				<pre class="prettyprint">CREATE TABLE IF NOT EXISTS `sold_objects` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `olduid` varchar(17) NOT NULL,
+  `newuid` varchar(17) NOT NULL,
+  `index_value` varchar(17) NOT NULL,
+  `object_classname` tinytext NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</pre>
+			</p>
+		<h3 align='center'><div class="alert alert-success" role="alert">Congratulations. You have installed the objectsell script.</div></h3>
+		</div> <!-- /container -->
+
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst""></script>
+	</body>
+</html>
